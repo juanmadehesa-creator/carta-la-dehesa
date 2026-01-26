@@ -2,161 +2,137 @@
 <html lang='es'>
 <head>
     <meta charset='UTF-8'>
-    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
-    <title>LA DEHESA DEL JAMÓN - Carta Digital</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0'> <title>LA DEHESA DEL JAMÓN - Carta Digital</title>
     <script src='https://cdn.tailwindcss.com'></script>
     <link rel='icon' type='image/png' href='https://github.com/juanmadehesa-creator/Carta-La-Dehesa-del-Jam-n-/blob/main/images/favicon.png?raw=true'>
-    <link href='https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&display=swap' rel='stylesheet'>
+    <link href='https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800;900&display=swap' rel='stylesheet'>
     <style>
         :root { --gold: #f1c232; --dark: #401201; }
-        body { font-family: 'Montserrat', sans-serif; background-color: var(--dark); color: #ffffff; -webkit-font-smoothing: antialiased; }
+        body { 
+          font-family: 'Montserrat', sans-serif; 
+          background-color: var(--dark); 
+          color: #ffffff; 
+          -webkit-font-smoothing: antialiased;
+          line-height: 1.5;
+        }
         
-        /* HEADER STICKY DINÁMICO */
         .sticky-header { 
-          position: sticky; 
-          top: 0; 
-          background: #2d0c01; 
-          z-index: 1000; 
-          border-bottom: 1px solid rgba(241, 194, 50, 0.2); 
-          transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-          padding: 20px 0 10px 0;
+          position: sticky; top: 0; background: #2d0c01; z-index: 1000; 
+          border-bottom: 2px solid rgba(241, 194, 50, 0.3); 
+          padding: 12px 0; width: 100%;
+          box-shadow: 0 10px 30px rgba(0,0,0,0.5);
         }
 
         .header-logo {
-          width: 180px;
-          margin: 0 auto 15px auto;
-          transition: all 0.4s ease;
-          display: block;
-          filter: drop-shadow(0 10px 15px rgba(0,0,0,0.5));
-        }
-        
-        /* EFECTO CUANDO SE HACE SCROLL */
-        .sticky-header.scrolled {
-          padding: 8px 0;
-          box-shadow: 0 15px 30px rgba(0,0,0,0.6);
-        }
-        .sticky-header.scrolled .header-logo {
-          width: 70px;
-          margin-bottom: 5px;
+          width: 100px; margin: 0 auto 12px auto;
+          display: block; filter: drop-shadow(0 4px 8px rgba(0,0,0,0.5));
         }
 
-        .nav-index { 
-          display: flex; 
-          flex-wrap: wrap; 
-          justify-content: center;
-          gap: 10px; 
-          padding: 5px 10px;
-        }
+        .nav-index { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px; padding: 0 10px; }
         
         .nav-item { 
-          font-size: 0.65rem; 
-          color: #ffffff; 
-          border: 1px solid rgba(255,255,255,0.15); 
-          padding: 6px 14px; 
-          border-radius: 25px; 
-          text-transform: uppercase; 
-          cursor: pointer; 
-          font-weight: 800;
-          transition: all 0.3s ease;
-          letter-spacing: 0.5px;
-          white-space: nowrap;
+          color: #ffffff; border: 1px solid rgba(255,255,255,0.3); 
+          padding: 8px 12px; border-radius: 10px; text-transform: uppercase; 
+          cursor: pointer; transition: 0.2s; letter-spacing: 0.5px;
+          display: flex; flex-direction: column; align-items: center; justify-content: center;
+          background: rgba(255,255,255,0.05);
+          min-width: 80px;
         }
-        .nav-item:hover { border-color: var(--gold); color: var(--gold); background: rgba(241, 194, 50, 0.05); }
+        /* Enfoque accesible para navegación por teclado */
+        .nav-item:focus { outline: 3px solid var(--gold); outline-offset: 2px; }
         
-        /* Offset para que el título no quede debajo del header al navegar */
-        section { scroll-margin-top: 180px; transition: scroll-margin-top 0.4s ease; }
-        .scrolled + #menu-container section { scroll-margin-top: 130px; }
-        
-        .allergen-icon { width: 34px; height: 34px; color: var(--gold); }
-        .allergen-icon svg { width: 100%; height: 100%; filter: drop-shadow(0 2px 4px rgba(0,0,0,0.5)); }
-        
-        .price-label { width: 70px; text-align: right; font-size: 0.6rem; font-weight: 900; text-transform: uppercase; opacity: 0.5; letter-spacing: 1px; }
-        .price-value { width: 70px; text-align: right; font-size: 1.1rem; font-weight: 800; }
+        .nav-item span:first-child { font-size: 0.65rem; font-weight: 800; }
+        .nav-item span:last-child { font-size: 0.5rem; font-weight: 600; color: var(--gold); margin-top: 1px; }
+
+        .price-label { width: 60px; text-align: right; font-size: 0.6rem; font-weight: 900; opacity: 0.6; }
+        .price-value { width: 60px; text-align: right; font-size: 1rem; font-weight: 800; }
         .gold-text { color: var(--gold); }
 
         #back-to-top {
-          position: fixed; bottom: 30px; right: 30px; width: 50px; height: 50px;
+          position: fixed; bottom: 20px; right: 20px; width: 50px; height: 50px;
           background: var(--gold); color: var(--dark); border-radius: 50%;
           display: flex; align-items: center; justify-content: center;
-          font-weight: 900; font-size: 24px; box-shadow: 0 10px 20px rgba(0,0,0,0.4);
-          opacity: 0; transform: translateY(20px); transition: 0.4s; z-index: 2000; border: none; cursor: pointer;
+          font-weight: 900; opacity: 0; transition: 0.3s; z-index: 2000; border: none; cursor: pointer;
+          box-shadow: 0 4px 15px rgba(0,0,0,0.4);
         }
-        #back-to-top.visible { opacity: 1; transform: translateY(0); }
+        #back-to-top.visible { opacity: 1; }
 
         @media (max-width: 640px) {
-          .sticky-header { padding: 15px 0 8px 0; }
-          .header-logo { width: 140px; }
+          .header-logo { width: 95px; }
           .nav-index { display: grid; grid-template-columns: repeat(2, 1fr); gap: 6px; }
-          .nav-item { font-size: 0.55rem; padding: 6px 4px; text-align: center; }
-          section { scroll-margin-top: 240px; }
-          .sticky-header.scrolled .header-logo { width: 60px; }
+          #allergen-legend { grid-template-columns: repeat(2, 1fr); gap: 12px; }
         }
     </style>
 </head>
 <body>
     <header class='sticky-header' id='main-header'>
-      <img src='https://github.com/juanmadehesa-creator/Carta-La-Dehesa-del-Jam-n-/blob/main/images/logo-carta-digital.png?raw=true' alt='LA DEHESA DEL JAMÓN' class='header-logo' id='logo'>
-      <nav class='nav-index' id='category-nav'></nav>
+      <img src='https://github.com/juanmadehesa-creator/Carta-La-Dehesa-del-Jam-n-/blob/main/images/logo-carta-digital.png?raw=true' alt='Logotipo de LA DEHESA DEL JAMÓN - Volver arriba' class='header-logo' role='button' onclick="window.scrollTo({top: 0, behavior:'smooth'})" style="cursor:pointer">
+      <nav class='nav-index' id='category-nav' aria-label='Categorías de la carta'></nav>
     </header>
 
-    <div class='max-w-[750px] mx-auto px-5 pb-20'>
-        <div id='menu-container' class='mt-12 space-y-20'></div>
+    <main class='max-w-[700px] mx-auto px-5 pb-10'>
+        <div id='menu-container' class='mt-6 space-y-12'></div>
 
-        <section class='mt-24 py-12 px-8 border border-[#f1c232]/30 rounded-[40px] bg-black/40 shadow-2xl'>
-            <h2 class='text-[#f1c232] text-[1.4rem] font-black uppercase tracking-[5px] text-center mb-10'>EXTRAS</h2>
-            <div class='space-y-10'>
-                <div class='flex justify-between items-center border-b border-white/5 pb-5'>
-                    <div class='flex-1'>
-                        <p class='text-white font-bold text-sm uppercase leading-tight'>Servicio de Mesa, Picos y Pan</p>
-                        <p class='text-[#f1c232] italic text-[0.7rem] font-medium opacity-80 mt-1 uppercase'>Table Service, Bread & Breadsticks</p>
+        <section class='mt-12 py-8 px-6 border border-[#f1c232]/30 rounded-[25px] bg-black/20'>
+            <h2 class='text-[#f1c232] text-xl font-black uppercase tracking-[4px] text-center mb-6'>EXTRAS</h2>
+            <div class='space-y-5'>
+                <div class='flex justify-between items-center border-b border-white/10 pb-4'>
+                    <div class='flex-1 text-left'>
+                        <p class='text-white font-bold text-sm uppercase'>Servicio de Mesa, Picos y Pan</p>
+                        <p class='text-[#f1c232] italic text-[0.7rem] font-semibold uppercase'>Table Service, Bread & Breadsticks</p>
                     </div>
                     <div class='text-right ml-4'>
-                      <p class='text-[#f1c232] font-black text-xl'>0,50€</p>
-                      <p class='text-[9px] text-white/40 font-bold uppercase tracking-tighter mt-1'>x persona / per person</p>
+                      <p class='text-[#f1c232] font-black text-lg'>0,50€</p>
                     </div>
                 </div>
-                <div class='flex justify-between items-center border-b border-white/5 pb-5'>
-                    <div class='flex-1'>
-                        <p class='text-white font-bold text-sm uppercase leading-tight'>Servicio de Mesa, Picos y Pan sin Gluten</p>
-                        <p class='text-[#f1c232] italic text-[0.7rem] font-medium opacity-80 mt-1 uppercase'>Gluten-Free Table Service, Bread & Breadsticks</p>
+                <div class='flex justify-between items-center border-b border-white/10 pb-4'>
+                    <div class='flex-1 text-left'>
+                        <p class='text-white font-bold text-sm uppercase'>Pan sin Gluten</p>
+                        <p class='text-[#f1c232] italic text-[0.7rem] font-semibold uppercase'>Gluten-Free Bread</p>
                     </div>
                     <div class='text-right ml-4'>
-                      <p class='text-[#f1c232] font-black text-xl'>0,80€</p>
-                      <p class='text-[9px] text-white/40 font-bold uppercase tracking-tighter mt-1'>x persona / per person</p>
+                      <p class='text-[#f1c232] font-black text-lg'>0,80€</p>
+                    </div>
+                </div>
+                <div class='flex justify-between items-center border-b border-white/10 pb-4'>
+                    <div class='flex-1 text-left'>
+                        <p class='text-white font-bold text-sm uppercase'>Salsa extra</p>
+                        <p class='text-[#f1c232] italic text-[0.7rem] font-semibold uppercase'>Extra Sauce Portion</p>
+                    </div>
+                    <div class='text-right ml-4'>
+                      <p class='text-[#f1c232] font-black text-lg'>0,30€</p>
                     </div>
                 </div>
             </div>
         </section>
 
-        <div class='mt-20 p-8 border border-[#f1c232]/20 rounded-[30px] bg-black/30'>
-          <h3 class='text-[#f1c232] text-center text-xs font-black uppercase tracking-[3px] mb-8'>Información sobre Alérgenos / Allergen Info</h3>
-          <div class='grid grid-cols-2 sm:grid-cols-4 gap-x-4 gap-y-6' id='allergen-legend'></div>
-        </div>
+        <section class='mt-10 p-6 border border-[#f1c232]/20 rounded-[20px] bg-black/30'>
+          <h3 class='text-[#f1c232] text-center text-[11px] font-black uppercase tracking-[2px] mb-6'>Información sobre Alérgenos / Allergen Info</h3>
+          <div class='grid grid-cols-2 sm:grid-cols-4' id='allergen-legend'></div>
+        </section>
         
-        <footer class='mt-16 pt-16 border-t border-[#f1c232]/20 text-center pb-12'>
-            <div class='flex justify-center gap-8 mb-12'>
-                <a href="https://www.instagram.com/dehesadeljamon/" target="_blank" rel="noopener noreferrer" class="social-link" style="color: var(--gold); transition: 0.3s; width: 32px; height: 32px; display: block;">
-      <svg viewBox="0 0 24 24" fill="currentColor" style="width: 100%; height: 100%;"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
-    </a> 
-                <a href="https://www.tiktok.com/@ladehesadeljamon" target="_blank" rel="noopener noreferrer" class="social-link" style="color: var(--gold); transition: 0.3s; width: 32px; height: 32px; display: block;">
-      <svg viewBox="0 0 24 24" fill="currentColor" style="width: 100%; height: 100%;"><path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z"/></svg>
-    </a> 
-                <a href="https://wa.me/34654574771" target="_blank" rel="noopener noreferrer" class="social-link" style="color: var(--gold); transition: 0.3s; width: 32px; height: 32px; display: block;">
-      <svg viewBox="0 0 24 24" fill="currentColor" style="width: 100%; height: 100%;"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
-    </a> 
-                <a href="https://www.ubereats.com/es/store/la-dehesa-del-jamon/xcyFgVxnVMe8xMush8BiNg" target="_blank" rel="noopener noreferrer" class="social-link" style="color: var(--gold); transition: 0.3s; width: 32px; height: 32px; display: block;">
-      <svg viewBox="0 0 24 24" fill="currentColor" style="width: 100%; height: 100%;"><path d="M0 2.75V7.84C0 9.76 1.34 11.03 3.08 11.03C3.93 11.03 4.69 10.7 5.23 10.13V10.89H6.44V2.75H5.22V7.77C5.22 9.06 4.35 9.93 3.22 9.93C2.08 9.93 1.22 9.08 1.22 7.77V2.75H0M7.35 2.75V10.89H8.5V10.14A2.96 2.96 0 0 0 10.63 11.03A3.09 3.09 0 0 0 13.74 7.93A3.09 3.09 0 0 0 10.63 4.83C9.8 4.83 9.06 5.17 8.5 5.71V2.75H7.35M17.26 4.84C15.5 4.84 14.21 6.25 14.21 7.92C14.21 9.69 15.58 11 17.36 11C18.44 11 19.33 10.54 19.92 9.75L19.07 9.12C18.63 9.71 18.05 10 17.36 10C16.36 10 15.56 9.27 15.4 8.31H20.22V7.92C20.22 6.16 18.97 4.84 17.26 4.84M23.45 4.91C22.8 4.91 22.33 5.21 22.04 5.69V4.96H20.87V10.89H22.05V7.5C22.05 6.6 22.61 6 23.37 6H23.86V4.91H23.45M17.23 5.86C18.11 5.86 18.84 6.47 19.04 7.38H15.42C15.63 6.47 16.36 5.86 17.23 5.86M10.55 5.88C11.66 5.88 12.58 6.78 12.58 7.93C12.58 9.07 11.66 10 10.55 10A2.04 2.04 0 0 1 8.5 7.93C8.5 6.78 9.42 5.88 10.55 5.88M0 12.96V21.1H5.72V19.71H1.55V17.69H5.61V16.34H1.55V14.35H5.72V12.96H0M14.56 13.38V15.09H13.4V16.45H14.56V19.65C14.56 20.46 15.13 21.1 16.16 21.1H17.8V19.74H16.66C16.31 19.74 16.09 19.58 16.09 19.26V16.45H17.8V15.09H16.09V13.38H14.56M9.32 14.94C7.53 14.94 6.12 16.34 6.12 18.1C6.12 19.85 7.53 21.25 9.32 21.25C10.04 21.25 10.71 21 11.24 20.56V21.1H12.76V15.09H11.24V15.63A2.96 2.96 0 0 0 9.32 14.94M21.04 14.94C19.45 14.94 18.34 15.59 18.34 16.86C18.34 17.73 18.95 18.3 20.27 18.58L21.72 18.92C22.29 19.03 22.44 19.18 22.44 19.42C22.44 19.79 22 20.03 21.31 20.03C20.44 20.03 19.94 19.83 19.74 19.17H18.21C18.43 20.42 19.36 21.25 21.26 21.25C23 21.25 24 20.42 24 19.26C24 18.44 23.42 17.83 22.19 17.57L20.9 17.3C20.15 17.16 19.91 17 19.91 16.74C19.91 16.38 20.27 16.16 20.94 16.16C21.66 16.16 22.19 16.36 22.34 17H23.86C23.78 15.77 22.87 14.94 21.04 14.94M9.45 16.26C10.46 16.26 11.27 17.07 11.27 18.1S10.46 19.93 9.45 19.93A1.82 1.82 0 0 1 7.62 18.1C7.62 17.07 8.45 16.26 9.45 16.26Z"/></svg>
-    </a> 
-                <a href="https://maps.app.goo.gl/dKe7u1rpeGxGhu1Q7" target="_blank" rel="noopener noreferrer" class="social-link" style="color: var(--gold); transition: 0.3s; width: 32px; height: 32px; display: block;">
-      <svg viewBox="0 0 24 24" fill="currentColor" style="width: 100%; height: 100%;"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+        <footer class='mt-12 pt-10 border-t border-[#f1c232]/20 text-center pb-8'>
+            <div class='flex justify-center gap-8 mb-8'>
+                <a href='https://www.instagram.com/dehesadeljamon/' target='_blank' rel='noopener noreferrer' aria-label='Visítanos en instagram' style='color: var(--gold); width: 28px; height: 28px; display: block;'>
+      <svg viewBox='0 0 24 24' fill='currentColor' aria-hidden='true' style='width: 100%; height: 100%;'><path d='M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z'/></svg>
+    </a> <a href='https://www.tiktok.com/@ladehesadeljamon' target='_blank' rel='noopener noreferrer' aria-label='Visítanos en tiktok' style='color: var(--gold); width: 28px; height: 28px; display: block;'>
+      <svg viewBox='0 0 24 24' fill='currentColor' aria-hidden='true' style='width: 100%; height: 100%;'><path d='M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z'/></svg>
+    </a> <a href='https://wa.me/34654574771' target='_blank' rel='noopener noreferrer' aria-label='Visítanos en whatsapp' style='color: var(--gold); width: 28px; height: 28px; display: block;'>
+      <svg viewBox='0 0 24 24' fill='currentColor' aria-hidden='true' style='width: 100%; height: 100%;'><path d='M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z'/></svg>
+    </a> <a href='https://www.ubereats.com/es/store/la-dehesa-del-jamon/xcyFgVxnVMe8xMush8BiNg' target='_blank' rel='noopener noreferrer' aria-label='Visítanos en ubereats' style='color: var(--gold); width: 28px; height: 28px; display: block;'>
+      <svg viewBox='0 0 24 24' fill='currentColor' aria-hidden='true' style='width: 100%; height: 100%;'><path d='M0 2.75V7.84C0 9.76 1.34 11.03 3.08 11.03C3.93 11.03 4.69 10.7 5.23 10.13V10.89H6.44V2.75H5.22V7.77C5.22 9.06 4.35 9.93 3.22 9.93C2.08 9.93 1.22 9.08 1.22 7.77V2.75H0M7.35 2.75V10.89H8.5V10.14A2.96 2.96 0 0 0 10.63 11.03A3.09 3.09 0 0 0 13.74 7.93A3.09 3.09 0 0 0 10.63 4.83C9.8 4.83 9.06 5.17 8.5 5.71V2.75H7.35M17.26 4.84C15.5 4.84 14.21 6.25 14.21 7.92C14.21 9.69 15.58 11 17.36 11C18.44 11 19.33 10.54 19.92 9.75L19.07 9.12C18.63 9.71 18.05 10 17.36 10C16.36 10 15.56 9.27 15.4 8.31H20.22V7.92C20.22 6.16 18.97 4.84 17.26 4.84M23.45 4.91C22.8 4.91 22.33 5.21 22.04 5.69V4.96H20.87V10.89H22.05V7.5C22.05 6.6 22.61 6 23.37 6H23.86V4.91H23.45M17.23 5.86C18.11 5.86 18.84 6.47 19.04 7.38H15.42C15.63 6.47 16.36 5.86 17.23 5.86M10.55 5.88C11.66 5.88 12.58 6.78 12.58 7.93C12.58 9.07 11.66 10 10.55 10A2.04 2.04 0 0 1 8.5 7.93C8.5 6.78 9.42 5.88 10.55 5.88M0 12.96V21.1H5.72V19.71H1.55V17.69H5.61V16.34H1.55V14.35H5.72V12.96H0M14.56 13.38V15.09H13.4V16.45H14.56V19.65C14.56 20.46 15.13 21.1 16.16 21.1H17.8V19.74H16.66C16.31 19.74 16.09 19.58 16.09 19.26V16.45H17.8V15.09H16.09V13.38H14.56M9.32 14.94C7.53 14.94 6.12 16.34 6.12 18.1C6.12 19.85 7.53 21.25 9.32 21.25C10.04 21.25 10.71 21 11.24 20.56V21.1H12.76V15.09H11.24V15.63A2.96 2.96 0 0 0 9.32 14.94M21.04 14.94C19.45 14.94 18.34 15.59 18.34 16.86C18.34 17.73 18.95 18.3 20.27 18.58L21.72 18.92C22.29 19.03 22.44 19.18 22.44 19.42C22.44 19.79 22 20.03 21.31 20.03C20.44 20.03 19.94 19.83 19.74 19.17H18.21C18.43 20.42 19.36 21.25 21.26 21.25C23 21.25 24 20.42 24 19.26C24 18.44 23.42 17.83 22.19 17.57L20.9 17.3C20.15 17.16 19.91 17 19.91 16.74C19.91 16.38 20.27 16.16 20.94 16.16C21.66 16.16 22.19 16.36 22.34 17H23.86C23.78 15.77 22.87 14.94 21.04 14.94M9.45 16.26C10.46 16.26 11.27 17.07 11.27 18.1S10.46 19.93 9.45 19.93A1.82 1.82 0 0 1 7.62 18.1C7.62 17.07 8.45 16.26 9.45 16.26Z'/></svg>
+    </a> <a href='https://maps.app.goo.gl/dKe7u1rpeGxGhu1Q7' target='_blank' rel='noopener noreferrer' aria-label='Visítanos en maps' style='color: var(--gold); width: 28px; height: 28px; display: block;'>
+      <svg viewBox='0 0 24 24' fill='currentColor' aria-hidden='true' style='width: 100%; height: 100%;'><path d='M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z'/></svg>
     </a>
             </div>
-            <p class='text-sm opacity-60 leading-relaxed mb-8 font-medium'>LA DEHESA DEL JAMÓN<br>Fernando Zóbel 1, Edificio Progreso local 15, 41020 Sevilla<br>654 57 47 71</p>
-            <p class='text-[10px] uppercase tracking-[0.4em] opacity-30 font-black'>© 2026 LA DEHESA DEL JAMÓN</p>
+            <address class='text-[11px] not-italic opacity-60 mb-6 font-medium leading-relaxed'>
+              LA DEHESA DEL JAMÓN<br>Fernando Zóbel 1, Edificio Progreso local 15, 41020 Sevilla<br>654 57 47 71
+            </address>
+            <p class='text-[9px] uppercase tracking-[0.2em] opacity-30 font-black'>© 2026 LA DEHESA DEL JAMÓN</p>
         </footer>
-    </div>
+    </main>
 
-    <button id='back-to-top'>↑</button>
+    <button id='back-to-top' aria-label='Subir al inicio del menú'>↑</button>
 
     <script>
         const fromSafeBase64 = (str) => decodeURIComponent(atob(str).split('').map(c => '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2)).join(''));
@@ -164,8 +140,8 @@
         const DATA = {
           dishes: JSON.parse(fromSafeBase64('W3siaWQiOiIxIiwibmFtZSI6Ik1vamFtYSBkZSBCYXJiYXRlIC8gQ3VyZWQgVHVuYSBMb2luIiwicHJpY2UiOjQsInByaWNlUGxhdHRlciI6Ny45LCJkZXNjcmlwdGlvbiI6IkRlIEJhcmJhdGUiLCJjYXRlZ29yeSI6IkRFIFBJQ09URU8gLyBCSVRFUyIsImlzQXZhaWxhYmxlIjp0cnVlLCJpc1Zpc2libGUiOnRydWV9LHsiaWQiOiIyIiwibmFtZSI6IkNoaWNoYXJyb25lcyBkZSBsYSBjYXNhIC8gQ3Jpc3B5IFBvcmsgQmVsbHkiLCJwcmljZSI6My4yLCJwcmljZVBsYXR0ZXIiOjAsImRlc2NyaXB0aW9uIjoiRXN0aWxvIHNldmlsbGFubyIsImNhdGVnb3J5IjoiREUgUElDT1RFTyAvIEJJVEVTIiwiaXNBdmFpbGFibGUiOnRydWUsImlzVmlzaWJsZSI6dHJ1ZX0seyJpZCI6IjMiLCJuYW1lIjoiQWxtZW5kcmFzIEZyaXRhcyAvIEZyaWVkIEFsbW9uZHMiLCJwcmljZSI6Mi41LCJwcmljZVBsYXR0ZXIiOjAsImRlc2NyaXB0aW9uIjoiU2FsYWRpdGFzIiwiY2F0ZWdvcnkiOiJERSBQSUNPVEVPIC8gQklURVMiLCJpc0F2YWlsYWJsZSI6dHJ1ZSwiaXNWaXNpYmxlIjp0cnVlfSx7ImlkIjoiNCIsIm5hbWUiOiJIdWV2YXMgZGUgTWFydWNhIC8gQ3VyZWQgSGFrZSBSb2UiLCJwcmljZSI6NCwicHJpY2VQbGF0dGVyIjo3LjksImRlc2NyaXB0aW9uIjoiQ2FsaWRhZCBleHRyYSIsImNhdGVnb3J5IjoiREUgUElDT1RFTyAvIEJJVEVTIiwiaXNBdmFpbGFibGUiOnRydWUsImlzVmlzaWJsZSI6dHJ1ZX0seyJpZCI6IjUiLCJuYW1lIjoiUXVlc28gT3ZlamEgKFpBTU9SQU5PKSAvIFNoZWVwIENoZWVzZSIsInByaWNlIjozLjgsInByaWNlUGxhdHRlciI6OC45NSwiZGVzY3JpcHRpb24iOiJELk8uUC4gWmFtb3JhIiwiY2F0ZWdvcnkiOiJERSBQSUNPVEVPIC8gQklURVMiLCJpc0F2YWlsYWJsZSI6dHJ1ZSwiaXNWaXNpYmxlIjp0cnVlfSx7ImlkIjoiNiIsIm5hbWUiOiJTYWxjaGljaMOzbiBkZSBCZWxsb3RhIGEgdGFjb3MgLyBEaWNlZCBTYXVzYWdlIiwicHJpY2UiOjMuMiwicHJpY2VQbGF0dGVyIjo2LjUsImRlc2NyaXB0aW9uIjoiSWLDqXJpY28gZGUgYmVsbG90YSIsImNhdGVnb3J5IjoiREUgUElDT1RFTyAvIEJJVEVTIiwiaXNBdmFpbGFibGUiOnRydWUsImlzVmlzaWJsZSI6dHJ1ZX0seyJpZCI6IjciLCJuYW1lIjoiQ2HDsWEgZGUgTG9tbyBkZSBCZWxsb3RhIChCRUhFUikgLyBDdXJlZCBQb3JrIExvaW4iLCJwcmljZSI6My44LCJwcmljZVBsYXR0ZXIiOjguOTUsImRlc2NyaXB0aW9uIjoiTWFyY2EgQkVIRVIiLCJjYXRlZ29yeSI6IkRFIFBJQ09URU8gLyBCSVRFUyIsImlzQXZhaWxhYmxlIjp0cnVlLCJpc1Zpc2libGUiOnRydWV9LHsiaWQiOiI4IiwibmFtZSI6IlF1ZXNvIEVzcGVjaWFsIENhYnJhIChaQU1PUkFOTykgLyBHb2F0IENoZWVzZSIsInByaWNlIjozLjgsInByaWNlUGxhdHRlciI6OC45NSwiZGVzY3JpcHRpb24iOiJELk8uUC4gWmFtb3JhIiwiY2F0ZWdvcnkiOiJERSBQSUNPVEVPIC8gQklURVMiLCJpc0F2YWlsYWJsZSI6dHJ1ZSwiaXNWaXNpYmxlIjp0cnVlfSx7ImlkIjoiOSIsIm5hbWUiOiJKYW3Ds24gSWLDqXJpY28gZGUgQmVsbG90YSAvIEFjb3JuLUZlZCBIYW0iLCJwcmljZSI6MCwicHJpY2VQbGF0dGVyIjoxNS45NSwiZGVzY3JpcHRpb24iOiJDb3J0ZSBhcnRlc2FubyIsImNhdGVnb3J5IjoiREUgUElDT1RFTyAvIEJJVEVTIiwiaXNBdmFpbGFibGUiOnRydWUsImlzVmlzaWJsZSI6dHJ1ZX0seyJpZCI6IjEwIiwibmFtZSI6IkphbcOzbiBJYsOpcmljbyBkZSBSZWNlYm8gLyBJYmVyaWFuIEhhbSIsInByaWNlIjozLjk1LCJwcmljZVBsYXR0ZXIiOjguOTUsImRlc2NyaXB0aW9uIjoiQ2FsaWRhZCBzdXBlcmlvciIsImNhdGVnb3J5IjoiREUgUElDT1RFTyAvIEJJVEVTIiwiaXNBdmFpbGFibGUiOnRydWUsImlzVmlzaWJsZSI6dHJ1ZX0seyJpZCI6IjExIiwibmFtZSI6IkJyYXZhcyAoMyBzYWxzYXMpIC8gU3BpY3kgUG90YXRvZXMiLCJwcmljZSI6My4yLCJwcmljZVBsYXR0ZXIiOjUuOTUsImRlc2NyaXB0aW9uIjoiQ29uIDMgc2Fsc2FzIiwiY2F0ZWdvcnkiOiJQQVJBIENPTVBBUlRJUiAvIFRPIFNIQVJFIiwiaXNBdmFpbGFibGUiOnRydWUsImlzVmlzaWJsZSI6dHJ1ZX0seyJpZCI6IjEyIiwibmFtZSI6IlJldnVlbHRvIEJhY2FsYW8gRG9yYWRvIExBIERFSEVTQSAvIFNjcmFtYmxlZCBDb2QiLCJwcmljZSI6MCwicHJpY2VQbGF0dGVyIjoxMS45NSwiZGVzY3JpcHRpb24iOiJFc3BlY2lhbGlkYWQgZGUgbGEgY2FzYSIsImNhdGVnb3J5IjoiUEFSQSBDT01QQVJUSVIgLyBUTyBTSEFSRSIsImlzQXZhaWxhYmxlIjp0cnVlLCJpc1Zpc2libGUiOnRydWV9LHsiaWQiOiIxMyIsIm5hbWUiOiJDcm9xdWV0YXMgQ2FzZXJhcyAvIEhvbWVtYWRlIENyb3F1ZXR0ZXMiLCJwcmljZSI6My44LCJwcmljZVBsYXR0ZXIiOjkuOTUsImRlc2NyaXB0aW9uIjoiSmFtw7NuLCBNZWppbGxvbmVzIG8gQ29sYSBkZSBUb3JvIiwiY2F0ZWdvcnkiOiJQQVJBIENPTVBBUlRJUiAvIFRPIFNIQVJFIiwiaXNBdmFpbGFibGUiOnRydWUsImlzVmlzaWJsZSI6dHJ1ZX0seyJpZCI6IjE0IiwibmFtZSI6IkNhbGFtYXJlcyBkZSBDYW1wbyBjb24gTGFuZ29zdGlub3MgLyBGcmllZCBNZWRsZXkiLCJwcmljZSI6MCwicHJpY2VQbGF0dGVyIjoxMC44LCJkZXNjcmlwdGlvbiI6IkNvbiBsYW5nb3N0aW5vcyIsImNhdGVnb3J5IjoiUEFSQSBDT01QQVJUSVIgLyBUTyBTSEFSRSIsImlzQXZhaWxhYmxlIjp0cnVlLCJpc1Zpc2libGUiOnRydWV9LHsiaWQiOiIxNSIsIm5hbWUiOiJSZXZ1ZWx0byBkZSBFc3DDoXJyYWdvcyBUcmlndWVyb3MgLyBTY3JhbWJsZWQgQXNwYXJhZ3VzIiwicHJpY2UiOjAsInByaWNlUGxhdHRlciI6MTEuOTUsImRlc2NyaXB0aW9uIjoiQ29uIEliw6lyaWNvIiwiY2F0ZWdvcnkiOiJQQVJBIENPTVBBUlRJUiAvIFRPIFNIQVJFIiwiaXNBdmFpbGFibGUiOnRydWUsImlzVmlzaWJsZSI6dHJ1ZX0seyJpZCI6IjE2IiwibmFtZSI6IlJldnVlbHRvIGRlIEhhYml0YXMgQmFieSAvIEJhYnkgQnJvYWQgQmVhbnMiLCJwcmljZSI6MCwicHJpY2VQbGF0dGVyIjoxMi45NSwiZGVzY3JpcHRpb24iOiJDb24gSmFtw7NuIiwiY2F0ZWdvcnkiOiJQQVJBIENPTVBBUlRJUiAvIFRPIFNIQVJFIiwiaXNBdmFpbGFibGUiOnRydWUsImlzVmlzaWJsZSI6dHJ1ZX0seyJpZCI6IjE3IiwibmFtZSI6IlJldnVlbHRvIGRlIFNldGFzIC8gTXVzaHJvb20gU2NyYW1ibGUiLCJwcmljZSI6MCwicHJpY2VQbGF0dGVyIjoxMi45NSwiZGVzY3JpcHRpb24iOiJDb24gT2xvcm9zbyB5IEphbcOzbiIsImNhdGVnb3J5IjoiUEFSQSBDT01QQVJUSVIgLyBUTyBTSEFSRSIsImlzQXZhaWxhYmxlIjp0cnVlLCJpc1Zpc2libGUiOnRydWV9LHsiaWQiOiIxOCIsIm5hbWUiOiJOb3J1ZWdvIC8gTm9yd2VnaWFuIiwicHJpY2UiOjMuMjUsInByaWNlUGxhdHRlciI6MCwiZGVzY3JpcHRpb24iOiJTYWxtw7NuLCBRdWVzbyB2aWVqbyB5IEFsaW9saSIsImNhdGVnb3J5IjoiTU9OVEHDjVRPUyAvIFJPTExTIiwiaXNBdmFpbGFibGUiOnRydWUsImlzVmlzaWJsZSI6dHJ1ZX0seyJpZCI6IjE5IiwibmFtZSI6IkNob3Jpem8gUGljYW50ZSAvIFNwaWN5IENob3Jpem8iLCJwcmljZSI6My4yNSwicHJpY2VQbGF0dGVyIjowLCJkZXNjcmlwdGlvbiI6IlNhYm9yIGludGVuc28iLCJjYXRlZ29yeSI6Ik1PTlRBw41UT1MgLyBST0xMUyIsImlzQXZhaWxhYmxlIjp0cnVlLCJpc1Zpc2libGUiOnRydWV9LHsiaWQiOiIyMCIsIm5hbWUiOiJFbCBGZXJpYW50ZSAvIFRoZSBGYWlyZ29lciIsInByaWNlIjozLjI1LCJwcmljZVBsYXR0ZXIiOjAsImRlc2NyaXB0aW9uIjoiTG9tbyBjb24gSmFtw7NuIGliw6lyaWNvIiwiY2F0ZWdvcnkiOiJNT05UQcONVE9TIC8gUk9MTFMiLCJpc0F2YWlsYWJsZSI6dHJ1ZSwiaXNWaXNpYmxlIjp0cnVlfSx7ImlkIjoiMjEiLCJuYW1lIjoiTWluaSBTZXJyYW5pdG8gLyBTbWFsbCBTZXJyYW5pdG8iLCJwcmljZSI6My42LCJwcmljZVBsYXR0ZXIiOjAsImRlc2NyaXB0aW9uIjoiUGltaWVudG8gZnJpdG8sIExvbW8geSBKYW3Ds24iLCJjYXRlZ29yeSI6Ik1PTlRBw41UT1MgLyBST0xMUyIsImlzQXZhaWxhYmxlIjp0cnVlLCJpc1Zpc2libGUiOnRydWV9LHsiaWQiOiIyMiIsIm5hbWUiOiJNZWx2YSB5IFBpbWllbnRvIC8gTWVsdmEgVHVuYSAmIFBlcHBlciIsInByaWNlIjozLjI1LCJwcmljZVBsYXR0ZXIiOjAsImRlc2NyaXB0aW9uIjoiQ29uIHBpbWllbnRvIG1vcnLDs24iLCJjYXRlZ29yeSI6Ik1PTlRBw41UT1MgLyBST0xMUyIsImlzQXZhaWxhYmxlIjp0cnVlLCJpc1Zpc2libGUiOnRydWV9LHsiaWQiOiIyMyIsIm5hbWUiOiJJc2xhbmTDqXMgLyBJY2VsYW5kaWMiLCJwcmljZSI6My4yNSwicHJpY2VQbGF0dGVyIjowLCJkZXNjcmlwdGlvbiI6IkJhY2FsYW8gQWh1bWFkbyB5IFNhbG1vcmVqbyIsImNhdGVnb3J5IjoiTU9OVEHDjVRPUyAvIFJPTExTIiwiaXNBdmFpbGFibGUiOnRydWUsImlzVmlzaWJsZSI6dHJ1ZX0seyJpZCI6IjI0IiwibmFtZSI6IkVsIEFsZmFyZXJvIC8gVGhlIFBvdHRlciIsInByaWNlIjozLjI1LCJwcmljZVBsYXR0ZXIiOjAsImRlc2NyaXB0aW9uIjoiTG9tbyBvcnphLCBRdWVzbyB2aWVqbyB5IE1vam8gcGljw7NuIiwiY2F0ZWdvcnkiOiJNT05UQcONVE9TIC8gUk9MTFMiLCJpc0F2YWlsYWJsZSI6dHJ1ZSwiaXNWaXNpYmxlIjp0cnVlfSx7ImlkIjoiMjUiLCJuYW1lIjoiU2FsbW9yZWpvIENvcmRvYsOpcyAvIENvbGQgVG9tYXRvIFNvdXAiLCJwcmljZSI6My43LCJwcmljZVBsYXR0ZXIiOjcuOTUsImRlc2NyaXB0aW9uIjoiUmVjZXRhIHRyYWRpY2lvbmFsIiwiY2F0ZWdvcnkiOiJGUkVTUVVJVE9TIC8gQ0hJTExFRCBQTEFURVMiLCJpc0F2YWlsYWJsZSI6dHJ1ZSwiaXNWaXNpYmxlIjp0cnVlfSx7ImlkIjoiMjYiLCJuYW1lIjoiUGF0YXRhcyBjb24gQWxpLW9saSBjYXNlcm8gLyBHYXJsaWMgTWF5byBQb3RhdG9lcyIsInByaWNlIjozLjcsInByaWNlUGxhdHRlciI6Ny45NSwiZGVzY3JpcHRpb24iOiJBbGktb2xpIGFydGVzYW5vIiwiY2F0ZWdvcnkiOiJGUkVTUVVJVE9TIC8gQ0hJTExFRCBQTEFURVMiLCJpc0F2YWlsYWJsZSI6dHJ1ZSwiaXNWaXNpYmxlIjp0cnVlfSx7ImlkIjoiMjciLCJuYW1lIjoiVG9tYXRlIFJvc2EgY29uIE1lbHZhIC8gUGluayBUb21hdG8gJiBUdW5hIiwicHJpY2UiOjAsInByaWNlUGxhdHRlciI6Ny45NSwiZGVzY3JpcHRpb24iOiJNZWx2YSBDYW51dGVyYSIsImNhdGVnb3J5IjoiRlJFU1FVSVRPUyAvIENISUxMRUQgUExBVEVTIiwiaXNBdmFpbGFibGUiOnRydWUsImlzVmlzaWJsZSI6dHJ1ZX0seyJpZCI6IjI4IiwibmFtZSI6IlNhbHBpY8OzbiBkZSBNYXJpc2NvIC8gU2VhZm9vZCBTYWxhZCIsInByaWNlIjozLjk1LCJwcmljZVBsYXR0ZXIiOjkuOTUsImRlc2NyaXB0aW9uIjoiVmluYWdyZXRhIGNsw6FzaWNhIiwiY2F0ZWdvcnkiOiJGUkVTUVVJVE9TIC8gQ0hJTExFRCBQTEFURVMiLCJpc0F2YWlsYWJsZSI6dHJ1ZSwiaXNWaXNpYmxlIjp0cnVlfSx7ImlkIjoiMjkiLCJuYW1lIjoiRW5zYWxhZGlsbGEgZGUgR2FtYmFzIC8gU2hyaW1wIFNhbGFkIiwicHJpY2UiOjMuOTUsInByaWNlUGxhdHRlciI6OS45NSwiZGVzY3JpcHRpb24iOiJHYW1iYXMgZnJlc2NhcyIsImNhdGVnb3J5IjoiRlJFU1FVSVRPUyAvIENISUxMRUQgUExBVEVTIiwiaXNBdmFpbGFibGUiOnRydWUsImlzVmlzaWJsZSI6dHJ1ZX0seyJpZCI6IjMwIiwibmFtZSI6IlBhcGFzIGFsacOxw6FzIGNvbiBNZWx2YSAvIFNlYXNvbmVkIFBvdGF0b2VzIiwicHJpY2UiOjMuOTUsInByaWNlUGxhdHRlciI6OS45NSwiZGVzY3JpcHRpb24iOiJDb24gTWVsdmEgY2FudXRlcmEiLCJjYXRlZ29yeSI6IkZSRVNRVUlUT1MgLyBDSElMTEVEIFBMQVRFUyIsImlzQXZhaWxhYmxlIjp0cnVlLCJpc1Zpc2libGUiOnRydWV9LHsiaWQiOiIzMSIsIm5hbWUiOiJIb2phbGRyZSBkZSBRdWVzbyB5IFNhbG3Ds24gLyBTYWxtb24gUHVmZiBQYXN0cnkiLCJwcmljZSI6NS45NSwicHJpY2VQbGF0dGVyIjowLCJkZXNjcmlwdGlvbiI6IlF1ZXNvIGRlIGNhYnJhIHkgc2FsbcOzbiIsImNhdGVnb3J5IjoiRlJFU1FVSVRPUyAvIENISUxMRUQgUExBVEVTIiwiaXNBdmFpbGFibGUiOnRydWUsImlzVmlzaWJsZSI6dHJ1ZX0seyJpZCI6IjMyIiwibmFtZSI6IkNob2NvcyBGcml0b3MgLyBGcmllZCBDdXR0bGVmaXNoIiwicHJpY2UiOjMuOTUsInByaWNlUGxhdHRlciI6MTAuOCwiZGVzY3JpcHRpb24iOiJIYXJpbmEgZGUgY2FsaWRhZCIsImNhdGVnb3J5IjoiREUgTEEgTUFSIC8gU0VBRk9PRCIsImlzQXZhaWxhYmxlIjp0cnVlLCJpc1Zpc2libGUiOnRydWV9LHsiaWQiOiIzMyIsIm5hbWUiOiJQYXbDrWFzIGRlIEJhY2FsYW8gLyBDb2QgRnJpdHRlcnMiLCJwcmljZSI6MiwicHJpY2VQbGF0dGVyIjowLCJkZXNjcmlwdGlvbiI6IlByZWNpbyBwb3IgdW5pZGFkIiwiY2F0ZWdvcnkiOiJERSBMQSBNQVIgLyBTRUFGT09EIiwiaXNBdmFpbGFibGUiOnRydWUsImlzVmlzaWJsZSI6dHJ1ZX0seyJpZCI6IjM0IiwibmFtZSI6IkFkb2JvIEFuZGFsdXogLyBNYXJpbmF0ZWQgRnJpZWQgRmlzaCIsInByaWNlIjozLjk1LCJwcmljZVBsYXR0ZXIiOjEwLjgsImRlc2NyaXB0aW9uIjoiUmVjZXRhIHNldmlsbGFuYSIsImNhdGVnb3J5IjoiREUgTEEgTUFSIC8gU0VBRk9PRCIsImlzQXZhaWxhYmxlIjp0cnVlLCJpc1Zpc2libGUiOnRydWV9LHsiaWQiOiIzNSIsIm5hbWUiOiJQdW50aWxsaXRhcyAvIEZyaWVkIEJhYnkgU3F1aWQiLCJwcmljZSI6My45NSwicHJpY2VQbGF0dGVyIjoxMC44LCJkZXNjcmlwdGlvbiI6IkNydWppZW50ZXMiLCJjYXRlZ29yeSI6IkRFIExBIE1BUiAvIFNFQUZPT0QiLCJpc0F2YWlsYWJsZSI6dHJ1ZSwiaXNWaXNpYmxlIjp0cnVlfSx7ImlkIjoiMzYiLCJuYW1lIjoiR2FtYmFzIGFsIEFqaWxsbyAvIEdhcmxpYyBQcmF3bnMiLCJwcmljZSI6MCwicHJpY2VQbGF0dGVyIjoxMi45NSwiZGVzY3JpcHRpb24iOiJDb24gZ3VpbmRpbGxhIiwiY2F0ZWdvcnkiOiJERSBMQSBNQVIgLyBTRUFGT09EIiwiaXNBdmFpbGFibGUiOnRydWUsImlzVmlzaWJsZSI6dHJ1ZX0seyJpZCI6IjM3IiwibmFtZSI6IlB1bHBvIGEgbGEgR2FsbGVnYSAvIEdhbGljaWFuIE9jdG9wdXMiLCJwcmljZSI6MCwicHJpY2VQbGF0dGVyIjoxOC45NSwiZGVzY3JpcHRpb24iOiJDb24gcGltZW50w7NuIHkgY2FjaGVsb3MiLCJjYXRlZ29yeSI6IkRFIExBIE1BUiAvIFNFQUZPT0QiLCJpc0F2YWlsYWJsZSI6dHJ1ZSwiaXNWaXNpYmxlIjp0cnVlfSx7ImlkIjoiMzgiLCJuYW1lIjoiQ2hhbnF1ZXRhZGEgY29uIEh1ZXZvIC8gRnJpZWQgV2hpdGViYWl0IiwicHJpY2UiOjAsInByaWNlUGxhdHRlciI6MTIuOTUsImRlc2NyaXB0aW9uIjoiQ29uIGh1ZXZvIHkgcGltaWVudG8iLCJjYXRlZ29yeSI6IkRFIExBIE1BUiAvIFNFQUZPT0QiLCJpc0F2YWlsYWJsZSI6dHJ1ZSwiaXNWaXNpYmxlIjp0cnVlfSx7ImlkIjoiMzkiLCJuYW1lIjoiTWVybyBmcml0byBhbCBsaW3Ds24gLyBGcmllZCBHcm91cGVyIiwicHJpY2UiOjMuOTUsInByaWNlUGxhdHRlciI6MTAuOCwiZGVzY3JpcHRpb24iOiJDb24gdG9xdWUgZGUgbGltw7NuIiwiY2F0ZWdvcnkiOiJERSBMQSBNQVIgLyBTRUFGT09EIiwiaXNBdmFpbGFibGUiOnRydWUsImlzVmlzaWJsZSI6dHJ1ZX0seyJpZCI6IjQwIiwibmFtZSI6IlRhcXVpdG9zIGRlIEJhY2FsYW8gLyBGcmllZCBDb2QgQml0ZXMiLCJwcmljZSI6NC41LCJwcmljZVBsYXR0ZXIiOjEyLjk1LCJkZXNjcmlwdGlvbiI6IlNpbiBlc3BpbmFzIiwiY2F0ZWdvcnkiOiJERSBMQSBNQVIgLyBTRUFGT09EIiwiaXNBdmFpbGFibGUiOnRydWUsImlzVmlzaWJsZSI6dHJ1ZX0seyJpZCI6IjQxIiwibmFtZSI6IkphbcOzbiBJYsOpcmljbyBjb24gU2FsbW9yZWpvIC8gSGFtIFRvYXN0IiwicHJpY2UiOjEwLjk1LCJwcmljZVBsYXR0ZXIiOjAsImRlc2NyaXB0aW9uIjoiU29icmUgcGFuIGRlIGNyaXN0YWwiLCJjYXRlZ29yeSI6IlRBQkxBIERFIFBBTkVTIC8gQVJUSVNBTiBUT0FTVFMiLCJpc0F2YWlsYWJsZSI6dHJ1ZSwiaXNWaXNpYmxlIjp0cnVlfSx7ImlkIjoiNDIiLCJuYW1lIjoiRGUgbGEgQ2FzYSAvIE91ciBTcGVjaWFsIFRvYXN0IiwicHJpY2UiOjE0Ljk1LCJwcmljZVBsYXR0ZXIiOjAsImRlc2NyaXB0aW9uIjoiU29sb21pbGxvLCBKYW3Ds24geSBIdWV2byBjb2Rvcm5peiIsImNhdGVnb3J5IjoiVEFCTEEgREUgUEFORVMgLyBBUlRJU0FOIFRPQVNUUyIsImlzQXZhaWxhYmxlIjp0cnVlLCJpc1Zpc2libGUiOnRydWV9LHsiaWQiOiI0MyIsIm5hbWUiOiJCYWNhbGFvIGFodW1hZG8gLyBTbW9rZWQgQ29kIFRvYXN0IiwicHJpY2UiOjEwLjk1LCJwcmljZVBsYXR0ZXIiOjAsImRlc2NyaXB0aW9uIjoiQ2FsaWRhZCBzdXBlcmlvciIsImNhdGVnb3J5IjoiVEFCTEEgREUgUEFORVMgLyBBUlRJU0FOIFRPQVNUUyIsImlzQXZhaWxhYmxlIjp0cnVlLCJpc1Zpc2libGUiOnRydWV9LHsiaWQiOiI0NCIsIm5hbWUiOiJMb21vIGRlIE9yemEgeSBRdWVzbyB2aWVqbyAvIFBvcmsgTG9pbiBUb2FzdCIsInByaWNlIjoxMC45NSwicHJpY2VQbGF0dGVyIjowLCJkZXNjcmlwdGlvbiI6IkxvbW8gYXJ0ZXNhbm8iLCJjYXRlZ29yeSI6IlRBQkxBIERFIFBBTkVTIC8gQVJUSVNBTiBUT0FTVFMiLCJpc0F2YWlsYWJsZSI6dHJ1ZSwiaXNWaXNpYmxlIjp0cnVlfSx7ImlkIjoiNDUiLCJuYW1lIjoiTWVsdmEgeSBBbmNob2FzIC8gVHVuYSAmIEFuY2hvdmllcyBUb2FzdCIsInByaWNlIjoxNC45NSwicHJpY2VQbGF0dGVyIjowLCJkZXNjcmlwdGlvbiI6IkFuY2hvYXMgZGVsIENhbnTDoWJyaWNvIiwiY2F0ZWdvcnkiOiJUQUJMQSBERSBQQU5FUyAvIEFSVElTQU4gVE9BU1RTIiwiaXNBdmFpbGFibGUiOnRydWUsImlzVmlzaWJsZSI6dHJ1ZX0seyJpZCI6IjQ2IiwibmFtZSI6IlNvbG9taWxsbyBhbCBXaGlza3kgLyBXaGlza2V5IFBvcmsiLCJwcmljZSI6NC41LCJwcmljZVBsYXR0ZXIiOjE0Ljk1LCJkZXNjcmlwdGlvbiI6IlNhbHNhIGNsw6FzaWNhIiwiY2F0ZWdvcnkiOiJDQVJOw41WT1JPIC8gTUVBVCBMT1ZFUidTIiwiaXNBdmFpbGFibGUiOnRydWUsImlzVmlzaWJsZSI6dHJ1ZX0seyJpZCI6IjQ3IiwibmFtZSI6IkNhcnJpbGxhZGEgYWwgQ2hvY29sYXRlIC8gUG9yayBDaGVlayIsInByaWNlIjo0LjUsInByaWNlUGxhdHRlciI6MTIuOTUsImRlc2NyaXB0aW9uIjoiSWLDqXJpY28gZW4gc2Fsc2EgY2hvY29sYXRlIiwiY2F0ZWdvcnkiOiJDQVJOw41WT1JPIC8gTUVBVCBMT1ZFUidTIiwiaXNBdmFpbGFibGUiOnRydWUsImlzVmlzaWJsZSI6dHJ1ZX0seyJpZCI6IjQ4IiwibmFtZSI6IlByZXNhIEliw6lyaWNhIGRlIEJlbGxvdGEgLyBJYmVyaWFuIFBvcmsiLCJwcmljZSI6NC45NSwicHJpY2VQbGF0dGVyIjoxNC45NSwiZGVzY3JpcHRpb24iOiJDb24gSmFtw7NuIiwiY2F0ZWdvcnkiOiJDQVJOw41WT1JPIC8gTUVBVCBMT1ZFUidTIiwiaXNBdmFpbGFibGUiOnRydWUsImlzVmlzaWJsZSI6dHJ1ZX0seyJpZCI6IjQ5IiwibmFtZSI6IkxhZ2FydGl0byBJYsOpcmljbyAvIFBvcmsgU2tpcnQgU3RlYWsiLCJwcmljZSI6NC44LCJwcmljZVBsYXR0ZXIiOjEwLjk1LCJkZXNjcmlwdGlvbiI6IkNvbiBKYW3Ds24iLCJjYXRlZ29yeSI6IkNBUk7DjVZPUk8gLyBNRUFUIExPVkVSJ1MiLCJpc0F2YWlsYWJsZSI6dHJ1ZSwiaXNWaXNpYmxlIjp0cnVlfSx7ImlkIjoiNTAiLCJuYW1lIjoiQklHIEhhbWJ1cmd1ZXNhIExBIERFSEVTQSAvIEJpZyBCdXJnZXIiLCJwcmljZSI6MCwicHJpY2VQbGF0dGVyIjo5Ljk1LCJkZXNjcmlwdGlvbiI6IlJlY2V0YSBlc3BlY2lhbCIsImNhdGVnb3J5IjoiQ0FSTsONVk9STyAvIE1FQVQgTE9WRVInUyIsImlzQXZhaWxhYmxlIjp0cnVlLCJpc1Zpc2libGUiOnRydWV9LHsiaWQiOiI1MSIsIm5hbWUiOiJQbHVtYSBJYsOpcmljYSBjb24gSmFtw7NuIC8gUG9yayBGZWF0aGVyIExvaW4iLCJwcmljZSI6MCwicHJpY2VQbGF0dGVyIjoxMi45NSwiZGVzY3JpcHRpb24iOiJKdWdvc2EgeSBzYWJyb3NhIiwiY2F0ZWdvcnkiOiJDQVJOw41WT1JPIC8gTUVBVCBMT1ZFUidTIiwiaXNBdmFpbGFibGUiOnRydWUsImlzVmlzaWJsZSI6dHJ1ZX0seyJpZCI6IjUyIiwibmFtZSI6IkJhc3RvbmNpdG9zIGRlIFNlY3JldG8gLyBQb3JrIFN0cmlwcyIsInByaWNlIjo0LjgsInByaWNlUGxhdHRlciI6MTEuOTUsImRlc2NyaXB0aW9uIjoiQ29uIEphbcOzbiIsImNhdGVnb3J5IjoiQ0FSTsONVk9STyAvIE1FQVQgTE9WRVInUyIsImlzQXZhaWxhYmxlIjp0cnVlLCJpc1Zpc2libGUiOnRydWV9LHsiaWQiOiI1MyIsIm5hbWUiOiJTYW4gSmFjb2JvIEliw6lyaWNvIC8gSWJlcmlhbiBDb3Jkb24gQmxldSIsInByaWNlIjo1Ljk1LCJwcmljZVBsYXR0ZXIiOjAsImRlc2NyaXB0aW9uIjoiQ2FzZXJvIiwiY2F0ZWdvcnkiOiJDQVJOw41WT1JPIC8gTUVBVCBMT1ZFUidTIiwiaXNBdmFpbGFibGUiOnRydWUsImlzVmlzaWJsZSI6dHJ1ZX0seyJpZCI6IjU0IiwibmFtZSI6IkNodWxldGl0YXMgZGUgQ29yZGVybyAvIExhbWIgQ2hvcHMiLCJwcmljZSI6NS45NSwicHJpY2VQbGF0dGVyIjoxNy45NSwiZGVzY3JpcHRpb24iOiJDb3JkZXJvIExlY2hhbCIsImNhdGVnb3J5IjoiQ0FSTsONVk9STyAvIE1FQVQgTE9WRVInUyIsImlzQXZhaWxhYmxlIjp0cnVlLCJpc1Zpc2libGUiOnRydWV9LHsiaWQiOiI1NSIsIm5hbWUiOiJNYW5pdGFzIGRlIENlcmRvIC8gUG9yayBUcm90dGVycyIsInByaWNlIjo0LjUsInByaWNlUGxhdHRlciI6MCwiZGVzY3JpcHRpb24iOiJSZWNldGEgZGUgbGEgQWJ1ZWxhICh1bmlkYWQpIiwiY2F0ZWdvcnkiOiJERSBaQU1PUkEgWSBBU1RVUklBUyAvIFRBU1RFIE9GIFpBTU9SQSAmIEFTVFVSSUFTIiwiaXNBdmFpbGFibGUiOnRydWUsImlzVmlzaWJsZSI6dHJ1ZX0seyJpZCI6IjU2IiwibmFtZSI6IkNhbGxvcyBkZSBUZXJuZXJhIC8gQmVlZiBUcmlwZSIsInByaWNlIjozLjk1LCJwcmljZVBsYXR0ZXIiOjkuOTUsImRlc2NyaXB0aW9uIjoiTG9zIG1lam9yZXMgZGUgbGEgY2FzYSIsImNhdGVnb3J5IjoiREUgWkFNT1JBIFkgQVNUVVJJQVMgLyBUQVNURSBPRiBaQU1PUkEgJiBBU1RVUklBUyIsImlzQXZhaWxhYmxlIjp0cnVlLCJpc1Zpc2libGUiOnRydWV9LHsiaWQiOiI1NyIsIm5hbWUiOiJNYXRhbnphIGRlIFphbW9yYSAvIFphbW9yYSBQb3JrIEZlYXN0IiwicHJpY2UiOjMuOTUsInByaWNlUGxhdHRlciI6OS45NSwiZGVzY3JpcHRpb24iOiJDb24gSHVldm8gZnJpdG8iLCJjYXRlZ29yeSI6IkRFIFpBTU9SQSBZIEFTVFVSSUFTIC8gVEFTVEUgT0YgWkFNT1JBICYgQVNUVVJJQVMiLCJpc0F2YWlsYWJsZSI6dHJ1ZSwiaXNWaXNpYmxlIjp0cnVlfSx7ImlkIjoiNTgiLCJuYW1lIjoiTWluaSBDYWNob3BvIEFzdHVyaWFubyAvIE1pbmkgQ2FjaG9wbyIsInByaWNlIjowLCJwcmljZVBsYXR0ZXIiOjkuOTUsImRlc2NyaXB0aW9uIjoiQ2zDoXNpY28iLCJjYXRlZ29yeSI6IkRFIFpBTU9SQSBZIEFTVFVSSUFTIC8gVEFTVEUgT0YgWkFNT1JBICYgQVNUVVJJQVMiLCJpc0F2YWlsYWJsZSI6dHJ1ZSwiaXNWaXNpYmxlIjp0cnVlfSx7ImlkIjoiNTkiLCJuYW1lIjoiQ2FjaG9wbyBBc3R1cmlhbm8gKDQwMGdyKSAvIExhcmdlIENhY2hvcG8iLCJwcmljZSI6MCwicHJpY2VQbGF0dGVyIjoxOC45NSwiZGVzY3JpcHRpb24iOiJBcHJveGltYWRhbWVudGUgNDAwZ3IiLCJjYXRlZ29yeSI6IkRFIFpBTU9SQSBZIEFTVFVSSUFTIC8gVEFTVEUgT0YgWkFNT1JBICYgQVNUVVJJQVMiLCJpc0F2YWlsYWJsZSI6dHJ1ZSwiaXNWaXNpYmxlIjp0cnVlfSx7ImlkIjoiNjAiLCJuYW1lIjoiSGFiaXRhcyBCYWJ5IGNvbiBKYW3Ds24gLyBCYWJ5IEJyb2FkIEJlYW5zIiwicHJpY2UiOjMuOTUsInByaWNlUGxhdHRlciI6OS45NSwiZGVzY3JpcHRpb24iOiJDb24gdGFxdWl0b3MgZGUgSWLDqXJpY28iLCJjYXRlZ29yeSI6IkRFIFpBTU9SQSBZIEFTVFVSSUFTIC8gVEFTVEUgT0YgWkFNT1JBICYgQVNUVVJJQVMiLCJpc0F2YWlsYWJsZSI6dHJ1ZSwiaXNWaXNpYmxlIjp0cnVlfSx7ImlkIjoiNjEiLCJuYW1lIjoiQ2VydmV6YSBDYcOxYSAvIERyYXVnaHQgQmVlciIsInByaWNlIjoxLjUsInByaWNlUGxhdHRlciI6MCwiZGVzY3JpcHRpb24iOiJDb3BhIHBlcXVlw7FhIiwiY2F0ZWdvcnkiOiJCRUJJREFTIC8gQkVWRVJBR0VTIiwiaXNBdmFpbGFibGUiOnRydWUsImlzVmlzaWJsZSI6dHJ1ZX0seyJpZCI6IjYyIiwibmFtZSI6IkNvcGEgUmlvamEgQ3JpYW56YSAvIFJpb2phIFdpbmUiLCJwcmljZSI6My4yLCJwcmljZVBsYXR0ZXIiOjAsImRlc2NyaXB0aW9uIjoiVmlubyBkZSBsYSBjYXNhIiwiY2F0ZWdvcnkiOiJCRUJJREFTIC8gQkVWRVJBR0VTIiwiaXNBdmFpbGFibGUiOnRydWUsImlzVmlzaWJsZSI6dHJ1ZX0seyJpZCI6IjYzIiwibmFtZSI6IkNvcGEgUmliZXJhIGRlbCBEdWVybyAvIFJpYmVyYSBXaW5lIiwicHJpY2UiOjMuMiwicHJpY2VQbGF0dGVyIjowLCJkZXNjcmlwdGlvbiI6IlZpbm8gZGUgbGEgY2FzYSIsImNhdGVnb3J5IjoiQkVCSURBUyAvIEJFVkVSQUdFUyIsImlzQXZhaWxhYmxlIjp0cnVlLCJpc1Zpc2libGUiOnRydWV9LHsiaWQiOiI2NCIsIm5hbWUiOiJDb3BhIE1hbnphbmlsbGEgZW4gUmFtYSAvIFNoZXJyeSIsInByaWNlIjoxLjYsInByaWNlUGxhdHRlciI6MCwiZGVzY3JpcHRpb24iOiJFc3BlY2lhbGlkYWQiLCJjYXRlZ29yeSI6IkJFQklEQVMgLyBCRVZFUkFHRVMiLCJpc0F2YWlsYWJsZSI6dHJ1ZSwiaXNWaXNpYmxlIjp0cnVlfSx7ImlkIjoiNjUiLCJuYW1lIjoiQ29tYmluYWRvcyBkZSBSb24gLyBSdW0gTWl4ZXJzIiwicHJpY2UiOjYsInByaWNlUGxhdHRlciI6MCwiZGVzY3JpcHRpb24iOiJEZXNkZSAvIEZyb20gNiwwMCDigqwiLCJjYXRlZ29yeSI6IkxJQ09SRVMgLyBTUElSSVRTICYgU0hPVFMiLCJpc0F2YWlsYWJsZSI6dHJ1ZSwiaXNWaXNpYmxlIjp0cnVlfSx7ImlkIjoiNjYiLCJuYW1lIjoiQ29tYmluYWRvcyBkZSBXaGlza3kgLyBXaGlza3kgTWl4ZXJzIiwicHJpY2UiOjYsInByaWNlUGxhdHRlciI6MCwiZGVzY3JpcHRpb24iOiJEZXNkZSAvIEZyb20gNiwwMCDigqwiLCJjYXRlZ29yeSI6IkxJQ09SRVMgLyBTUElSSVRTICYgU0hPVFMiLCJpc0F2YWlsYWJsZSI6dHJ1ZSwiaXNWaXNpYmxlIjp0cnVlfSx7ImlkIjoiNjciLCJuYW1lIjoiQ29tYmluYWRvcyBkZSBHaW5lYnJhIC8gR2luIE1peGVycyIsInByaWNlIjo2LCJwcmljZVBsYXR0ZXIiOjAsImRlc2NyaXB0aW9uIjoiRGVzZGUgLyBGcm9tIDYsMDAg4oKsIiwiY2F0ZWdvcnkiOiJMSUNPUkVTIC8gU1BJUklUUyAmIFNIT1RTIiwiaXNBdmFpbGFibGUiOnRydWUsImlzVmlzaWJsZSI6dHJ1ZX0seyJpZCI6IjY4IiwibmFtZSI6IkNodXBpdG9zIC8gU2hvdHMiLCJwcmljZSI6Mi41LCJwcmljZVBsYXR0ZXIiOjAsImRlc2NyaXB0aW9uIjoiRGVzZGUgLyBGcm9tIDIsNTAg4oKsIiwiY2F0ZWdvcnkiOiJMSUNPUkVTIC8gU1BJUklUUyAmIFNIT1RTIiwiaXNBdmFpbGFibGUiOnRydWUsImlzVmlzaWJsZSI6dHJ1ZX1d')),
           categories: JSON.parse(fromSafeBase64('WyJGVUVSQSBERSBDQVJUQSAvIERBSUxZIFNQRUNJQUxTIiwiREUgUElDT1RFTyAvIEJJVEVTIiwiUEFSQSBDT01QQVJUSVIgLyBUTyBTSEFSRSIsIk1PTlRBw41UT1MgLyBST0xMUyIsIkZSRVNRVUlUT1MgLyBDSElMTEVEIFBMQVRFUyIsIkRFIExBIE1BUiAvIFNFQUZPT0QiLCJUQUJMQSBERSBQQU5FUyAvIEFSVElTQU4gVE9BU1RTIiwiQ0FSTsONVk9STyAvIE1FQVQgTE9WRVInUyIsIkRFIFpBTU9SQSBZIEFTVFVSSUFTIC8gVEFTVEUgT0YgWkFNT1JBICYgQVNUVVJJQVMiLCJCRUJJREFTIC8gQkVWRVJBR0VTIiwiTElDT1JFUyAvIFNQSVJJVFMgJiBTSE9UUyJd')),
-          allergenSvgs: JSON.parse(fromSafeBase64('eyJnbHV0ZW4iOiI8c3ZnIHZpZXdCb3g9JzAgMCAxMDAgMTAwJyB4bWxucz0naHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmcnIHN0eWxlPSdkaXNwbGF5OmJsb2NrO3dpZHRoOjEwMCU7aGVpZ2h0OjEwMCU7Jz5cbiAgICA8Y2lyY2xlIGN4PSc1MCcgY3k9JzUwJyByPSc0OCcgZmlsbD0nI2YyOGEyZScgLz5cbiAgICA8ZyB0cmFuc2Zvcm09J3RyYW5zbGF0ZSgyMCwyMCkgc2NhbGUoNjApJz48cGF0aCBmaWxsPSd3aGl0ZScgZD0nTTAuMyAxIEwwLjQ1IDAuOCBMMC4xNSAwLjU1IEwwLjM1IDAuNDUgTDAuMSAwLjI1IEwwLjQgMC4xNSBMMC4zIDAgTDAuNSAwLjI1IEwwLjcgMCBMMC42IDAuMTUgTDAuOSAwLjI1IEwwLjY1IDAuNDUgTDAuODUgMC41NSBMMC41NSAwLjggTDAuNyAxIFonIC8+PC9nPlxuICA8L3N2Zz4iLCJjcnVzdGFjZW9zIjoiPHN2ZyB2aWV3Qm94PScwIDAgMTAwIDEwMCcgeG1sbnM9J2h0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnJyBzdHlsZT0nZGlzcGxheTpibG9jazt3aWR0aDoxMDAlO2hlaWdodDoxMDAlOyc+XG4gICAgPGNpcmNsZSBjeD0nNTAnIGN5PSc1MCcgcj0nNDgnIGZpbGw9JyNmMjhhMmUnIC8+XG4gICAgPGcgdHJhbnNmb3JtPSd0cmFuc2xhdGUoMjAsMjApIHNjYWxlKDYwKSc+PHBhdGggZmlsbD0nd2hpdGUnIGQ9J00wLjUgMC4yIEMwLjIgMC4yIDAuMSAwLjQgMC4xIDAuNiBDMC4xIDAuODUgMC4zIDEgMC41IDEgQzAuNyAxIDAuOSAwLjg1IDAuOSAwLjYgQzAuOSAwLjQgMC44IDAuMiAwLjUgMC4yIE0wLjEgMC4zIEwwLjMgMC40IE0wLjkgMC4zIEwwLjcgMC40IE0wLjEgMC41IEwwLjMgMC41IE0wLjkgMC41IEwwLjcgMC41JyAvPjwvZz5cbiAgPC9zdmc+IiwiaHVldm8iOiI8c3ZnIHZpZXdCb3g9JzAgMCAxMDAgMTAwJyB4bWxucz0naHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmcnIHN0eWxlPSdkaXNwbGF5OmJsb2NrO3dpZHRoOjEwMCU7aGVpZ2h0OjEwMCU7Jz5cbiAgICA8Y2lyY2xlIGN4PSc1MCcgY3k9JzUwJyByPSc0OCcgZmlsbD0nI2YyOGEyZScgLz5cbiAgICA8ZyB0cmFuc2Zvcm09J3RyYW5zbGF0ZSgyMCwyMCkgc2NhbGUoNjApJz48cGF0aCBmaWxsPSd3aGl0ZScgZD0nTTAuMyAwLjIgQzAuMSAwLjIgMCAwLjUgMCAwLjcgQzAgMC45IDAuMiAxIDAuNCAxIEMwLjYgMSAwLjcgMC44IDAuNyAwLjUgQzAuNyAwLjIgMC41IDAuMiAwLjMgMC4yIE0wLjcgMC4xIEMwLjUgMC4xIDAuNCAwLjQgMC40IDAuNiBDMC40IDAuOCAwLjYgMC45IDAuOCAwLjkgQzEgMC45IDEuMSAwLjcgMS4xIDAuNCBDMS4xIDAuMSAwLjkgMC4xIDAuNyAwLjEnIC8+PC9nPlxuICA8L3N2Zz4iLCJwZXNjYWRvIjoiPHN2ZyB2aWV3Qm94PScwIDAgMTAwIDEwMCcgeG1sbnM9J2h0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnJyBzdHlsZT0nZGlzcGxheTpibG9jazt3aWR0aDoxMDAlO2hlaWdodDoxMDAlOyc+XG4gICAgPGNpcmNsZSBjeD0nNTAnIGN5PSc1MCcgcj0nNDgnIGZpbGw9JyNmMjhhMmUnIC8+XG4gICAgPGcgdHJhbnNmb3JtPSd0cmFuc2xhdGUoMjAsMjApIHNjYWxlKDYwKSc+PHBhdGggZmlsbD0nd2hpdGUnIGQ9J00wIDAuNSBDMC4yIDAuMiAwLjYgMC4yIDAuOCAwLjUgTDEgMC4zIEwxIDAuNyBMMC44IDAuNSBDMC42IDAuOCAwLjIgMC44IDAgMC41IFonIC8+PC9nPlxuICA8L3N2Zz4iLCJjYWNhaHVldGVzIjoiPHN2ZyB2aWV3Qm94PScwIDAgMTAwIDEwMCcgeG1sbnM9J2h0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnJyBzdHlsZT0nZGlzcGxheTpibG9jazt3aWR0aDoxMDAlO2hlaWdodDoxMDAlOyc+XG4gICAgPGNpcmNsZSBjeD0nNTAnIGN5PSc1MCcgcj0nNDgnIGZpbGw9JyNmMjhhMmUnIC8+XG4gICAgPGcgdHJhbnNmb3JtPSd0cmFuc2xhdGUoMjAsMjApIHNjYWxlKDYwKSc+PHBhdGggZmlsbD0nd2hpdGUnIGQ9J00wLjQgMC4xIEMwLjIgMC4xIDAuMSAwLjMgMC4xIDAuNSBDMC4xIDAuNyAwLjMgMC44IDAuNSAwLjggQzAuNyAwLjggMC44IDAuNyAwLjggMC41IEMwLjggMC4zIDAuNyAwLjEgMC41IDAuMSBNMC43IDAuNSBDMC43IDAuNSAwLjkgMC42IDAuOSAwLjggQzAuOSAxIDAuNyAxLjIgMC41IDEuMiBDMC4zIDEuMiAwLjEgMSAwLjEgMC44JyAvPjwvZz5cbiAgPC9zdmc+Iiwic29qYSI6Ijxzdmcgdmlld0JveD0nMCAwIDEwMCAxMDAnIHhtbG5zPSdodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2Zycgc3R5bGU9J2Rpc3BsYXk6YmxvY2s7d2lkdGg6MTAwJTtoZWlnaHQ6MTAwJTsnPlxuICAgIDxjaXJjbGUgY3g9JzUwJyBjeT0nNTAnIHI9JzQ4JyBmaWxsPScjZjI4YTJlJyAvPlxuICAgIDxnIHRyYW5zZm9ybT0ndHJhbnNsYXRlKDIwLDIwKSBzY2FsZSg2MCknPjxwYXRoIGZpbGw9J3doaXRlJyBkPSdNMC41IDAgTDAuNyAwLjQgTDAuMyAwLjQgWiBNMC4yIDAuNSBMMC44IDAuNSBMMC43IDAuNyBMMC4zIDAuNyBaIE0wLjQgMC44IEwwLjYgMC44IEwwLjUgMSBaJyAvPjwvZz5cbiAgPC9zdmc+IiwibGFjdGVvcyI6Ijxzdmcgdmlld0JveD0nMCAwIDEwMCAxMDAnIHhtbG5zPSdodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2Zycgc3R5bGU9J2Rpc3BsYXk6YmxvY2s7d2lkdGg6MTAwJTtoZWlnaHQ6MTAwJTsnPlxuICAgIDxjaXJjbGUgY3g9JzUwJyBjeT0nNTAnIHI9JzQ4JyBmaWxsPScjZjI4YTJlJyAvPlxuICAgIDxnIHRyYW5zZm9ybT0ndHJhbnNsYXRlKDIwLDIwKSBzY2FsZSg2MCknPjxwYXRoIGZpbGw9J3doaXRlJyBkPSdNMC4zIDAuMiBMMC43IDAuMiBMMC44IDAuOSBMMC4yIDAuOSBaIE0wLjQgMCBMMC42IDAgTDAuNiAwLjE1IEwwLjQgMC4xNSBaJyAvPjwvZz5cbiAgPC9zdmc+IiwiY2FzY2FyYSI6Ijxzdmcgdmlld0JveD0nMCAwIDEwMCAxMDAnIHhtbG5zPSdodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2Zycgc3R5bGU9J2Rpc3BsYXk6YmxvY2s7d2lkdGg6MTAwJTtoZWlnaHQ6MTAwJTsnPlxuICAgIDxjaXJjbGUgY3g9JzUwJyBjeT0nNTAnIHI9JzQ4JyBmaWxsPScjZjI4YTJlJyAvPlxuICAgIDxnIHRyYW5zZm9ybT0ndHJhbnNsYXRlKDIwLDIwKSBzY2FsZSg2MCknPjxwYXRoIGZpbGw9J3doaXRlJyBkPSdNMC41IDAgQzAuMiAwIDAgMC4zIDAgMC42IEMwIDAuOSAwLjMgMSAwLjUgMSBDMC43IDEgMSAwLjkgMSAwLjYgQzEgMC4zIDAuOCAwIDAuNSAwIE0wLjUgMC4yIEMwLjcgMC4yIDAuOCAwLjQgMC44IDAuNiBMMC4yIDAuNiBDMC4yIDAuNCAwLjMgMC4yIDAuNSAwLjInIC8+PC9nPlxuICA8L3N2Zz4iLCJhcGlvIjoiPHN2ZyB2aWV3Qm94PScwIDAgMTAwIDEwMCcgeG1sbnM9J2h0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnJyBzdHlsZT0nZGlzcGxheTpibG9jazt3aWR0aDoxMDAlO2hlaWdodDoxMDAlOyc+XG4gICAgPGNpcmNsZSBjeD0nNTAnIGN5PSc1MCcgcj0nNDgnIGZpbGw9JyNmMjhhMmUnIC8+XG4gICAgPGcgdHJhbnNmb3JtPSd0cmFuc2xhdGUoMjAsMjApIHNjYWxlKDYwKSc+PHBhdGggZmlsbD0nd2hpdGUnIGQ9J00wLjMgMCBMMC43IDAgTDAuNiAxIEwwLjQgMSBaIE0wLjIgMC4xIEwwLjggMC4xIE0wLjIgMC4zIEwwLjggMC4zJyAvPjwvZz5cbiAgPC9zdmc+IiwibW9zdGF6YSI6Ijxzdmcgdmlld0JveD0nMCAwIDEwMCAxMDAnIHhtbG5zPSdodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2Zycgc3R5bGU9J2Rpc3BsYXk6YmxvY2s7d2lkdGg6MTAwJTtoZWlnaHQ6MTAwJTsnPlxuICAgIDxjaXJjbGUgY3g9JzUwJyBjeT0nNTAnIHI9JzQ4JyBmaWxsPScjZjI4YTJlJyAvPlxuICAgIDxnIHRyYW5zZm9ybT0ndHJhbnNsYXRlKDIwLDIwKSBzY2FsZSg2MCknPjxwYXRoIGZpbGw9J3doaXRlJyBkPSdNMC4zIDAuMSBMMC43IDAuMSBMMC44IDAuNSBMMC4yIDAuNSBaIE0wLjMgMC42IEMwLjMgMC42IDAuMiAwLjggMC4yIDEgTDAuNSAwLjkgQzAuNSAwLjkgMC43IDEgMC43IDEgTDAuOCAwLjYgWicgLz48L2c+XG4gIDwvc3ZnPiIsInNlc2FtbyI6Ijxzdmcgdmlld0JveD0nMCAwIDEwMCAxMDAnIHhtbG5zPSdodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2Zycgc3R5bGU9J2Rpc3BsYXk6YmxvY2s7d2lkdGg6MTAwJTtoZWlnaHQ6MTAwJTsnPlxuICAgIDxjaXJjbGUgY3g9JzUwJyBjeT0nNTAnIHI9JzQ4JyBmaWxsPScjZjI4YTJlJyAvPlxuICAgIDxnIHRyYW5zZm9ybT0ndHJhbnNsYXRlKDIwLDIwKSBzY2FsZSg2MCknPjxwYXRoIGZpbGw9J3doaXRlJyBkPSdNMC41IDAgTDAuNiAwLjMgTDAuNCAwLjMgWiBNMC4yIDAuNSBMMC4zIDAuOCBMMC4xIDAuOCBaIE0wLjggMC41IEwwLjkgMC44IEwwLjcgMC44IFonIC8+PC9nPlxuICA8L3N2Zz4iLCJzdWxmaXRvcyI6Ijxzdmcgdmlld0JveD0nMCAwIDEwMCAxMDAnIHhtbG5zPSdodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2Zycgc3R5bGU9J2Rpc3BsYXk6YmxvY2s7d2lkdGg6MTAwJTtoZWlnaHQ6MTAwJTsnPlxuICAgIDxjaXJjbGUgY3g9JzUwJyBjeT0nNTAnIHI9JzQ4JyBmaWxsPScjZjI4YTJlJyAvPlxuICAgIDxnIHRyYW5zZm9ybT0ndHJhbnNsYXRlKDIwLDIwKSBzY2FsZSg2MCknPjxwYXRoIGZpbGw9J3doaXRlJyBkPSdNMC41IDAgTDEgMC4zIEwxIDAuNyBMMC41IDEgTDAgMC43IEwwIDAuMyBaIE0wLjMgMC4zIEwwLjcgMC4zIE0wLjMgMC41IEwwLjcgMC41IE0wLjMgMC43IEwwLjcgMC43JyAvPjwvZz5cbiAgPC9zdmc+IiwibW9sdXNjb3MiOiI8c3ZnIHZpZXdCb3g9JzAgMCAxMDAgMTAwJyB4bWxucz0naHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmcnIHN0eWxlPSdkaXNwbGF5OmJsb2NrO3dpZHRoOjEwMCU7aGVpZ2h0OjEwMCU7Jz5cbiAgICA8Y2lyY2xlIGN4PSc1MCcgY3k9JzUwJyByPSc0OCcgZmlsbD0nI2YyOGEyZScgLz5cbiAgICA8ZyB0cmFuc2Zvcm09J3RyYW5zbGF0ZSgyMCwyMCkgc2NhbGUoNjApJz48cGF0aCBmaWxsPSd3aGl0ZScgZD0nTTAuNSAwLjEgQzAuMiAwLjEgMCAwLjQgMCAwLjcgQzAgMC45IDAuMiAxIDAuNSAxIEMwLjggMSAxIDAuOSAxIDAuNyBDMSAwLjQgMC44IDAuMSAwLjUgMC4xIE0wLjIgMC42IEwwLjggMC42JyAvPjwvZz5cbiAgPC9zdmc+IiwiYWx0cmFtdWNlcyI6Ijxzdmcgdmlld0JveD0nMCAwIDEwMCAxMDAnIHhtbG5zPSdodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2Zycgc3R5bGU9J2Rpc3BsYXk6YmxvY2s7d2lkdGg6MTAwJTtoZWlnaHQ6MTAwJTsnPlxuICAgIDxjaXJjbGUgY3g9JzUwJyBjeT0nNTAnIHI9JzQ4JyBmaWxsPScjZjI4YTJlJyAvPlxuICAgIDxnIHRyYW5zZm9ybT0ndHJhbnNsYXRlKDIwLDIwKSBzY2FsZSg2MCknPjxjaXJjbGUgZmlsbD0nd2hpdGUnIGN4PScwLjInIGN5PScwLjMnIHI9JzAuMTUnIC8+PGNpcmNsZSBmaWxsPSd3aGl0ZScgY3g9JzAuOCcgY3k9JzAuMycgcj0nMC4xNScgLz48Y2lyY2xlIGZpbGw9J3doaXRlJyBjeD0nMC41JyBjeT0nMC44JyByPScwLjE1JyAvPjwvZz5cbiAgPC9zdmc+In0=')),
-          allergensInfo: JSON.parse(fromSafeBase64('W3siaWQiOiJhbHRyYW11Y2VzIiwibGFiZWwiOiJBbHRyYW11Y2VzIiwibGFiZWxFbiI6Ikx1cGlucyJ9LHsiaWQiOiJhcGlvIiwibGFiZWwiOiJBcGlvIiwibGFiZWxFbiI6IkNlbGVyeSJ9LHsiaWQiOiJjYWNhaHVldGVzIiwibGFiZWwiOiJDYWNhaHVldGVzIiwibGFiZWxFbiI6IlBlYW51dHMifSx7ImlkIjoiY3J1c3RhY2VvcyIsImxhYmVsIjoiQ3J1c3TDoWNlb3MiLCJsYWJlbEVuIjoiQ3J1c3RhY2VhbnMifSx7ImlkIjoiY2FzY2FyYSIsImxhYmVsIjoiRnJ1dG9zIGRlIEPDoXNjYXJhIiwibGFiZWxFbiI6Ik51dHMifSx7ImlkIjoiZ2x1dGVuIiwibGFiZWwiOiJHbHV0ZW4iLCJsYWJlbEVuIjoiR2x1dGVuIn0seyJpZCI6Imh1ZXZvIiwibGFiZWwiOiJIdWV2byIsImxhYmVsRW4iOiJFZ2dzIn0seyJpZCI6ImxhY3Rlb3MiLCJsYWJlbCI6IkzDoWN0ZW9zIiwibGFiZWxFbiI6IkRhaXJ5In0seyJpZCI6Im1vbHVzY29zIiwibGFiZWwiOiJNb2x1c2NvcyIsImxhYmVsRW4iOiJNb2xsdXNjcyJ9LHsiaWQiOiJtb3N0YXphIiwibGFiZWwiOiJNb3N0YXphIiwibGFiZWxFbiI6Ik11c3RhcmQifSx7ImlkIjoicGVzY2FkbyIsImxhYmVsIjoiUGVzY2FkbyIsImxhYmVsRW4iOiJGaXNoIn0seyJpZCI6InNlc2FtbyIsImxhYmVsIjoiU8Opc2FtbyIsImxhYmVsRW4iOiJTZXNhbWUifSx7ImlkIjoic29qYSIsImxhYmVsIjoiU29qYSIsImxhYmVsRW4iOiJTb3kifSx7ImlkIjoic3VsZml0b3MiLCJsYWJlbCI6IlN1bGZpdG9zIiwibGFiZWxFbiI6IlN1bHBoaXRlcyJ9XQ=='))
+          allergenSvgs: JSON.parse(fromSafeBase64('eyJnbHV0ZW4iOiI8aW1nIHNyYz0naHR0cHM6Ly9yYXcuZ2l0aHVidXNlcmNvbnRlbnQuY29tL2p1YW5tYWRlaGVzYS1jcmVhdG9yL0NhcnRhLUxhLURlaGVzYS1kZWwtSmFtLW4tL21haW4vaW1hZ2VzLzAxLWdsdXRlbi5wbmcnIGFsdD0nSWNvbm8nIHN0eWxlPSdkaXNwbGF5OmJsb2NrOyB3aWR0aDoxMDAlOyBoZWlnaHQ6MTAwJTsgb2JqZWN0LWZpdDpjb250YWluOycgLz4iLCJjcnVzdGFjZW9zIjoiPGltZyBzcmM9J2h0dHBzOi8vcmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbS9qdWFubWFkZWhlc2EtY3JlYXRvci9DYXJ0YS1MYS1EZWhlc2EtZGVsLUphbS1uLS9tYWluL2ltYWdlcy8wMi1jcnVzdGFjZW9zLnBuZycgYWx0PSdJY29ubycgc3R5bGU9J2Rpc3BsYXk6YmxvY2s7IHdpZHRoOjEwMCU7IGhlaWdodDoxMDAlOyBvYmplY3QtZml0OmNvbnRhaW47JyAvPiIsImh1ZXZvcyI6IjxpbWcgc3JjPSdodHRwczovL3Jhdy5naXRodWJ1c2VyY29udGVudC5jb20vanVhbm1hZGVoZXNhLWNyZWF0b3IvQ2FydGEtTGEtRGVoZXNhLWRlbC1KYW0tbi0vbWFpbi9pbWFnZXMvMDMtaHVldm9zLnBuZycgYWx0PSdJY29ubycgc3R5bGU9J2Rpc3BsYXk6YmxvY2s7IHdpZHRoOjEwMCU7IGhlaWdodDoxMDAlOyBvYmplY3QtZml0OmNvbnRhaW47JyAvPiIsInBlc2NhZG8iOiI8aW1nIHNyYz0naHR0cHM6Ly9yYXcuZ2l0aHVidXNlcmNvbnRlbnQuY29tL2p1YW5tYWRlaGVzYS1jcmVhdG9yL0NhcnRhLUxhLURlaGVzYS1kZWwtSmFtLW4tL21haW4vaW1hZ2VzLzA0LXBlc2NhZG8ucG5nJyBhbHQ9J0ljb25vJyBzdHlsZT0nZGlzcGxheTpibG9jazsgd2lkdGg6MTAwJTsgaGVpZ2h0OjEwMCU7IG9iamVjdC1maXQ6Y29udGFpbjsnIC8+IiwiY2FjYWh1ZXRlcyI6IjxpbWcgc3JjPSdodHRwczovL3Jhdy5naXRodWJ1c2VyY29udGVudC5jb20vanVhbm1hZGVoZXNhLWNyZWF0b3IvQ2FydGEtTGEtRGVoZXNhLWRlbC1KYW0tbi0vbWFpbi9pbWFnZXMvMDUtY2FjYWh1ZXRlcy5wbmcnIGFsdD0nSWNvbm8nIHN0eWxlPSdkaXNwbGF5OmJsb2NrOyB3aWR0aDoxMDAlOyBoZWlnaHQ6MTAwJTsgb2JqZWN0LWZpdDpjb250YWluOycgLz4iLCJzb2phIjoiPGltZyBzcmM9J2h0dHBzOi8vcmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbS9qdWFubWFkZWhlc2EtY3JlYXRvci9DYXJ0YS1MYS1EZWhlc2EtZGVsLUphbS1uLS9tYWluL2ltYWdlcy8wNi1zb2phLnBuZycgYWx0PSdJY29ubycgc3R5bGU9J2Rpc3BsYXk6YmxvY2s7IHdpZHRoOjEwMCU7IGhlaWdodDoxMDAlOyBvYmplY3QtZml0OmNvbnRhaW47JyAvPiIsImxhY3Rlb3MiOiI8aW1nIHNyYz0naHR0cHM6Ly9yYXcuZ2l0aHVidXNlcmNvbnRlbnQuY29tL2p1YW5tYWRlaGVzYS1jcmVhdG9yL0NhcnRhLUxhLURlaGVzYS1kZWwtSmFtLW4tL21haW4vaW1hZ2VzLzA3LWxhY3Rlb3MucG5nJyBhbHQ9J0ljb25vJyBzdHlsZT0nZGlzcGxheTpibG9jazsgd2lkdGg6MTAwJTsgaGVpZ2h0OjEwMCU7IG9iamVjdC1maXQ6Y29udGFpbjsnIC8+IiwiZnJ1dG9zX2Nhc2NhcmEiOiI8aW1nIHNyYz0naHR0cHM6Ly9yYXcuZ2l0aHVidXNlcmNvbnRlbnQuY29tL2p1YW5tYWRlaGVzYS1jcmVhdG9yL0NhcnRhLUxhLURlaGVzYS1kZWwtSmFtLW4tL21haW4vaW1hZ2VzLzA4LWZydXRvcy1kZS1jYXNjYXJhLnBuZycgYWx0PSdJY29ubycgc3R5bGU9J2Rpc3BsYXk6YmxvY2s7IHdpZHRoOjEwMCU7IGhlaWdodDoxMDAlOyBvYmplY3QtZml0OmNvbnRhaW47JyAvPiIsImFwaW8iOiI8aW1nIHNyYz0naHR0cHM6Ly9yYXcuZ2l0aHVidXNlcmNvbnRlbnQuY29tL2p1YW5tYWRlaGVzYS1jcmVhdG9yL0NhcnRhLUxhLURlaGVzYS1kZWwtSmFtLW4tL21haW4vaW1hZ2VzLzA5LWFwaW8ucG5nJyBhbHQ9J0ljb25vJyBzdHlsZT0nZGlzcGxheTpibG9jazsgd2lkdGg6MTAwJTsgaGVpZ2h0OjEwMCU7IG9iamVjdC1maXQ6Y29udGFpbjsnIC8+IiwibW9zdGF6YSI6IjxpbWcgc3JjPSdodHRwczovL3Jhdy5naXRodWJ1c2VyY29udGVudC5jb20vanVhbm1hZGVoZXNhLWNyZWF0b3IvQ2FydGEtTGEtRGVoZXNhLWRlbC1KYW0tbi0vbWFpbi9pbWFnZXMvMTAtbW9zdGF6YS5wbmcnIGFsdD0nSWNvbm8nIHN0eWxlPSdkaXNwbGF5OmJsb2NrOyB3aWR0aDoxMDAlOyBoZWlnaHQ6MTAwJTsgb2JqZWN0LWZpdDpjb250YWluOycgLz4iLCJzZXNhbW8iOiI8aW1nIHNyYz0naHR0cHM6Ly9yYXcuZ2l0aHVidXNlcmNvbnRlbnQuY29tL2p1YW5tYWRlaGVzYS1jcmVhdG9yL0NhcnRhLUxhLURlaGVzYS1kZWwtSmFtLW4tL21haW4vaW1hZ2VzLzExLWdyYW5vcy1kZS1zZXNhbW8ucG5nJyBhbHQ9J0ljb25vJyBzdHlsZT0nZGlzcGxheTpibG9jazsgd2lkdGg6MTAwJTsgaGVpZ2h0OjEwMCU7IG9iamVjdC1maXQ6Y29udGFpbjsnIC8+Iiwic3VsZml0b3MiOiI8aW1nIHNyYz0naHR0cHM6Ly9yYXcuZ2l0aHVidXNlcmNvbnRlbnQuY29tL2p1YW5tYWRlaGVzYS1jcmVhdG9yL0NhcnRhLUxhLURlaGVzYS1kZWwtSmFtLW4tL21haW4vaW1hZ2VzLzEyLWRpb3hpZG8tZGUtYXp1ZnJlLXktc3VsZml0b3MucG5nJyBhbHQ9J0ljb25vJyBzdHlsZT0nZGlzcGxheTpibG9jazsgd2lkdGg6MTAwJTsgaGVpZ2h0OjEwMCU7IG9iamVjdC1maXQ6Y29udGFpbjsnIC8+IiwibW9sdXNjb3MiOiI8aW1nIHNyYz0naHR0cHM6Ly9yYXcuZ2l0aHVidXNlcmNvbnRlbnQuY29tL2p1YW5tYWRlaGVzYS1jcmVhdG9yL0NhcnRhLUxhLURlaGVzYS1kZWwtSmFtLW4tL21haW4vaW1hZ2VzLzEzLW1vbHVzY29zLnBuZycgYWx0PSdJY29ubycgc3R5bGU9J2Rpc3BsYXk6YmxvY2s7IHdpZHRoOjEwMCU7IGhlaWdodDoxMDAlOyBvYmplY3QtZml0OmNvbnRhaW47JyAvPiIsImFsdHJhbXVjZXMiOiI8aW1nIHNyYz0naHR0cHM6Ly9yYXcuZ2l0aHVidXNlcmNvbnRlbnQuY29tL2p1YW5tYWRlaGVzYS1jcmVhdG9yL0NhcnRhLUxhLURlaGVzYS1kZWwtSmFtLW4tL21haW4vaW1hZ2VzLzE0LWFsdHJhbXVjZXMucG5nJyBhbHQ9J0ljb25vJyBzdHlsZT0nZGlzcGxheTpibG9jazsgd2lkdGg6MTAwJTsgaGVpZ2h0OjEwMCU7IG9iamVjdC1maXQ6Y29udGFpbjsnIC8+In0=')),
+          allergensInfo: JSON.parse(fromSafeBase64('W3siaWQiOiJnbHV0ZW4iLCJsYWJlbCI6IkdsdXRlbiJ9LHsiaWQiOiJjcnVzdGFjZW9zIiwibGFiZWwiOiJDcnVzdMOhY2VvcyJ9LHsiaWQiOiJodWV2b3MiLCJsYWJlbCI6Ikh1ZXZvcyJ9LHsiaWQiOiJwZXNjYWRvIiwibGFiZWwiOiJQZXNjYWRvIn0seyJpZCI6ImNhY2FodWV0ZXMiLCJsYWJlbCI6IkNhY2FodWV0ZXMifSx7ImlkIjoic29qYSIsImxhYmVsIjoiU29qYSJ9LHsiaWQiOiJsYWN0ZW9zIiwibGFiZWwiOiJMw6FjdGVvcyJ9LHsiaWQiOiJmcnV0b3NfY2FzY2FyYSIsImxhYmVsIjoiRnJ1dG9zIGRlIEPDoXNjYXJhIn0seyJpZCI6ImFwaW8iLCJsYWJlbCI6IkFwaW8ifSx7ImlkIjoibW9zdGF6YSIsImxhYmVsIjoiTW9zdGF6YSJ9LHsiaWQiOiJzZXNhbW8iLCJsYWJlbCI6IlPDqXNhbW8ifSx7ImlkIjoic3VsZml0b3MiLCJsYWJlbCI6IlN1bGZpdG9zIn0seyJpZCI6Im1vbHVzY29zIiwibGFiZWwiOiJNb2x1c2NvcyJ9LHsiaWQiOiJhbHRyYW11Y2VzIiwibGFiZWwiOiJBbHRyYW11Y2VzIn1d'))
         };
 
         function render() {
@@ -173,11 +149,20 @@
             const nav = document.getElementById('category-nav');
             const allergenLegend = document.getElementById('allergen-legend');
             
-            nav.innerHTML = DATA.categories.map(cat => {
+            nav.innerHTML = DATA.categories.map((cat, index) => {
                 const hasItems = DATA.dishes.some(d => d.category === cat);
                 if (!hasItems) return '';
                 const safeId = 'cat-' + cat.replace(/[^a-z0-9]/gi, '-').toLowerCase();
-                return `<div class='nav-item' onclick="document.getElementById('${safeId}').scrollIntoView({behavior:'smooth'})">${cat.split(' / ')[0]}</div>`;
+                const [es, en] = cat.split(' / ');
+                
+                const clickAction = index === 0 
+                  ? "window.scrollTo({top: 0, behavior:'smooth'})" 
+                  : `const h = document.getElementById('main-header').offsetHeight; window.scrollTo({top: document.getElementById('${safeId}').offsetTop - h - 20, behavior:'smooth'})`;
+
+                return `<button class='nav-item' onclick="${clickAction}" aria-controls='${safeId}'>
+                    <span>${es}</span>
+                    ${en ? `<span>${en}</span>` : ''}
+                </button>`;
             }).join('');
 
             container.innerHTML = DATA.categories.map(cat => {
@@ -186,38 +171,38 @@
                 const safeId = 'cat-' + cat.replace(/[^a-z0-9]/gi, '-').toLowerCase();
                 
                 return `
-                    <section id='${safeId}'>
-                        <div class='flex justify-between items-end border-b border-[#f1c232]/40 pb-5 mb-10'>
-                            <div class='flex-1 pr-2'>
-                                <h2 class='text-[#f1c232] text-xl font-bold uppercase tracking-wider'>${cat.split(' / ')[0]}</h2>
-                                <p class='text-[#f1c232]/50 text-[10px] uppercase font-semibold mt-1 tracking-tight'>${cat.split(' / ')[1] || ''}</p>
+                    <section id='${safeId}' aria-labelledby='title-${safeId}'>
+                        <div class='flex justify-between items-end border-b-2 border-[#f1c232]/30 pb-2 mb-8'>
+                            <div class='flex-1 pr-2 text-left'>
+                                <h2 id='title-${safeId}' class='text-[#f1c232] text-lg font-extrabold uppercase'>${cat.split(' / ')[0]}</h2>
+                                <p class='text-[#f1c232]/60 text-[9px] uppercase font-bold mt-0.5'>${cat.split(' / ')[1] || ''}</p>
                             </div>
-                            <div class='flex gap-4'>
+                            <div class='flex gap-4' aria-hidden='true'>
                                 <div class='price-label'>TAPA</div>
-                                <div class='price-label'>PLATO / <span class='text-[#f1c232]'>PLATTER</span></div>
+                                <div class='price-label'>PLATO</div>
                             </div>
                         </div>
-                        <div class='space-y-12'>
+                        <div class='space-y-8'>
                             ${items.map(dish => `
-                                <div class='flex flex-col' style='${!dish.isAvailable ? 'opacity: 0.35;' : ''}'>
+                                <div class='flex flex-col' style='${!dish.isAvailable ? 'opacity: 0.4;' : ''}'>
                                     <div class='flex justify-between items-start gap-4'>
-                                        <div class='flex-1'>
+                                        <div class='flex-1 text-left'>
                                             <div class='flex items-center gap-3 flex-wrap'>
-                                                <h3 class='text-lg font-bold leading-tight'>${dish.name.split(' / ')[0]}</h3>
-                                                ${!dish.isAvailable ? '<span class="text-[8px] font-black border-2 border-red-500 text-red-500 px-2 py-0.5 rounded uppercase tracking-tighter bg-red-500/5">AGOTADO</span>' : ''}
+                                                <h3 class='text-[1rem] font-bold leading-tight uppercase tracking-tight'>${dish.name.split(' / ')[0]}</h3>
+                                                ${!dish.isAvailable ? '<span class="text-[7px] font-black border border-red-500 text-red-500 px-1.5 py-0.5 rounded bg-red-500/10">AGOTADO</span>' : ''}
                                             </div>
-                                            ${dish.name.split(' / ')[1] ? `<p class='text-[#f1c232] text-sm italic font-medium opacity-80 mt-1'>${dish.name.split(' / ')[1]}</p>` : ''}
-                                            ${dish.description ? `<p class='text-[0.85rem] text-white/50 italic font-light mt-3 leading-relaxed'>${dish.description}</p>` : ''}
-                                            <div class='flex flex-wrap gap-2.5 mt-5'>
-                                                ${(dish.allergens || []).map(a => `<div class='allergen-icon'>${DATA.allergenSvgs[a] || ''}</div>`).join('')}
+                                            ${dish.name.split(' / ')[1] ? `<p class='text-[#f1c232] text-[0.8rem] italic font-medium opacity-80 mt-0.5'>${dish.name.split(' / ')[1]}</p>` : ''}
+                                            ${dish.description ? `<p class='text-[0.75rem] text-white/50 italic mt-2 leading-relaxed'>${dish.description}</p>` : ''}
+                                            <div class='flex flex-wrap gap-2 mt-3' aria-label='Alérgenos'>
+                                                ${(dish.allergens || []).map(a => `<div class='w-6 h-6'>${DATA.allergenSvgs[a] || ''}</div>`).join('')}
                                             </div>
                                         </div>
                                         <div class='flex gap-4 pt-1'>
-                                            <div class='price-value opacity-90'>${dish.price > 0 ? dish.price.toFixed(2).replace('.', ',') + '€' : '---'}</div>
-                                            <div class='price-value gold-text'>${dish.pricePlatter > 0 ? dish.pricePlatter.toFixed(2).replace('.', ',') + '€' : '---'}</div>
+                                            <div class='price-value opacity-90' aria-label='Precio tapa'>${dish.price > 0 ? dish.price.toFixed(2).replace('.', ',') + '€' : '---'}</div>
+                                            <div class='price-value gold-text' aria-label='Precio plato'>${dish.pricePlatter > 0 ? dish.pricePlatter.toFixed(2).replace('.', ',') + '€' : '---'}</div>
                                         </div>
                                     </div>
-                                    <div class='h-[1px] w-full bg-gradient-to-r from-[#f1c232]/30 to-transparent mt-8 opacity-50'></div>
+                                    <div class='h-[1px] w-full bg-gradient-to-r from-[#f1c232]/20 via-[#f1c232]/10 to-transparent mt-5'></div>
                                 </div>
                             `).join('')}
                         </div>
@@ -226,33 +211,20 @@
             }).join('');
 
             allergenLegend.innerHTML = DATA.allergensInfo.map(a => `
-              <div class='flex items-center gap-3'>
-                <div class='w-8 h-8 flex-shrink-0 text-[#f1c232]'>${DATA.allergenSvgs[a.id] || ''}</div>
-                <div class='flex flex-col'>
-                  <span class='text-[9px] uppercase font-black text-white/80 leading-tight'>${a.label}</span>
-                  <span class='text-[7px] uppercase font-bold text-[#f1c232]/60 tracking-tighter'>${a.labelEn || a.id}</span>
-                </div>
+              <div class='flex items-center gap-3 py-1'>
+                <div class='w-6 h-6 flex-shrink-0'>${DATA.allergenSvgs[a.id] || ''}</div>
+                <span class='text-[9px] uppercase font-bold text-white/80'>${a.label}</span>
               </div>
             `).join('');
         }
 
-        // LÓGICA DE SCROLL PARA HEADER Y BOTÓN
-        const header = document.getElementById('main-header');
         const topBtn = document.getElementById('back-to-top');
-
         window.onscroll = () => {
-          if (window.scrollY > 60) {
-            header.classList.add('scrolled');
-          } else {
-            header.classList.remove('scrolled');
-          }
-
-          if (window.scrollY > 500) topBtn.classList.add('visible');
+          if (window.scrollY > 400) topBtn.classList.add('visible');
           else topBtn.classList.remove('visible');
         };
         
         topBtn.onclick = () => window.scrollTo({ top: 0, behavior: 'smooth' });
-
         render();
     </script>
 </body>
