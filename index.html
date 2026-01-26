@@ -33,47 +33,58 @@
       display: block; filter: drop-shadow(0 4px 8px rgba(0,0,0,0.5));
     }
 
-    /* NAVEGACIÓN HORIZONTAL CENTRADA CON INDICADOR DE SCROLL */
     .nav-index { 
       display: flex; 
       flex-wrap: nowrap; 
       overflow-x: auto; 
       -webkit-overflow-scrolling: touch; 
-      gap: 10px; 
-      padding: 0 20px 15px 20px;
+      gap: 12px; 
+      /* Aumentamos padding vertical (20px abajo) para que el halo respire */
+      padding: 5px 20px 20px 20px; 
       scrollbar-width: none;
-      
-      /* Justify-content: start permite que el scroll funcione correctamente; 
-         el centrado visual se apoya en los márgenes automáticos */
       justify-content: flex-start; 
 
-      /* Máscara de degradado mejorada */
-      mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
-      -webkit-mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+      /* Máscara con degradado un poco más alejado de los bordes (12%) */
+      mask-image: linear-gradient(to right, transparent, black 12%, black 88%, transparent);
+      -webkit-mask-image: linear-gradient(to right, transparent, black 12%, black 88%, transparent);
     }
 
     .nav-index::-webkit-scrollbar { display: none; }
     
     .nav-item { 
       flex: 0 0 auto; 
-      color: #ffffff; border: 1px solid rgba(255,255,255,0.3); 
-      padding: 8px 16px; border-radius: 12px; text-transform: uppercase; 
-      cursor: pointer; transition: 0.2s; letter-spacing: 0.5px;
-      display: flex; flex-direction: column; align-items: center; justify-content: center;
+      color: #ffffff; 
+      border: 1px solid rgba(255,255,255,0.3); 
+      padding: 8px 16px; 
+      border-radius: 12px; 
+      text-transform: uppercase; 
+      cursor: pointer; 
+      transition: all 0.2s ease; 
+      display: flex; 
+      flex-direction: column; 
+      align-items: center; 
+      justify-content: center;
       background: rgba(255,255,255,0.05);
       min-width: 110px;
+      /* Quitamos el outline que se cortaba */
+      outline: none; 
     }
     
-    /* Truco CSS para centrar cuando hay pocos items y permitir scroll cuando hay muchos */
     .nav-item:first-child { margin-left: auto; }
     .nav-item:last-child { margin-right: auto; }
 
-    .nav-item:focus { outline: 3px solid var(--gold); outline-offset: 2px; }
+    /* Nuevo estado de selección/foco que no se sale de pantalla */
+    .nav-item:focus, .nav-item:active { 
+      border-color: var(--gold);
+      background: rgba(241, 194, 50, 0.15);
+      /* El halo ahora es una sombra suave que se mantiene visible */
+      box-shadow: 0 0 0 3px rgba(241, 194, 50, 0.4);
+    }
     
     .nav-item span:first-child { font-size: 0.7rem; font-weight: 800; }
     .nav-item span:last-child { font-size: 0.55rem; font-weight: 600; color: var(--gold); margin-top: 1px; }
 
-    /* Estilos de precios y otros elementos... */
+    /* ... resto de tus estilos de precios y back-to-top ... */
     .price-label { width: 60px; text-align: right; font-size: 0.6rem; font-weight: 900; opacity: 0.6; }
     .price-value { width: 60px; text-align: right; font-size: 1rem; font-weight: 800; }
     .gold-text { color: var(--gold); }
@@ -152,7 +163,7 @@
         
         <div style='width: 100%; max-width: 100%; padding-bottom: 24px;'>
             <img 
-                src='https://raw.githubusercontent.com/juanmadehesa-creator/Carta-La-Dehesa-del-Jam-n-/main/images/la-dehesa-logo.svg' 
+                src='https://raw.githubusercontent.com/juanmadehesa-creator/carta-la-dehesa/main/images/la-dehesa-logo.svg' 
                 style='width: 100%; height: auto; object-fit: contain; opacity: 0.7;' 
                 alt='LA DEHESA DEL JAMÓN' 
             />
