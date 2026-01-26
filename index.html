@@ -7,67 +7,91 @@
     <link rel='icon' type='image/png' href='https://github.com/juanmadehesa-creator/Carta-La-Dehesa-del-Jam-n-/blob/main/images/favicon.png?raw=true'>
     <link href='https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800;900&display=swap' rel='stylesheet'>
     <style>
-        :root { --gold: #f1c232; --dark: #401201; }
-        body { 
-          font-family: 'Montserrat', sans-serif; 
-          background-color: var(--dark); 
-          color: #ffffff; 
-          -webkit-font-smoothing: antialiased;
-          line-height: 1.5;
-        }
-        
-        .sticky-header { 
-          position: sticky; top: 0; background: #2d0c01; z-index: 1000; 
-          border-bottom: 2px solid rgba(241, 194, 50, 0.3); 
-          padding: 12px 0; width: 100%;
-          box-shadow: 0 10px 30px rgba(0,0,0,0.5);
-          transition: transform 0.3s ease-in-out;
-        }
+    :root { --gold: #f1c232; --dark: #401201; }
+    body { 
+      font-family: 'Montserrat', sans-serif; 
+      background-color: var(--dark); 
+      color: #ffffff; 
+      -webkit-font-smoothing: antialiased;
+      line-height: 1.5;
+    }
+    
+    .sticky-header { 
+      position: sticky; top: 0; background: #2d0c01; z-index: 1000; 
+      border-bottom: 2px solid rgba(241, 194, 50, 0.3); 
+      padding: 12px 0 0 0; width: 100%;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+      transition: transform 0.3s ease-in-out;
+    }
 
-        /* Clase para ocultar el header */
-        .sticky-header.header-hidden {
-          transform: translateY(-100%);
-        }
+    .sticky-header.header-hidden {
+      transform: translateY(-100%);
+    }
 
-        .header-logo {
-          width: 100px; margin: 0 auto 12px auto;
-          display: block; filter: drop-shadow(0 4px 8px rgba(0,0,0,0.5));
-        }
+    .header-logo {
+      width: 100px; margin: 0 auto 12px auto;
+      display: block; filter: drop-shadow(0 4px 8px rgba(0,0,0,0.5));
+    }
 
-        .nav-index { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px; padding: 0 10px; }
-        
-        .nav-item { 
-          color: #ffffff; border: 1px solid rgba(255,255,255,0.3); 
-          padding: 8px 12px; border-radius: 10px; text-transform: uppercase; 
-          cursor: pointer; transition: 0.2s; letter-spacing: 0.5px;
-          display: flex; flex-direction: column; align-items: center; justify-content: center;
-          background: rgba(255,255,255,0.05);
-          min-width: 80px;
-        }
-        .nav-item:focus { outline: 3px solid var(--gold); outline-offset: 2px; }
-        
-        .nav-item span:first-child { font-size: 0.65rem; font-weight: 800; }
-        .nav-item span:last-child { font-size: 0.5rem; font-weight: 600; color: var(--gold); margin-top: 1px; }
+    /* NAVEGACIÓN HORIZONTAL CENTRADA CON INDICADOR DE SCROLL */
+    .nav-index { 
+      display: flex; 
+      flex-wrap: nowrap; 
+      overflow-x: auto; 
+      -webkit-overflow-scrolling: touch; 
+      gap: 10px; 
+      padding: 0 20px 15px 20px;
+      scrollbar-width: none;
+      
+      /* Justify-content: start permite que el scroll funcione correctamente; 
+         el centrado visual se apoya en los márgenes automáticos */
+      justify-content: flex-start; 
 
-        .price-label { width: 60px; text-align: right; font-size: 0.6rem; font-weight: 900; opacity: 0.6; }
-        .price-value { width: 60px; text-align: right; font-size: 1rem; font-weight: 800; }
-        .gold-text { color: var(--gold); }
+      /* Máscara de degradado mejorada */
+      mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+      -webkit-mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+    }
 
-        #back-to-top {
-          position: fixed; bottom: 20px; right: 20px; width: 50px; height: 50px;
-          background: var(--gold); color: var(--dark); border-radius: 50%;
-          display: flex; align-items: center; justify-content: center;
-          font-weight: 900; opacity: 0; transition: 0.3s; z-index: 2000; border: none; cursor: pointer;
-          box-shadow: 0 4px 15px rgba(0,0,0,0.4);
-        }
-        #back-to-top.visible { opacity: 1; }
+    .nav-index::-webkit-scrollbar { display: none; }
+    
+    .nav-item { 
+      flex: 0 0 auto; 
+      color: #ffffff; border: 1px solid rgba(255,255,255,0.3); 
+      padding: 8px 16px; border-radius: 12px; text-transform: uppercase; 
+      cursor: pointer; transition: 0.2s; letter-spacing: 0.5px;
+      display: flex; flex-direction: column; align-items: center; justify-content: center;
+      background: rgba(255,255,255,0.05);
+      min-width: 110px;
+    }
+    
+    /* Truco CSS para centrar cuando hay pocos items y permitir scroll cuando hay muchos */
+    .nav-item:first-child { margin-left: auto; }
+    .nav-item:last-child { margin-right: auto; }
 
-        @media (max-width: 640px) {
-          .header-logo { width: 95px; }
-          .nav-index { display: grid; grid-template-columns: repeat(2, 1fr); gap: 6px; }
-          #allergen-legend { grid-template-columns: repeat(2, 1fr); gap: 12px; }
-        }
-    </style>
+    .nav-item:focus { outline: 3px solid var(--gold); outline-offset: 2px; }
+    
+    .nav-item span:first-child { font-size: 0.7rem; font-weight: 800; }
+    .nav-item span:last-child { font-size: 0.55rem; font-weight: 600; color: var(--gold); margin-top: 1px; }
+
+    /* Estilos de precios y otros elementos... */
+    .price-label { width: 60px; text-align: right; font-size: 0.6rem; font-weight: 900; opacity: 0.6; }
+    .price-value { width: 60px; text-align: right; font-size: 1rem; font-weight: 800; }
+    .gold-text { color: var(--gold); }
+
+    #back-to-top {
+      position: fixed; bottom: 20px; right: 20px; width: 50px; height: 50px;
+      background: var(--gold); color: var(--dark); border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-weight: 900; opacity: 0; transition: 0.3s; z-index: 2000; border: none; cursor: pointer;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.4);
+    }
+    #back-to-top.visible { opacity: 1; }
+
+    @media (max-width: 640px) {
+      .header-logo { width: 85px; margin-bottom: 8px; }
+      #allergen-legend { grid-template-columns: repeat(2, 1fr); gap: 12px; }
+    }
+</style>
 </head>
 <body>
     <header class='sticky-header' id='main-header'>
