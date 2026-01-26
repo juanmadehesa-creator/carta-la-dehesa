@@ -3,60 +3,76 @@ import { Dish } from '@/types';
 export const initialDishes: Dish[] = [
   {
     "id": "1",
-    "name": "Mojama de Barbate / Cured Tuna Loin",
+    "name": "Mojama de Barbate / Cured Tuna Loin from Barbate",
     "price": 4,
     "pricePlatter": 7.9,
-    "description": "De Barbate",
+    "description": "",
     "category": "DE PICOTEO / BITES",
     "isAvailable": true,
-    "isVisible": true
+    "isVisible": true,
+    "allergens": [
+      "pescado"
+    ]
   },
   {
     "id": "2",
-    "name": "Chicharrones de la casa / Crispy Pork Belly",
+    "name": "Chicharrones de la casa / Sevilian House-made pork rinds",
     "price": 3.2,
     "pricePlatter": 0,
-    "description": "Estilo sevillano",
+    "description": "",
     "category": "DE PICOTEO / BITES",
     "isAvailable": true,
-    "isVisible": true
+    "isVisible": true,
+    "allergens": [
+      "gluten"
+    ]
   },
   {
     "id": "3",
     "name": "Almendras Fritas / Fried Almonds",
     "price": 2.5,
     "pricePlatter": 0,
-    "description": "Saladitas",
+    "description": "",
     "category": "DE PICOTEO / BITES",
     "isAvailable": true,
-    "isVisible": true
+    "isVisible": true,
+    "allergens": [
+      "gluten",
+      "frutos_cascara"
+    ]
   },
   {
     "id": "4",
     "name": "Huevas de Maruca / Cured Hake Roe",
     "price": 4,
     "pricePlatter": 7.9,
-    "description": "Calidad extra",
+    "description": "",
     "category": "DE PICOTEO / BITES",
     "isAvailable": true,
-    "isVisible": true
+    "isVisible": true,
+    "allergens": [
+      "pescado"
+    ]
   },
   {
     "id": "5",
-    "name": "Queso Oveja (ZAMORANO) / Sheep Cheese",
+    "name": "Queso de Oveja DOP Zamora / Zamora PDO Sheep Cheese",
     "price": 3.8,
     "pricePlatter": 8.95,
-    "description": "D.O.P. Zamora",
+    "description": "",
     "category": "DE PICOTEO / BITES",
     "isAvailable": true,
-    "isVisible": true
+    "isVisible": true,
+    "allergens": [
+      "lacteos"
+    ]
   },
   {
     "id": "6",
-    "name": "Salchichón de Bellota a tacos / Diced Sausage",
+    "name": "Salchichón de Bellota a tacos / 100% Iberian Bellota Salami",
     "price": 3.2,
     "pricePlatter": 6.5,
-    "description": "Ibérico de bellota",
+    "description": "",
     "category": "DE PICOTEO / BITES",
     "isAvailable": true,
     "isVisible": true
@@ -680,16 +696,5 @@ export const initialDishes: Dish[] = [
     "category": "LICORES / SPIRITS & SHOTS",
     "isAvailable": true,
     "isVisible": true
-  },
-  {
-    "id": "1769417159310",
-    "name": "Cola de Toro / Spanish oxtail stew",
-    "price": 0,
-    "pricePlatter": 6.95,
-    "description": "",
-    "category": "FUERA DE CARTA / DAILY SPECIALS",
-    "isAvailable": true,
-    "isVisible": true,
-    "allergens": []
   }
 ];
