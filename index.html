@@ -2,7 +2,8 @@
 <html lang='es'>
 <head>
     <meta charset='UTF-8'>
-    <meta name='viewport' content='width=device-width, initial-scale=1.0'> <title>LA DEHESA DEL JAMÓN - Carta Digital</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0'> 
+    <title>LA DEHESA DEL JAMÓN - Carta Digital</title>
     <script src='https://cdn.tailwindcss.com'></script>
     <link rel='icon' type='image/png' href='https://github.com/juanmadehesa-creator/Carta-La-Dehesa-del-Jam-n-/blob/main/images/favicon.png?raw=true'>
     <link href='https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800;900&display=swap' rel='stylesheet'>
@@ -15,6 +16,39 @@
       -webkit-font-smoothing: antialiased;
       line-height: 1.5;
     }
+
+    #back-to-top {
+  position: fixed; 
+  bottom: 25px; 
+  right: 25px; 
+  width: 65px;      /* Aumentado de 50px */
+  height: 65px;     /* Aumentado de 50px */
+  background: var(--gold); 
+  color: var(--dark); 
+  border-radius: 50%;
+  display: flex; 
+  align-items: center; 
+  justify-content: center;
+  font-size: 2rem;  /* Flecha más grande */
+  font-weight: 900; 
+  opacity: 0; 
+  visibility: hidden;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1); 
+  z-index: 2000; 
+  border: none; 
+  cursor: pointer;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.6);
+}
+
+#back-to-top.visible { 
+  opacity: 1; 
+  visibility: visible;
+  transform: scale(1);
+}
+
+#back-to-top:not(.visible) {
+  transform: scale(0.5);
+}
     
     .sticky-header { 
       position: sticky; top: 0; background: #2d0c01; z-index: 1000; 
@@ -24,67 +58,72 @@
       transition: transform 0.3s ease-in-out;
     }
 
-    .sticky-header.header-hidden {
-      transform: translateY(-100%);
-    }
+    .sticky-header.header-hidden { transform: translateY(-100%); }
 
     .header-logo {
       width: 100px; margin: 0 auto 12px auto;
       display: block; filter: drop-shadow(0 4px 8px rgba(0,0,0,0.5));
+      cursor: pointer;
     }
 
     .nav-index { 
-      display: flex; 
-      flex-wrap: nowrap; 
-      overflow-x: auto; 
-      -webkit-overflow-scrolling: touch; 
-      gap: 12px; 
-      /* Aumentamos padding vertical (20px abajo) para que el halo respire */
-      padding: 5px 20px 20px 20px; 
-      scrollbar-width: none;
-      justify-content: flex-start; 
-
-      /* Máscara con degradado un poco más alejado de los bordes (12%) */
-      mask-image: linear-gradient(to right, transparent, black 12%, black 88%, transparent);
-      -webkit-mask-image: linear-gradient(to right, transparent, black 12%, black 88%, transparent);
-    }
-
-    .nav-index::-webkit-scrollbar { display: none; }
+    display: flex; 
+    flex-wrap: nowrap; 
+    overflow-x: auto; 
+    /* Propiedades críticas para el rebote en iOS/Safari móvil */
+    -webkit-overflow-scrolling: touch; 
+    scroll-snap-type: x proximity;
+    overscroll-behavior-x: contain;
     
-    .nav-item { 
-      flex: 0 0 auto; 
-      color: #ffffff; 
-      border: 1px solid rgba(255,255,255,0.3); 
-      padding: 8px 16px; 
-      border-radius: 12px; 
-      text-transform: uppercase; 
-      cursor: pointer; 
-      transition: all 0.2s ease; 
-      display: flex; 
-      flex-direction: column; 
-      align-items: center; 
-      justify-content: center;
-      background: rgba(255,255,255,0.05);
-      min-width: 110px;
-      /* Quitamos el outline que se cortaba */
-      outline: none; 
-    }
-    
-    .nav-item:first-child { margin-left: auto; }
-    .nav-item:last-child { margin-right: auto; }
+    gap: 12px; 
+    padding: 5px 0 20px 0; /* Quitamos padding lateral para usar los pseudo-elementos */
+    scrollbar-width: none;
+    justify-content: flex-start; /* Necesario para que el scroll funcione bien con el rebote */
 
-    /* Nuevo estado de selección/foco que no se sale de pantalla */
-    .nav-item:focus, .nav-item:active { 
-      border-color: var(--gold);
-      background: rgba(241, 194, 50, 0.15);
-      /* El halo ahora es una sombra suave que se mantiene visible */
-      box-shadow: 0 0 0 3px rgba(241, 194, 50, 0.4);
+    mask-image: linear-gradient(to right, transparent 0%, black 20%, black 80%, transparent 100%);
+    -webkit-mask-image: linear-gradient(to right, transparent 0%, black 20%, black 80%, transparent 100%);
+}
+
+/* Creamos 'topes' invisibles para forzar el espacio de rebote */
+.nav-index::before,
+.nav-index::after {
+    content: '';
+    flex: 0 0 40px; /* Este es el ancho del área de rebote */
+    scroll-snap-align: start;
+}
+
+.nav-index::-webkit-scrollbar { display: none; }
+
+.nav-item { 
+    flex: 0 0 auto; 
+    color: #ffffff; 
+    border: 1px solid rgba(255,255,255,0.3); 
+    padding: 8px 16px; 
+    border-radius: 12px; 
+    text-transform: uppercase; 
+    cursor: pointer; 
+    transition: all 0.2s ease; 
+    display: flex; 
+    flex-direction: column; 
+    align-items: center; 
+    justify-content: center;
+    background: rgba(255,255,255,0.05); 
+    min-width: 110px; 
+    outline: none;
+    scroll-snap-align: center;
+}
+
+/* Centrado si hay pocos elementos */
+@media (min-width: 600px) {
+    .nav-index {
+        justify-content: center;
     }
+    .nav-index::before, .nav-index::after { display: none; }
+}
     
     .nav-item span:first-child { font-size: 0.7rem; font-weight: 800; }
     .nav-item span:last-child { font-size: 0.55rem; font-weight: 600; color: var(--gold); margin-top: 1px; }
 
-    /* ... resto de tus estilos de precios y back-to-top ... */
     .price-label { width: 60px; text-align: right; font-size: 0.6rem; font-weight: 900; opacity: 0.6; }
     .price-value { width: 60px; text-align: right; font-size: 1rem; font-weight: 800; }
     .gold-text { color: var(--gold); }
@@ -107,14 +146,10 @@
 <body>
     <header class='sticky-header' id='main-header'>
       <img src='https://github.com/juanmadehesa-creator/Carta-La-Dehesa-del-Jam-n-/blob/main/images/logo-carta-digital.png?raw=true' 
-       alt='Logotipo de LA DEHESA DEL JAMÓN - Volver arriba' 
+       alt='Logotipo de LA DEHESA DEL JAMÓN' 
        class='header-logo' 
-       role='button' 
-       tabindex='0'
-       onclick="window.scrollTo({top: 0, behavior:'smooth'})" 
-       onkeydown="if(event.key==='Enter') window.scrollTo({top: 0, behavior:'smooth'})"
-       style='cursor:pointer'>
-      <nav class='nav-index' id='category-nav' aria-label='Categorías de la carta'></nav>
+       onclick="window.scrollTo({top: 0, behavior:'smooth'})">
+      <nav class='nav-index' id='category-nav'></nav>
     </header>
 
     <main class='max-w-[700px] mx-auto px-5 pb-10'>
@@ -128,27 +163,14 @@
                         <p class='text-white font-bold text-sm uppercase'>Servicio de Mesa, Picos y Pan</p>
                         <p class='text-[#f1c232] italic text-[0.7rem] font-semibold uppercase'>Table Service, Bread & Breadsticks</p>
                     </div>
-                    <div class='text-right ml-4'>
-                      <p class='text-[#f1c232] font-black text-lg'>0,50€</p>
-                    </div>
+                    <div class='text-right ml-4'><p class='text-[#f1c232] font-black text-lg'>0,50€</p></div>
                 </div>
                 <div class='flex justify-between items-center border-b border-white/10 pb-4'>
                     <div class='flex-1 text-left'>
                         <p class='text-white font-bold text-sm uppercase'>Pan sin Gluten</p>
                         <p class='text-[#f1c232] italic text-[0.7rem] font-semibold uppercase'>Gluten-Free Bread</p>
                     </div>
-                    <div class='text-right ml-4'>
-                      <p class='text-[#f1c232] font-black text-lg'>0,80€</p>
-                    </div>
-                </div>
-                <div class='flex justify-between items-center border-b border-white/10 pb-4'>
-                    <div class='flex-1 text-left'>
-                        <p class='text-white font-bold text-sm uppercase'>Salsa extra</p>
-                        <p class='text-[#f1c232] italic text-[0.7rem] font-semibold uppercase'>Extra Sauce Portion</p>
-                    </div>
-                    <div class='text-right ml-4'>
-                      <p class='text-[#f1c232] font-black text-lg'>0,30€</p>
-                    </div>
+                    <div class='text-right ml-4'><p class='text-[#f1c232] font-black text-lg'>0,80€</p></div>
                 </div>
             </div>
         </section>
@@ -158,81 +180,72 @@
           <div class='grid grid-cols-2 sm:grid-cols-4' id='allergen-legend'></div>
         </section>
         
-    <footer class='mt-10 mb-8 px-6 text-center pt-10' style='border-top: 1px solid rgba(241, 194, 50, 0.2); margin-top: 40px; margin-bottom: 32px; padding-left: 24px; padding-right: 24px; text-align: center; padding-top: 40px;'>
-    <div style='max-width: 320px; margin: 0 auto; display: flex; flex-direction: column; align-items: center;'>
-        
-        <div style='width: 100%; max-width: 100%; padding-bottom: 16px;'>
-            <img 
-                src='https://raw.githubusercontent.com/juanmadehesa-creator/carta-la-dehesa/main/images/la-dehesa-logo.svg' 
-                style='width: 100%; height: auto; object-fit: contain; opacity: 0.7;' 
-                alt='LA DEHESA DEL JAMÓN' 
-            />
-        </div>
+        <footer class='mt-10 mb-8 px-6 text-center pt-10' style='border-top: 1px solid rgba(241, 194, 50, 0.2); margin-top: 40px; padding-top: 40px;'>
+            <div style='max-width: 320px; margin: 0 auto; display: flex; flex-direction: column; align-items: center;'>
+                
+                <div style='width: 100%; padding-bottom: 24px;'>
+                    <img src='https://raw.githubusercontent.com/juanmadehesa-creator/carta-la-dehesa/main/images/la-dehesa-logo.svg' style='width: 100%; height: auto; object-fit: contain; opacity: 0.7;' alt='LA DEHESA DEL JAMÓN' />
+                </div>
 
-        <div style='width: 100%; height: 1px; background-color: rgba(241, 194, 50, 0.2); margin-bottom: 16px;'></div>
-        
-        <div style='display: flex; justify-content: center; gap: 24px; margin-bottom: 16px;'>
-            <a href='https://www.instagram.com/dehesadeljamon/' target='_blank' rel='noopener noreferrer' aria-label='Visítanos en instagram' style='color: var(--gold); width: 28px; height: 28px; display: block;'>
+                <div style='width: 100%; height: 1px; background-color: rgba(241, 194, 50, 0.2); margin-bottom: 24px;'></div>
+
+                <div style='display: flex; justify-content: center; gap: 24px; margin-bottom: 24px;'>
+                    <a href='https://www.instagram.com/dehesadeljamon/' target='_blank' rel='noopener noreferrer' aria-label='Visítanos en instagram' style='color: #f1c232; width: 28px; height: 28px; display: block;'>
       <svg viewBox='0 0 24 24' fill='currentColor' aria-hidden='true' style='width: 100%; height: 100%;'><path d='M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z'/></svg>
     </a> 
-            <a href='https://www.tiktok.com/@ladehesadeljamon' target='_blank' rel='noopener noreferrer' aria-label='Visítanos en tiktok' style='color: var(--gold); width: 28px; height: 28px; display: block;'>
+                    <a href='https://www.tiktok.com/@ladehesadeljamon' target='_blank' rel='noopener noreferrer' aria-label='Visítanos en tiktok' style='color: #f1c232; width: 28px; height: 28px; display: block;'>
       <svg viewBox='0 0 24 24' fill='currentColor' aria-hidden='true' style='width: 100%; height: 100%;'><path d='M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z'/></svg>
     </a> 
-            <a href='https://wa.me/34654574771' target='_blank' rel='noopener noreferrer' aria-label='Visítanos en whatsapp' style='color: var(--gold); width: 28px; height: 28px; display: block;'>
+                    <a href='https://wa.me/34654574771' target='_blank' rel='noopener noreferrer' aria-label='Visítanos en whatsapp' style='color: #f1c232; width: 28px; height: 28px; display: block;'>
       <svg viewBox='0 0 24 24' fill='currentColor' aria-hidden='true' style='width: 100%; height: 100%;'><path d='M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z'/></svg>
     </a> 
-            <a href='https://www.ubereats.com/es/store/la-dehesa-del-jamon/xcyFgVxnVMe8xMush8BiNg' target='_blank' rel='noopener noreferrer' aria-label='Visítanos en ubereats' style='color: var(--gold); width: 28px; height: 28px; display: block;'>
+                    <a href='https://www.ubereats.com/es/store/la-dehesa-del-jamon/xcyFgVxnVMe8xMush8BiNg' target='_blank' rel='noopener noreferrer' aria-label='Visítanos en ubereats' style='color: #f1c232; width: 28px; height: 28px; display: block;'>
       <svg viewBox='0 0 24 24' fill='currentColor' aria-hidden='true' style='width: 100%; height: 100%;'><path d='M0 2.75V7.84C0 9.76 1.34 11.03 3.08 11.03C3.93 11.03 4.69 10.7 5.23 10.13V10.89H6.44V2.75H5.22V7.77C5.22 9.06 4.35 9.93 3.22 9.93C2.08 9.93 1.22 9.08 1.22 7.77V2.75H0M7.35 2.75V10.89H8.5V10.14A2.96 2.96 0 0 0 10.63 11.03A3.09 3.09 0 0 0 13.74 7.93A3.09 3.09 0 0 0 10.63 4.83C9.8 4.83 9.06 5.17 8.5 5.71V2.75H7.35M17.26 4.84C15.5 4.84 14.21 6.25 14.21 7.92C14.21 9.69 15.58 11 17.36 11C18.44 11 19.33 10.54 19.92 9.75L19.07 9.12C18.63 9.71 18.05 10 17.36 10C16.36 10 15.56 9.27 15.4 8.31H20.22V7.92C20.22 6.16 18.97 4.84 17.26 4.84M23.45 4.91C22.8 4.91 22.33 5.21 22.04 5.69V4.96H20.87V10.89H22.05V7.5C22.05 6.6 22.61 6 23.37 6H23.86V4.91H23.45M17.23 5.86C18.11 5.86 18.84 6.47 19.04 7.38H15.42C15.63 6.47 16.36 5.86 17.23 5.86M10.55 5.88C11.66 5.88 12.58 6.78 12.58 7.93C12.58 9.07 11.66 10 10.55 10A2.04 2.04 0 0 1 8.5 7.93C8.5 6.78 9.42 5.88 10.55 5.88M0 12.96V21.1H5.72V19.71H1.55V17.69H5.61V16.34H1.55V14.35H5.72V12.96H0M14.56 13.38V15.09H13.4V16.45H14.56V19.65C14.56 20.46 15.13 21.1 16.16 21.1H17.8V19.74H16.66C16.31 19.74 16.09 19.58 16.09 19.26V16.45H17.8V15.09H16.09V13.38H14.56M9.32 14.94C7.53 14.94 6.12 16.34 6.12 18.1C6.12 19.85 7.53 21.25 9.32 21.25C10.04 21.25 10.71 21 11.24 20.56V21.1H12.76V15.09H11.24V15.63A2.96 2.96 0 0 0 9.32 14.94M21.04 14.94C19.45 14.94 18.34 15.59 18.34 16.86C18.34 17.73 18.95 18.3 20.27 18.58L21.72 18.92C22.29 19.03 22.44 19.18 22.44 19.42C22.44 19.79 22 20.03 21.31 20.03C20.44 20.03 19.94 19.83 19.74 19.17H18.21C18.43 20.42 19.36 21.25 21.26 21.25C23 21.25 24 20.42 24 19.26C24 18.44 23.42 17.83 22.19 17.57L20.9 17.3C20.15 17.16 19.91 17 19.91 16.74C19.91 16.38 20.27 16.16 20.94 16.16C21.66 16.16 22.19 16.36 22.34 17H23.86C23.78 15.77 22.87 14.94 21.04 14.94M9.45 16.26C10.46 16.26 11.27 17.07 11.27 18.1S10.46 19.93 9.45 19.93A1.82 1.82 0 0 1 7.62 18.1C7.62 17.07 8.45 16.26 9.45 16.26Z'/></svg>
     </a> 
-            <a href='https://maps.app.goo.gl/dKe7u1rpeGxGhu1Q7' target='_blank' rel='noopener noreferrer' aria-label='Visítanos en maps' style='color: var(--gold); width: 28px; height: 28px; display: block;'>
+                    <a href='https://maps.app.goo.gl/dKe7u1rpeGxGhu1Q7' target='_blank' rel='noopener noreferrer' aria-label='Visítanos en maps' style='color: #f1c232; width: 28px; height: 28px; display: block;'>
       <svg viewBox='0 0 24 24' fill='currentColor' aria-hidden='true' style='width: 100%; height: 100%;'><path d='M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z'/></svg>
     </a>
-        </div>
+                </div>
 
-        <div style='width: 100%; height: 1px; background-color: rgba(241, 194, 50, 0.2); margin-bottom: 16px;'></div>
+                <div style='width: 100%; height: 1px; background-color: rgba(241, 194, 50, 0.2); margin-bottom: 24px;'></div>
 
-        <div style='margin-bottom: 24px; display: flex; flex-direction: column; align-items: center;'>
-            <span style='display: block; font-size: 1rem; text-transform: uppercase; letter-spacing: 3px; color: rgba(255,255,255,0.3); font-weight: 900; margin-bottom: 4px;'>
-                Reservas y pedidos
-            </span>
-            <a href='tel:+34654574771' style='display: inline-flex; align-items: center; gap: 12px; color: #f1c232; text-decoration: none; font-size: 1.7rem; font-weight: 900;'>
-                <img src='data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4KPHN2ZyB2ZXJzaW9uPSIxLjEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgdmlld0JveD0iMCAwIDMyIDMyIj4KICA8cGF0aCBmaWxsPSJub25lIiBzdHJva2U9IiNmMWMyMzIiIHN0cm9rZS13aWR0aD0iMiIgc3Ryb2tlLW1pdGVybGltaXQ9IjEwIiBkPSJNMTMuNiw4LjVMOS41LDQuM0M5LDMuOSw4LjMsMy45LDcuOCw0LjNMNC43LDcuNUM0LDguMSwzLjgsOS4xLDQuMSw5LjljMC44LDIuMywyLjksNi45LDcsMTFzOC43LDYuMSwxMSw3YzAuOSwwLjMsMS44LDAuMSwyLjUtMC41bDMuMS0zLjFjMC41LTAuNSwwLjUtMS4yLDAtMS43bC00LjEtNC4xYy0wLjUtMC41LTEuMi0wLjUtMS43LDBsLTIuNSwyLjVjMCwwLTIuOC0xLjItNS0zLjNzLTMuMy01LTMuMy01bDIuNS0yLjVDMTQuMSw5LjcsMTQuMSw4LjksMTMuNiw4LjV6Ii8+Cjwvc3ZnPg==' 
-                     style='width: 24px; height: 24px; object-fit: contain;' />
-                <span style='letter-spacing: 0.1em;'>654 57 47 71</span>
-            </a>
-        </div>
+                <div style='margin-bottom: 32px; display: flex; flex-direction: column; align-items: center;'>
+                    <span style='display: block; font-size: 1rem; text-transform: uppercase; letter-spacing: 3px; color: rgba(255,255,255,0.3); font-weight: 900; margin-bottom: 8px;'>Reservas y pedidos</span>
+                    <a href='tel:+34654574771' style='display: inline-flex; align-items: center; gap: 12px; color: #f1c232; text-decoration: none; font-size: 1.7rem; font-weight: 900;'>
+                        <img src='data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4KPHN2ZyB2ZXJzaW9uPSIxLjEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgdmlld0JveD0iMCAwIDMyIDMyIj4KICA8cGF0aCBmaWxsPSJub25lIiBzdHJva2U9IiNmMWMyMzIiIHN0cm9rZS13aWR0aD0iMiIgc3Ryb2tlLW1pdGVybGltaXQ9IjEwIiBkPSJNMTMuNiw4LjVMOS41LDQuM0M5LDMuOSw4LjMsMy45LDcuOCw0LjNMNC43LDcuNUM0LDguMSwzLjgsOS4xLDQuMSw5LjljMC44LDIuMywyLjksNi45LDcsMTFzOC43LDYuMSwxMSw3YzAuOSwwLjMsMS44LDAuMSwyLjUtMC41bDMuMS0zLjFjMC41LTAuNSwwLjUtMS4yLDAtMS43bC00LjEtNC4xYy0wLjUtMC41LTEuMi0wLjUtMS43LDBsLTIuNSwyLjVjMCwwLTIuOC0xLjItNS0zLjNzLTMuMy01LTMuMy01bDIuNS0yLjVDMTQuMSw5LjcsMTQuMSw4LjksMTMuNiw4LjV6Ii8+Cjwvc3ZnPg==' style='width: 24px; height: 24px; object-fit: contain;' />
+                        <span style='letter-spacing: 0.1em;'>654 57 47 71</span>
+                    </a>
+                </div>
 
-        <div style='width: 100%; height: 1px; background-color: rgba(241, 194, 50, 0.2); margin-bottom: 0px;'></div>
+                <div style='width: 100%; height: 1px; background-color: rgba(241, 194, 50, 0.2);'></div>
 
-        <address style='color: rgba(255,255,255,0.5); font-size: 0.75rem; line-height: 1.4; margin-bottom: 16px; font-style: normal; font-weight: 500; white-space: pre-line; text-align: center;'>
-            Fernando Zóbel 1, Edificio Progreso local 15, 41020 Sevilla
-        </address>
-        
-        <div style='width: 100%; height: 1px; background-color: rgba(241, 194, 50, 0.2); margin-bottom: 16px;'></div>
+                <address style='color: rgba(255,255,255,0.5); font-size: 0.75rem; line-height: 1.6; margin: 24px 0; font-style: normal; font-weight: 500; white-space: pre-line; text-align: center;'>
+                    Fernando Zóbel 1, Edificio Progreso local 15, 41020 Sevilla
+                </address>
 
-        <p style='color: rgba(255,255,255,0.2); font-size: 0.55rem; text-transform: uppercase; letter-spacing: 0.3em; font-weight: 900; margin: 0; margin-bottom: 16px;'>
-            © 2026 LA DEHESA DEL JAMÓN
-        </p>
+                <div style='width: 100%; height: 1px; background-color: rgba(241, 194, 50, 0.2); margin-bottom: 24px;'></div>
 
-        <div style='width: 100%; height: 1px; background-color: rgba(241, 194, 50, 0.1); margin-bottom: 16px;'></div>
-        
-        <div style='display: flex; flex-direction: column; align-items: center; gap: 6px; width: 100%; opacity: 0.4;'>
-            <span style='font-size: 7px; text-transform: uppercase; letter-spacing: 2px; font-weight: bold; color: rgba(255,255,255,0.5);'>
-                Desarrollado por: / Developed by:
-            </span>
-            <a href='https://manolorecio.github.io/Manolo-Recio-Portfolio/' target='_blank' style='color: #ffffff; text-decoration: none;'>
-                <svg xmlns='http://www.w3.org/2000/svg' width='100' height='auto' viewBox='0 0 772.32 559.65' style='fill: currentColor; display: block;'>
-                    <path d='M156.7 265.83V27.98h-11.19v237.85zM184.69 0v559.65H156.7V293.82h-11.19v265.83h-27.98V0zm363.77 492.49V67.16h-11.19v425.33zm27.98-425.33v453.32h-39.17v11.19h39.17v27.98h-67.16V39.18h67.16zM263.04 0v559.65h-27.99V27.98h-11.19v531.67h-27.98V0zm50.37 531.67V27.98h-11.2v503.69zm27.98 27.98h-67.16V0h67.16zM352.58 0h27.98v531.67h78.35v27.98H352.58z' />
-                    <path d='M498.09 27.98v531.67h-27.98V0h106.33v27.98zm117.53 0v503.69h11.19V285.42h27.98v274.23h-67.16V0h67.16v274.23h-27.98V27.98zM430.93 492.49V27.98h-11.19v464.51zm27.98 27.99h-67.15V0h67.15zM665.99 0h27.98v559.65h-27.98zm78.35 531.67V27.98h-11.2v503.69zm27.98-503.69v531.67h-67.16V0h67.16zM106.33 0v559.65H78.35V27.98H67.16v531.67H39.18V27.98h-11.2v531.67H0V0z' />
-                </svg>
-            </a>
-        </div>
-    </div>
-</footer>
+                <p style='color: rgba(255,255,255,0.2); font-size: 0.55rem; text-transform: uppercase; letter-spacing: 0.3em; font-weight: 900; margin-bottom: 24px;'>© 2026 LA DEHESA DEL JAMÓN</p>
 
+                <div style='width: 100%; height: 1px; background-color: rgba(241, 194, 50, 0.1); margin-bottom: 24px;'></div>
+
+                <div style='display: flex; flex-direction: column; align-items: center; gap: 8px; width: 100%; opacity: 0.4;'>
+                    <span style='font-size: 7px; text-transform: uppercase; letter-spacing: 2px; font-weight: bold; color: rgba(255,255,255,0.5);'>Desarrollado por: / Developed by:</span>
+                    <a href='https://manolorecio.github.io/Manolo-Recio-Portfolio/' target='_blank' style='color: #ffffff; text-decoration: none;'>
+                        <svg xmlns='http://www.w3.org/2000/svg' width='100' height='auto' viewBox='0 0 772.32 559.65' style='fill: currentColor; display: block;'>
+                            <path d='M156.7 265.83V27.98h-11.19v237.85zM184.69 0v559.65H156.7V293.82h-11.19v265.83h-27.98V0zm363.77 492.49V67.16h-11.19v425.33zm27.98-425.33v453.32h-39.17v11.19h39.17v27.98h-67.16V39.18h67.16zM263.04 0v559.65h-27.99V27.98h-11.19v531.67h-27.98V0zm50.37 531.67V27.98h-11.2v503.69zm27.98 27.98h-67.16V0h67.16zM352.58 0h27.98v531.67h78.35v27.98H352.58z' />
+                            <path d='M498.09 27.98v531.67h-27.98V0h106.33v27.98zm117.53 0v503.69h11.19V285.42h27.98v274.23h-67.16V0h67.16v274.23h-27.98V27.98zM430.93 492.49V27.98h-11.19v464.51zm27.98 27.99h-67.15V0h67.15zM665.99 0h27.98v559.65h-27.98zm78.35 531.67V27.98h-11.2v503.69zm27.98-503.69v531.67h-67.16V0h67.16zM106.33 0v559.65H78.35V27.98H67.16v531.67H39.18V27.98h-11.2v531.67H0V0z' />
+                        </svg>
+                    </a>
+                </div>
+            </div>
+        </footer>
     </main>
 
-    <button id='back-to-top' aria-label='Subir al inicio del menú'>↑</button>
+    <button id='back-to-top' aria-label='Volver arriba'>
+  <svg width='30' height='30' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='4' stroke-linecap='round' stroke-linejoin='round'>
+    <path d='M18 15l-6-6-6 6'/></svg>
+</button>
 
     <script>
         const fromSafeBase64 = (str) => decodeURIComponent(atob(str).split('').map(c => '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2)).join(''));
@@ -254,12 +267,11 @@
                 if (!hasItems) return '';
                 const safeId = 'cat-' + cat.replace(/[^a-z0-9]/gi, '-').toLowerCase();
                 const [es, en] = cat.split(' / ');
-                
                 const clickAction = index === 0 
                   ? "window.scrollTo({top: 0, behavior:'smooth'})" 
                   : `const h = document.getElementById('main-header').offsetHeight; window.scrollTo({top: document.getElementById('${safeId}').offsetTop - h - 20, behavior:'smooth'})`;
 
-                return `<button class='nav-item' onclick="${clickAction}" aria-controls='${safeId}'>
+                return `<button class='nav-item' onclick="${clickAction}">
                     <span>${es}</span>
                     ${en ? `<span>${en}</span>` : ''}
                 </button>`;
@@ -271,13 +283,13 @@
                 const safeId = 'cat-' + cat.replace(/[^a-z0-9]/gi, '-').toLowerCase();
                 
                 return `
-                    <section id='${safeId}' aria-labelledby='title-${safeId}'>
+                    <section id='${safeId}'>
                         <div class='flex justify-between items-end border-b-2 border-[#f1c232]/30 pb-2 mb-8'>
-                            <div class='flex-1 pr-2 text-left'>
-                                <h2 id='title-${safeId}' class='text-[#f1c232] text-lg font-extrabold uppercase'>${cat.split(' / ')[0]}</h2>
-                                <p class='text-[#f1c232]/60 text-[9px] uppercase font-bold mt-0.5'>${cat.split(' / ')[1] || ''}</p>
+                            <div class='flex-1 text-left'>
+                                <h2 class='text-[#f1c232] text-lg font-extrabold uppercase'>${cat.split(' / ')[0]}</h2>
+                                <p class='text-[#f1c232]/60 text-[9px] uppercase font-bold'>${cat.split(' / ')[1] || ''}</p>
                             </div>
-                            <div class='flex gap-4' aria-hidden='true'>
+                            <div class='flex gap-4'>
                                 <div class='price-label'>TAPA</div>
                                 <div class='price-label'>PLATO</div>
                             </div>
@@ -287,61 +299,50 @@
                                 <div class='flex flex-col' style='${!dish.isAvailable ? 'opacity: 0.4;' : ''}'>
                                     <div class='flex justify-between items-start gap-4'>
                                         <div class='flex-1 text-left'>
-    <div class='flex items-center gap-3 flex-wrap'>
-        <h3 class='text-[1rem] font-bold leading-tight uppercase tracking-tight'>${dish.name.split(' / ')[0]}</h3>
-        ${!dish.isAvailable ? '<span class="text-[7px] font-black border border-red-500 text-red-500 px-1.5 py-0.5 rounded bg-red-500/10">AGOTADO</span>' : ''}
-    </div>
-    
-    ${dish.name.split(' / ')[1] ? `<p class='text-[#f1c232] text-[0.8rem] italic font-medium opacity-80 mt-0.5'>${dish.name.split(' / ')[1]}</p>` : ''}
+                                            <div class='flex items-center gap-3 flex-wrap'>
+                                                <h3 class='text-[1rem] font-bold uppercase'>${dish.name.split(' / ')[0]}</h3>
+                                                ${!dish.isAvailable ? '<span class="text-[7px] font-black border border-red-500 text-red-500 px-1.5 py-0.5 rounded bg-red-500/10">AGOTADO</span>' : ''}
+                                            </div>
+                                            ${dish.name.split(' / ')[1] ? `<p class='text-[#f1c232] text-[0.8rem] italic opacity-80'>${dish.name.split(' / ')[1]}</p>` : ''}
+                                            
+                                            ${dish.description.split(' / ')[0] ? `<p class='text-[0.75rem] text-white/50 italic mt-2'>${dish.description.split(' / ')[0]}</p>` : ''}
+                                            ${dish.description.split(' / ')[1] ? `<p class='text-[#f1c232]/40 text-[0.65rem] italic uppercase tracking-wider mt-1'>${dish.description.split(' / ')[1]}</p>` : ''}
 
-    ${dish.description.split(' / ')[0] ? `<p class='text-[0.75rem] text-white/50 italic mt-2 leading-relaxed'>${dish.description.split(' / ')[0]}</p>` : ''}
-    
-    ${dish.description.split(' / ')[1] ? `<p class='text-[#f1c232]/40 text-[0.65rem] italic uppercase tracking-wider mt-1'>${dish.description.split(' / ')[1]}</p>` : ''}
-
-    <div class='flex flex-wrap gap-2 mt-3' aria-label='Alérgenos'>
-        ${(dish.allergens || []).map(a => `<div class='w-6 h-6'>${DATA.allergenSvgs[a] || ''}</div>`).join('')}
-    </div>
-</div>
+                                            <div class='flex flex-wrap gap-2 mt-3'>
+                                                ${(dish.allergens || []).map(a => `<div class='w-6 h-6'>${DATA.allergenSvgs[a] || ''}</div>`).join('')}
+                                            </div>
+                                        </div>
+                                        <div class='flex gap-4 pt-1'>
+                                            <div class='price-value opacity-90'>${dish.price > 0 ? dish.price.toFixed(2).replace('.', ',') + '€' : '---'}</div>
+                                            <div class='price-value gold-text'>${dish.pricePlatter > 0 ? dish.pricePlatter.toFixed(2).replace('.', ',') + '€' : '---'}</div>
+                                        </div>
                                     </div>
                                     <div class='h-[1px] w-full bg-gradient-to-r from-[#f1c232]/20 via-[#f1c232]/10 to-transparent mt-5'></div>
                                 </div>
                             `).join('')}
                         </div>
-                    </section>
-                `;
+                    </section>`;
             }).join('');
 
             allergenLegend.innerHTML = DATA.allergensInfo.map(a => `
               <div class='flex items-center gap-3 py-1'>
-                <div class='w-6 h-6 flex-shrink-0'>${DATA.allergenSvgs[a.id] || ''}</div>
+                <div class='w-6 h-6'>${DATA.allergenSvgs[a.id] || ''}</div>
                 <span class='text-[9px] uppercase font-bold text-white/80'>${a.label}</span>
               </div>
             `).join('');
         }
 
-        // Lógica de Scroll: Ocultar/Mostrar Header y Botón "Arriba"
         const header = document.getElementById('main-header');
         const topBtn = document.getElementById('back-to-top');
         let lastScroll = 0;
 
         window.onscroll = () => {
           const currentScroll = window.scrollY;
-
-          // Control del botón "volver arriba"
-          if (currentScroll > 400) topBtn.classList.add('visible');
-          else topBtn.classList.remove('visible');
-
-          // Control del header sticky (Ocultar al bajar, mostrar al subir)
-          if (currentScroll > 150) { // Umbral para que no desaparezca nada más empezar
-            if (currentScroll > lastScroll) {
-              header.classList.add('header-hidden');
-            } else {
-              header.classList.remove('header-hidden');
-            }
-          } else {
-            header.classList.remove('header-hidden');
-          }
-          
+          if (currentScroll > 400) topBtn.classList.add('visible'); else topBtn.classList.remove('visible');
+          if (currentScroll > 150) {
+            if (currentScroll > lastScroll) header.classList.add('header-hidden');
+            else header.classList.remove('header-hidden');
+          } else header.classList.remove('header-hidden');
           lastScroll = currentScroll;
         };
         
