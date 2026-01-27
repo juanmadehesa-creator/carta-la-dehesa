@@ -116,7 +116,7 @@ export const initialDishes: Dish[] = [
     "name": "Revuelto Bacalao Dorado LA DEHESA / \"La Dehesa\" Golden Scrambled Cod",
     "price": 0,
     "pricePlatter": 11.95,
-    "description": "B",
+    "description": "",
     "category": "PARA COMPARTIR / TO SHARE",
     "isAvailable": true,
     "isVisible": true
