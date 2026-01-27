@@ -106,7 +106,7 @@ export const initialDishes: Dish[] = [
     "name": "Bravas (3 salsas) / Spicy Potatoes with 3 Dipping Sauces",
     "price": 3.2,
     "pricePlatter": 5.95,
-    "description": "Patatas fritas con tres salsas caseras / Fried potatoes with three homemade sauces",
+    "description": "",
     "category": "PARA COMPARTIR / TO SHARE",
     "isAvailable": true,
     "isVisible": true
@@ -116,7 +116,7 @@ export const initialDishes: Dish[] = [
     "name": "Revuelto Bacalao Dorado LA DEHESA / \"La Dehesa\" Golden Scrambled Cod",
     "price": 0,
     "pricePlatter": 11.95,
-    "description": "Bacalao de Islandia, huevos y patatas paja / Icelandic cod, eggs, and straw potatoes",
+    "description": "B",
     "category": "PARA COMPARTIR / TO SHARE",
     "isAvailable": true,
     "isVisible": true
@@ -136,7 +136,7 @@ export const initialDishes: Dish[] = [
     "name": "Calamares de Campo con Langostinos / \"Country-Style\" Fried Medley with Prawns",
     "price": 0,
     "pricePlatter": 10.8,
-    "description": "Aros de verdura y langostinos / Fried veggie medley and king prawns",
+    "description": "",
     "category": "PARA COMPARTIR / TO SHARE",
     "isAvailable": true,
     "isVisible": true
@@ -146,7 +146,7 @@ export const initialDishes: Dish[] = [
     "name": "Revuelto de Espárragos Trigueros con Ibérico / Scrambled Eggs with Asparagus and Iberian Ham",
     "price": 0,
     "pricePlatter": 11.95,
-    "description": "Con virutas de jamón de calidad / With premium ham shavings",
+    "description": "",
     "category": "PARA COMPARTIR / TO SHARE",
     "isAvailable": true,
     "isVisible": true
@@ -156,7 +156,7 @@ export const initialDishes: Dish[] = [
     "name": "Revuelto de Habitas Baby con Jamón / Scrambled Eggs with Baby Broad Beans and Iberian Ham",
     "price": 0,
     "pricePlatter": 12.95,
-    "description": "Habitas tiernas y jamón picado / Tender baby beans and minced ham",
+    "description": "",
     "category": "PARA COMPARTIR / TO SHARE",
     "isAvailable": true,
     "isVisible": true
@@ -166,7 +166,7 @@ export const initialDishes: Dish[] = [
     "name": "Revuelto de Setas con Oloroso y Jamón / Scrambled Eggs with Mushrooms, Oloroso Sherry and Iberian Ham",
     "price": 0,
     "pricePlatter": 12.95,
-    "description": "Sabor intenso con vino de Jerez / Intense flavor with Sherry wine",
+    "description": "",
     "category": "PARA COMPARTIR / TO SHARE",
     "isAvailable": true,
     "isVisible": true
