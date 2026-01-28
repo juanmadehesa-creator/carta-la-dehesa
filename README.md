@@ -1,14 +1,20 @@
-# LA DEHESA DEL JAMÓN - Carta Digital
+<div align="center">
+  <h1>LA DEHESA DEL JAMÓN</h1>
+  <p>
+    <b>Gestión y Publicación (mobile-first) Carta Digital</b><br>
+    <i style="color: #f1c232;">Digital Menu Management and Publication (mobile-first)</i>
+  </p>
+</div>
 
 <div align="center">
   <img src="https://raw.githubusercontent.com/juanmadehesa-creator/carta-la-dehesa/main/images/logo-carta-digital.png?raw=true" width="200" alt="Logo La Dehesa del Jamón">
-  <h1>LA DEHESA DEL JAMÓN</h1>
-  <p>Carta Digital | Digital Menu</p>
-  
-  
 
-🚀 <div align="center">
-  <a href="https://juanmadehesa-creator.github.io/carta-la-dehesa/" target="_blank">
+ 
+  <p>
+    
+  </p>
+
+  <br><br> <a href="https://juanmadehesa-creator.github.io/carta-la-dehesa/" target="_blank">
     <img src="https://img.shields.io/badge/🚀_VER_CARTA_—_VIEW_MENU-f1c232?style=for-the-badge&labelColor=401201" alt="Ver Carta La Dehesa del Jamón" height="45">
   </a>
 </div>
