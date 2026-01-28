@@ -7,9 +7,12 @@ export const initialDishes: Dish[] = [
     "price": 4,
     "pricePlatter": 7.9,
     "description": "",
-    "category": "DE PICOTEO / BITES",
+    "category": "DE PICOTEO / APPETIZERS",
     "isAvailable": true,
-    "isVisible": true
+    "isVisible": true,
+    "allergens": [
+      "pescado"
+    ]
   },
   {
     "id": "2",
@@ -17,7 +20,7 @@ export const initialDishes: Dish[] = [
     "price": 3.2,
     "pricePlatter": 0,
     "description": "",
-    "category": "DE PICOTEO / BITES",
+    "category": "DE PICOTEO / APPETIZERS",
     "isAvailable": true,
     "isVisible": true
   },
@@ -27,9 +30,12 @@ export const initialDishes: Dish[] = [
     "price": 2.5,
     "pricePlatter": 0,
     "description": "",
-    "category": "DE PICOTEO / BITES",
+    "category": "DE PICOTEO / APPETIZERS",
     "isAvailable": true,
-    "isVisible": true
+    "isVisible": true,
+    "allergens": [
+      "frutos_cascara"
+    ]
   },
   {
     "id": "4",
@@ -37,9 +43,12 @@ export const initialDishes: Dish[] = [
     "price": 4,
     "pricePlatter": 7.9,
     "description": "Delicia del mediterráneo calidad extra / Extra quality Mediterranean delicacy",
-    "category": "DE PICOTEO / BITES",
+    "category": "DE PICOTEO / APPETIZERS",
     "isAvailable": true,
-    "isVisible": true
+    "isVisible": true,
+    "allergens": [
+      "pescado"
+    ]
   },
   {
     "id": "5",
@@ -47,9 +56,12 @@ export const initialDishes: Dish[] = [
     "price": 3.8,
     "pricePlatter": 8.95,
     "description": "",
-    "category": "DE PICOTEO / BITES",
+    "category": "DE PICOTEO / APPETIZERS",
     "isAvailable": true,
-    "isVisible": true
+    "isVisible": true,
+    "allergens": [
+      "lacteos"
+    ]
   },
   {
     "id": "6",
@@ -57,9 +69,12 @@ export const initialDishes: Dish[] = [
     "price": 3.2,
     "pricePlatter": 6.5,
     "description": "",
-    "category": "DE PICOTEO / BITES",
+    "category": "DE PICOTEO / APPETIZERS",
     "isAvailable": true,
-    "isVisible": true
+    "isVisible": true,
+    "allergens": [
+      "lacteos"
+    ]
   },
   {
     "id": "7",
@@ -67,7 +82,7 @@ export const initialDishes: Dish[] = [
     "price": 3.8,
     "pricePlatter": 8.95,
     "description": "",
-    "category": "DE PICOTEO / BITES",
+    "category": "DE PICOTEO / APPETIZERS",
     "isAvailable": true,
     "isVisible": true
   },
@@ -77,9 +92,12 @@ export const initialDishes: Dish[] = [
     "price": 3.8,
     "pricePlatter": 8.95,
     "description": "",
-    "category": "DE PICOTEO / BITES",
+    "category": "DE PICOTEO / APPETIZERS",
     "isAvailable": true,
-    "isVisible": true
+    "isVisible": true,
+    "allergens": [
+      "lacteos"
+    ]
   },
   {
     "id": "9",
@@ -87,7 +105,7 @@ export const initialDishes: Dish[] = [
     "price": 0,
     "pricePlatter": 15.95,
     "description": "",
-    "category": "DE PICOTEO / BITES",
+    "category": "DE PICOTEO / APPETIZERS",
     "isAvailable": true,
     "isVisible": true
   },
@@ -97,7 +115,7 @@ export const initialDishes: Dish[] = [
     "price": 3.95,
     "pricePlatter": 8.95,
     "description": "",
-    "category": "DE PICOTEO / BITES",
+    "category": "DE PICOTEO / APPETIZERS",
     "isAvailable": true,
     "isVisible": true
   },
@@ -109,7 +127,12 @@ export const initialDishes: Dish[] = [
     "description": "",
     "category": "PARA COMPARTIR / TO SHARE",
     "isAvailable": true,
-    "isVisible": true
+    "isVisible": true,
+    "allergens": [
+      "gluten",
+      "huevos",
+      "mostaza"
+    ]
   },
   {
     "id": "12",
@@ -119,7 +142,11 @@ export const initialDishes: Dish[] = [
     "description": "",
     "category": "PARA COMPARTIR / TO SHARE",
     "isAvailable": true,
-    "isVisible": true
+    "isVisible": true,
+    "allergens": [
+      "pescado",
+      "huevos"
+    ]
   },
   {
     "id": "13",
@@ -129,7 +156,13 @@ export const initialDishes: Dish[] = [
     "description": "De Jamón Ibérico, Mejillones o Cola de Toro / Iberian Ham, Mussels, or Oxtail Stew",
     "category": "PARA COMPARTIR / TO SHARE",
     "isAvailable": true,
-    "isVisible": true
+    "isVisible": true,
+    "allergens": [
+      "gluten",
+      "lacteos",
+      "huevos",
+      "moluscos"
+    ]
   },
   {
     "id": "14",
@@ -139,7 +172,12 @@ export const initialDishes: Dish[] = [
     "description": "",
     "category": "PARA COMPARTIR / TO SHARE",
     "isAvailable": true,
-    "isVisible": true
+    "isVisible": true,
+    "allergens": [
+      "gluten",
+      "crustaceos",
+      "moluscos"
+    ]
   },
   {
     "id": "15",
@@ -149,7 +187,10 @@ export const initialDishes: Dish[] = [
     "description": "",
     "category": "PARA COMPARTIR / TO SHARE",
     "isAvailable": true,
-    "isVisible": true
+    "isVisible": true,
+    "allergens": [
+      "huevos"
+    ]
   },
   {
     "id": "16",
@@ -159,7 +200,10 @@ export const initialDishes: Dish[] = [
     "description": "",
     "category": "PARA COMPARTIR / TO SHARE",
     "isAvailable": true,
-    "isVisible": true
+    "isVisible": true,
+    "allergens": [
+      "huevos"
+    ]
   },
   {
     "id": "17",
@@ -169,7 +213,11 @@ export const initialDishes: Dish[] = [
     "description": "",
     "category": "PARA COMPARTIR / TO SHARE",
     "isAvailable": true,
-    "isVisible": true
+    "isVisible": true,
+    "allergens": [
+      "huevos",
+      "sulfitos"
+    ]
   },
   {
     "id": "18",
@@ -179,7 +227,13 @@ export const initialDishes: Dish[] = [
     "description": "Salmón, Queso añejo y Alioli / Salmon, Aged Cheese, and Aioli",
     "category": "MONTAÍTOS / ROLLS",
     "isAvailable": true,
-    "isVisible": true
+    "isVisible": true,
+    "allergens": [
+      "gluten",
+      "pescado",
+      "lacteos",
+      "huevos"
+    ]
   },
   {
     "id": "19",
@@ -189,7 +243,10 @@ export const initialDishes: Dish[] = [
     "description": "",
     "category": "MONTAÍTOS / ROLLS",
     "isAvailable": true,
-    "isVisible": true
+    "isVisible": true,
+    "allergens": [
+      "gluten"
+    ]
   },
   {
     "id": "20",
@@ -199,7 +256,10 @@ export const initialDishes: Dish[] = [
     "description": "Lomo con Jamón ibérico / Pork Loin with Iberian Ham",
     "category": "MONTAÍTOS / ROLLS",
     "isAvailable": true,
-    "isVisible": true
+    "isVisible": true,
+    "allergens": [
+      "gluten"
+    ]
   },
   {
     "id": "21",
@@ -209,7 +269,10 @@ export const initialDishes: Dish[] = [
     "description": "Pimiento frito, Lomo  y Lamón ibérico / Fried Pepper, Pork Loin, and Iberian Ham",
     "category": "MONTAÍTOS / ROLLS",
     "isAvailable": true,
-    "isVisible": true
+    "isVisible": true,
+    "allergens": [
+      "gluten"
+    ]
   },
   {
     "id": "22",
@@ -219,7 +282,11 @@ export const initialDishes: Dish[] = [
     "description": "",
     "category": "MONTAÍTOS / ROLLS",
     "isAvailable": true,
-    "isVisible": true
+    "isVisible": true,
+    "allergens": [
+      "gluten",
+      "pescado"
+    ]
   },
   {
     "id": "23",
@@ -229,7 +296,10 @@ export const initialDishes: Dish[] = [
     "description": "Bacalao ahumado y Salmorejo / Smoked Cod and Salmorejo",
     "category": "MONTAÍTOS / ROLLS",
     "isAvailable": true,
-    "isVisible": true
+    "isVisible": true,
+    "allergens": [
+      "gluten"
+    ]
   },
   {
     "id": "24",
@@ -239,7 +309,12 @@ export const initialDishes: Dish[] = [
     "description": "Lomo de orza, Queso viejo y Mojo picón / Preserved Pork Loin (Lomo de orza), Aged Cheese, and Mojo picón Sauce",
     "category": "MONTAÍTOS / ROLLS",
     "isAvailable": true,
-    "isVisible": true
+    "isVisible": true,
+    "allergens": [
+      "gluten",
+      "lacteos",
+      "sulfitos"
+    ]
   },
   {
     "id": "25",
@@ -249,7 +324,11 @@ export const initialDishes: Dish[] = [
     "description": "Receta tradicional / Traditional recipe",
     "category": "FRESQUITOS / CHILLED PLATES",
     "isAvailable": true,
-    "isVisible": true
+    "isVisible": true,
+    "allergens": [
+      "gluten",
+      "huevos"
+    ]
   },
   {
     "id": "26",
@@ -259,7 +338,10 @@ export const initialDishes: Dish[] = [
     "description": "",
     "category": "FRESQUITOS / CHILLED PLATES",
     "isAvailable": true,
-    "isVisible": true
+    "isVisible": true,
+    "allergens": [
+      "huevos"
+    ]
   },
   {
     "id": "27",
@@ -269,7 +351,10 @@ export const initialDishes: Dish[] = [
     "description": "",
     "category": "FRESQUITOS / CHILLED PLATES",
     "isAvailable": true,
-    "isVisible": true
+    "isVisible": true,
+    "allergens": [
+      "pescado"
+    ]
   },
   {
     "id": "28",
@@ -279,7 +364,12 @@ export const initialDishes: Dish[] = [
     "description": "",
     "category": "FRESQUITOS / CHILLED PLATES",
     "isAvailable": true,
-    "isVisible": true
+    "isVisible": true,
+    "allergens": [
+      "crustaceos",
+      "moluscos",
+      "pescado"
+    ]
   },
   {
     "id": "29",
@@ -289,7 +379,11 @@ export const initialDishes: Dish[] = [
     "description": "",
     "category": "FRESQUITOS / CHILLED PLATES",
     "isAvailable": true,
-    "isVisible": true
+    "isVisible": true,
+    "allergens": [
+      "crustaceos",
+      "huevos"
+    ]
   },
   {
     "id": "30",
@@ -299,7 +393,10 @@ export const initialDishes: Dish[] = [
     "description": "",
     "category": "FRESQUITOS / CHILLED PLATES",
     "isAvailable": true,
-    "isVisible": true
+    "isVisible": true,
+    "allergens": [
+      "pescado"
+    ]
   },
   {
     "id": "31",
@@ -309,7 +406,12 @@ export const initialDishes: Dish[] = [
     "description": "",
     "category": "FRESQUITOS / CHILLED PLATES",
     "isAvailable": true,
-    "isVisible": true
+    "isVisible": true,
+    "allergens": [
+      "gluten",
+      "lacteos",
+      "pescado"
+    ]
   },
   {
     "id": "32",
@@ -319,7 +421,11 @@ export const initialDishes: Dish[] = [
     "description": "",
     "category": "DE LA MAR / SEAFOOD",
     "isAvailable": true,
-    "isVisible": true
+    "isVisible": true,
+    "allergens": [
+      "moluscos",
+      "gluten"
+    ]
   },
   {
     "id": "33",
@@ -329,7 +435,11 @@ export const initialDishes: Dish[] = [
     "description": "",
     "category": "DE LA MAR / SEAFOOD",
     "isAvailable": true,
-    "isVisible": true
+    "isVisible": true,
+    "allergens": [
+      "pescado",
+      "gluten"
+    ]
   },
   {
     "id": "34",
@@ -339,7 +449,12 @@ export const initialDishes: Dish[] = [
     "description": "",
     "category": "DE LA MAR / SEAFOOD",
     "isAvailable": true,
-    "isVisible": true
+    "isVisible": true,
+    "allergens": [
+      "pescado",
+      "gluten",
+      "sulfitos"
+    ]
   },
   {
     "id": "35",
@@ -349,7 +464,11 @@ export const initialDishes: Dish[] = [
     "description": "",
     "category": "DE LA MAR / SEAFOOD",
     "isAvailable": true,
-    "isVisible": true
+    "isVisible": true,
+    "allergens": [
+      "moluscos",
+      "gluten"
+    ]
   },
   {
     "id": "36",
@@ -359,7 +478,10 @@ export const initialDishes: Dish[] = [
     "description": "Salteadas con ajo y guindilla / Sautéed with garlic and chili",
     "category": "DE LA MAR / SEAFOOD",
     "isAvailable": true,
-    "isVisible": true
+    "isVisible": true,
+    "allergens": [
+      "crustaceos"
+    ]
   },
   {
     "id": "37",
@@ -369,7 +491,10 @@ export const initialDishes: Dish[] = [
     "description": "Con aceite y pimentón / Boiled octopus seasoned with olive oil, sea salt, and Spanish paprika (pimentón), typically served over sliced potatoes.",
     "category": "DE LA MAR / SEAFOOD",
     "isAvailable": true,
-    "isVisible": true
+    "isVisible": true,
+    "allergens": [
+      "moluscos"
+    ]
   },
   {
     "id": "38",
@@ -379,7 +504,12 @@ export const initialDishes: Dish[] = [
     "description": "",
     "category": "DE LA MAR / SEAFOOD",
     "isAvailable": true,
-    "isVisible": true
+    "isVisible": true,
+    "allergens": [
+      "pescado",
+      "huevos",
+      "gluten"
+    ]
   },
   {
     "id": "39",
@@ -389,17 +519,25 @@ export const initialDishes: Dish[] = [
     "description": "",
     "category": "DE LA MAR / SEAFOOD",
     "isAvailable": true,
-    "isVisible": true
+    "isVisible": true,
+    "allergens": [
+      "pescado",
+      "gluten"
+    ]
   },
   {
     "id": "40",
-    "name": "Taquitos de Bacalao frito / Fried Cod Bites",
+    "name": "Taquitos de Bacalao frito / Fried Cod APPETIZERS",
     "price": 4.5,
     "pricePlatter": 12.95,
     "description": "",
     "category": "DE LA MAR / SEAFOOD",
     "isAvailable": true,
-    "isVisible": true
+    "isVisible": true,
+    "allergens": [
+      "pescado",
+      "gluten"
+    ]
   },
   {
     "id": "41",
@@ -419,7 +557,11 @@ export const initialDishes: Dish[] = [
     "description": "Solomillo, Jamón y Huevo de codorniz / Pork Tenderloin, Iberian Ham, and Quail Egg",
     "category": "TABLA DE PANES / ARTISAN TOASTS",
     "isAvailable": true,
-    "isVisible": true
+    "isVisible": true,
+    "allergens": [
+      "gluten",
+      "huevos"
+    ]
   },
   {
     "id": "43",
@@ -429,7 +571,11 @@ export const initialDishes: Dish[] = [
     "description": "",
     "category": "TABLA DE PANES / ARTISAN TOASTS",
     "isAvailable": true,
-    "isVisible": true
+    "isVisible": true,
+    "allergens": [
+      "gluten",
+      "pescado"
+    ]
   },
   {
     "id": "44",
@@ -439,7 +585,11 @@ export const initialDishes: Dish[] = [
     "description": "",
     "category": "TABLA DE PANES / ARTISAN TOASTS",
     "isAvailable": true,
-    "isVisible": true
+    "isVisible": true,
+    "allergens": [
+      "gluten",
+      "lacteos"
+    ]
   },
   {
     "id": "45",
@@ -449,7 +599,11 @@ export const initialDishes: Dish[] = [
     "description": "",
     "category": "TABLA DE PANES / ARTISAN TOASTS",
     "isAvailable": true,
-    "isVisible": true
+    "isVisible": true,
+    "allergens": [
+      "gluten",
+      "pescado"
+    ]
   },
   {
     "id": "46",
@@ -459,7 +613,12 @@ export const initialDishes: Dish[] = [
     "description": "",
     "category": "CARNÍVORO / MEAT LOVER'S",
     "isAvailable": true,
-    "isVisible": true
+    "isVisible": true,
+    "allergens": [
+      "gluten",
+      "lacteos",
+      "sulfitos"
+    ]
   },
   {
     "id": "47",
@@ -469,7 +628,11 @@ export const initialDishes: Dish[] = [
     "description": "",
     "category": "CARNÍVORO / MEAT LOVER'S",
     "isAvailable": true,
-    "isVisible": true
+    "isVisible": true,
+    "allergens": [
+      "sulfitos",
+      "lacteos"
+    ]
   },
   {
     "id": "48",
@@ -499,7 +662,13 @@ export const initialDishes: Dish[] = [
     "description": "Completa y sabrosa / Full and tasty",
     "category": "CARNÍVORO / MEAT LOVER'S",
     "isAvailable": true,
-    "isVisible": true
+    "isVisible": true,
+    "allergens": [
+      "gluten",
+      "lacteos",
+      "mostaza",
+      "sesamo"
+    ]
   },
   {
     "id": "51",
@@ -529,7 +698,12 @@ export const initialDishes: Dish[] = [
     "description": "",
     "category": "CARNÍVORO / MEAT LOVER'S",
     "isAvailable": true,
-    "isVisible": true
+    "isVisible": true,
+    "allergens": [
+      "gluten",
+      "lacteos",
+      "huevos"
+    ]
   },
   {
     "id": "54",
@@ -549,7 +723,11 @@ export const initialDishes: Dish[] = [
     "description": "Por unidad / Each",
     "category": "DE ZAMORA Y ASTURIAS / TASTE OF ZAMORA & ASTURIAS",
     "isAvailable": true,
-    "isVisible": true
+    "isVisible": true,
+    "allergens": [
+      "gluten",
+      "sulfitos"
+    ]
   },
   {
     "id": "56",
@@ -559,7 +737,11 @@ export const initialDishes: Dish[] = [
     "description": "",
     "category": "DE ZAMORA Y ASTURIAS / TASTE OF ZAMORA & ASTURIAS",
     "isAvailable": true,
-    "isVisible": true
+    "isVisible": true,
+    "allergens": [
+      "sulfitos",
+      "gluten"
+    ]
   },
   {
     "id": "57",
@@ -569,7 +751,10 @@ export const initialDishes: Dish[] = [
     "description": "Sabor tradicional / Traditional flavor",
     "category": "DE ZAMORA Y ASTURIAS / TASTE OF ZAMORA & ASTURIAS",
     "isAvailable": true,
-    "isVisible": true
+    "isVisible": true,
+    "allergens": [
+      "huevos"
+    ]
   },
   {
     "id": "58",
@@ -579,7 +764,12 @@ export const initialDishes: Dish[] = [
     "description": "Con ternera de Asturias / With Asturian beef",
     "category": "DE ZAMORA Y ASTURIAS / TASTE OF ZAMORA & ASTURIAS",
     "isAvailable": true,
-    "isVisible": true
+    "isVisible": true,
+    "allergens": [
+      "gluten",
+      "lacteos",
+      "huevos"
+    ]
   },
   {
     "id": "59",
@@ -589,7 +779,12 @@ export const initialDishes: Dish[] = [
     "description": "Con auténtico queso Cabrales DOP / With authentic Cabrales PDO cheese",
     "category": "DE ZAMORA Y ASTURIAS / TASTE OF ZAMORA & ASTURIAS",
     "isAvailable": true,
-    "isVisible": true
+    "isVisible": true,
+    "allergens": [
+      "gluten",
+      "lacteos",
+      "huevos"
+    ]
   },
   {
     "id": "60",
@@ -599,7 +794,12 @@ export const initialDishes: Dish[] = [
     "description": "Tamaño familiar / Sharing Platter",
     "category": "DE ZAMORA Y ASTURIAS / TASTE OF ZAMORA & ASTURIAS",
     "isAvailable": true,
-    "isVisible": true
+    "isVisible": true,
+    "allergens": [
+      "gluten",
+      "lacteos",
+      "huevos"
+    ]
   },
   {
     "id": "61",
@@ -619,7 +819,10 @@ export const initialDishes: Dish[] = [
     "description": "",
     "category": "DE ZAMORA Y ASTURIAS / TASTE OF ZAMORA & ASTURIAS",
     "isAvailable": true,
-    "isVisible": true
+    "isVisible": true,
+    "allergens": [
+      "sulfitos"
+    ]
   },
   {
     "id": "100",
@@ -629,7 +832,10 @@ export const initialDishes: Dish[] = [
     "description": "",
     "category": "BEBIDAS / BEVERAGES",
     "isAvailable": true,
-    "isVisible": true
+    "isVisible": true,
+    "allergens": [
+      "gluten"
+    ]
   },
   {
     "id": "101",
@@ -639,7 +845,10 @@ export const initialDishes: Dish[] = [
     "description": "",
     "category": "BEBIDAS / BEVERAGES",
     "isAvailable": true,
-    "isVisible": true
+    "isVisible": true,
+    "allergens": [
+      "gluten"
+    ]
   },
   {
     "id": "103",
@@ -719,7 +928,10 @@ export const initialDishes: Dish[] = [
     "description": "",
     "category": "BEBIDAS / BEVERAGES",
     "isAvailable": true,
-    "isVisible": true
+    "isVisible": true,
+    "allergens": [
+      "sulfitos"
+    ]
   },
   {
     "id": "111",
@@ -729,7 +941,10 @@ export const initialDishes: Dish[] = [
     "description": "",
     "category": "BEBIDAS / BEVERAGES",
     "isAvailable": true,
-    "isVisible": true
+    "isVisible": true,
+    "allergens": [
+      "sulfitos"
+    ]
   },
   {
     "id": "110",
@@ -739,7 +954,10 @@ export const initialDishes: Dish[] = [
     "description": "",
     "category": "BEBIDAS / BEVERAGES",
     "isAvailable": true,
-    "isVisible": true
+    "isVisible": true,
+    "allergens": [
+      "sulfitos"
+    ]
   },
   {
     "id": "123",
@@ -749,7 +967,10 @@ export const initialDishes: Dish[] = [
     "description": "",
     "category": "BEBIDAS / BEVERAGES",
     "isAvailable": true,
-    "isVisible": true
+    "isVisible": true,
+    "allergens": [
+      "sulfitos"
+    ]
   },
   {
     "id": "124",
@@ -759,7 +980,10 @@ export const initialDishes: Dish[] = [
     "description": "",
     "category": "BEBIDAS / BEVERAGES",
     "isAvailable": true,
-    "isVisible": true
+    "isVisible": true,
+    "allergens": [
+      "sulfitos"
+    ]
   },
   {
     "id": "125",
@@ -769,7 +993,10 @@ export const initialDishes: Dish[] = [
     "description": "",
     "category": "BEBIDAS / BEVERAGES",
     "isAvailable": true,
-    "isVisible": true
+    "isVisible": true,
+    "allergens": [
+      "sulfitos"
+    ]
   },
   {
     "id": "126",
@@ -779,7 +1006,10 @@ export const initialDishes: Dish[] = [
     "description": "",
     "category": "BEBIDAS / BEVERAGES",
     "isAvailable": true,
-    "isVisible": true
+    "isVisible": true,
+    "allergens": [
+      "sulfitos"
+    ]
   },
   {
     "id": "143",
@@ -789,7 +1019,10 @@ export const initialDishes: Dish[] = [
     "description": "",
     "category": "BEBIDAS / BEVERAGES",
     "isAvailable": true,
-    "isVisible": true
+    "isVisible": true,
+    "allergens": [
+      "sulfitos"
+    ]
   },
   {
     "id": "200",
@@ -840,7 +1073,10 @@ export const initialDishes: Dish[] = [
     "category": "FUERA DE CARTA / DAILY SPECIALS",
     "isAvailable": true,
     "isVisible": true,
-    "allergens": []
+    "allergens": [
+      "sulfitos",
+      "apio"
+    ]
   },
   {
     "id": "1769512417533",
@@ -851,6 +1087,12 @@ export const initialDishes: Dish[] = [
     "category": "POSTRES CASEROS / HOMEMADE DESSERTS",
     "isAvailable": true,
     "isVisible": true,
-    "allergens": []
+    "allergens": [
+      "gluten",
+      "lacteos",
+      "frutos_cascara",
+      "huevos",
+      "soja"
+    ]
   }
 ];
