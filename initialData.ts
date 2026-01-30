@@ -909,8 +909,8 @@ export const initialDishes: Dish[] = [
   {
     "id": "1769775704390",
     "name": "Leche frita / Spanish Fried Custard",
-    "price": 0,
-    "pricePlatter": 4.95,
+    "price": 4.95,
+    "pricePlatter": 0,
     "description": "",
     "category": "POSTRES CASEROS / HOMEMADE DESSERTS",
     "isAvailable": true,
