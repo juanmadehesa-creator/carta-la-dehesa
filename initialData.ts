@@ -40,8 +40,8 @@ export const initialDishes: Dish[] = [
   {
     "id": "4",
     "name": "Huevas de Maruca / Cured Hake Roe",
-    "price": 4,
-    "pricePlatter": 7.9,
+    "price": 4.95,
+    "pricePlatter": 11.95,
     "description": "Delicia del mediterráneo calidad extra / Extra quality Mediterranean delicacy",
     "category": "DE PICOTEO / APPETIZERS",
     "isAvailable": true,
@@ -53,7 +53,7 @@ export const initialDishes: Dish[] = [
   {
     "id": "5",
     "name": "Queso Oveja (DOP ZAMORA) / Sheep's Milk Cheese from Zamora (PDO)",
-    "price": 3.8,
+    "price": 3.94,
     "pricePlatter": 8.95,
     "description": "",
     "category": "DE PICOTEO / APPETIZERS",
@@ -66,8 +66,8 @@ export const initialDishes: Dish[] = [
   {
     "id": "6",
     "name": "Salchichón de Bellota a tacos / Diced Acorn-Fed Cured Sausage",
-    "price": 3.2,
-    "pricePlatter": 6.5,
+    "price": 3.95,
+    "pricePlatter": 7.95,
     "description": "",
     "category": "DE PICOTEO / APPETIZERS",
     "isAvailable": true,
@@ -79,8 +79,8 @@ export const initialDishes: Dish[] = [
   {
     "id": "7",
     "name": "Caña de Lomo de Bellota (BEHER-Guijuelo) / Acorn-Fed Cured Pork Loin from Guijuelo",
-    "price": 3.8,
-    "pricePlatter": 8.95,
+    "price": 4.2,
+    "pricePlatter": 9.95,
     "description": "",
     "category": "DE PICOTEO / APPETIZERS",
     "isAvailable": true,
@@ -89,7 +89,7 @@ export const initialDishes: Dish[] = [
   {
     "id": "8",
     "name": "Queso Especial Cabra (DOP ZAMORA) / Special Goat's Milk Cheese from Zamora (PDO)",
-    "price": 3.8,
+    "price": 3.95,
     "pricePlatter": 8.95,
     "description": "",
     "category": "DE PICOTEO / APPETIZERS",
@@ -122,8 +122,8 @@ export const initialDishes: Dish[] = [
   {
     "id": "11",
     "name": "Bravas (3 salsas) / Spicy Potatoes with 3 Dipping Sauces",
-    "price": 3.2,
-    "pricePlatter": 5.95,
+    "price": 3.96,
+    "pricePlatter": 6.94,
     "description": "",
     "category": "PARA COMPARTIR / TO SHARE",
     "isAvailable": true,
@@ -151,7 +151,7 @@ export const initialDishes: Dish[] = [
   {
     "id": "13",
     "name": "Croquetas Caseras / Homemade Croquettes",
-    "price": 3.8,
+    "price": 3.95,
     "pricePlatter": 9.95,
     "description": "De Jamón Ibérico, Mejillones o Cola de Toro / Iberian Ham, Mussels, or Oxtail Stew",
     "category": "PARA COMPARTIR / TO SHARE",
@@ -167,8 +167,8 @@ export const initialDishes: Dish[] = [
   {
     "id": "14",
     "name": "Calamares de Campo con Langostinos / \"Country-Style\" Fried Medley with Prawns",
-    "price": 0,
-    "pricePlatter": 10.8,
+    "price": 4.2,
+    "pricePlatter": 11.96,
     "description": "",
     "category": "PARA COMPARTIR / TO SHARE",
     "isAvailable": true,
@@ -222,72 +222,96 @@ export const initialDishes: Dish[] = [
   {
     "id": "18",
     "name": "Noruego / Norwegian",
-    "price": 3.25,
+    "price": 3.5,
     "pricePlatter": 0,
     "description": "Salmón, Queso añejo y Alioli / Salmon, Aged Cheese, and Aioli",
     "category": "MONTAÍTOS / ROLLS",
     "isAvailable": true,
-    "isVisible": true
+    "isVisible": true,
+    "allergens": [
+      "pescado",
+      "lacteos",
+      "gluten"
+    ]
   },
   {
     "id": "19",
     "name": "Chorizo Picante / Spicy Chorizo",
-    "price": 3.25,
+    "price": 3.5,
     "pricePlatter": 0,
     "description": "",
     "category": "MONTAÍTOS / ROLLS",
     "isAvailable": true,
-    "isVisible": true
+    "isVisible": true,
+    "allergens": [
+      "gluten"
+    ]
   },
   {
     "id": "20",
     "name": "El Feriante / \"El Feriante\"",
-    "price": 3.25,
+    "price": 3.5,
     "pricePlatter": 0,
     "description": "Lomo con Jamón ibérico / Pork Loin with Iberian Ham",
     "category": "MONTAÍTOS / ROLLS",
     "isAvailable": true,
-    "isVisible": true
+    "isVisible": true,
+    "allergens": [
+      "gluten"
+    ]
   },
   {
     "id": "21",
     "name": "Mini Serranito / Mini \"Serranito\"",
-    "price": 3.6,
+    "price": 3.93,
     "pricePlatter": 0,
     "description": "Pimiento frito, Lomo  y Lamón ibérico / Fried Pepper, Pork Loin, and Iberian Ham",
     "category": "MONTAÍTOS / ROLLS",
     "isAvailable": true,
-    "isVisible": true
+    "isVisible": true,
+    "allergens": [
+      "gluten"
+    ]
   },
   {
     "id": "22",
     "name": "Melva y Pimiento / Canned Melva Tuna with Roasted Bell Pepper",
-    "price": 3.25,
+    "price": 3.5,
     "pricePlatter": 0,
     "description": "",
     "category": "MONTAÍTOS / ROLLS",
     "isAvailable": true,
-    "isVisible": true
+    "isVisible": true,
+    "allergens": [
+      "gluten"
+    ]
   },
   {
     "id": "23",
     "name": "Islandés / Icelandic",
-    "price": 3.25,
+    "price": 3.5,
     "pricePlatter": 0,
     "description": "Bacalao ahumado y Salmorejo / Smoked Cod and Salmorejo",
     "category": "MONTAÍTOS / ROLLS",
     "isAvailable": true,
-    "isVisible": true
+    "isVisible": true,
+    "allergens": [
+      "gluten",
+      "pescado"
+    ]
   },
   {
     "id": "24",
     "name": "El Alfarero / \"El Alfarero\"",
-    "price": 3.25,
+    "price": 3.5,
     "pricePlatter": 0,
     "description": "Lomo de orza, Queso viejo y Mojo picón / Preserved Pork Loin (Lomo de orza), Aged Cheese, and Mojo picón Sauce",
     "category": "MONTAÍTOS / ROLLS",
     "isAvailable": true,
-    "isVisible": true
+    "isVisible": true,
+    "allergens": [
+      "gluten"
+    ]
   },
   {
     "id": "25",
@@ -297,7 +321,11 @@ export const initialDishes: Dish[] = [
     "description": "Receta tradicional / Traditional recipe",
     "category": "FRESQUITOS / CHILLED PLATES",
     "isAvailable": true,
-    "isVisible": true
+    "isVisible": true,
+    "allergens": [
+      "gluten",
+      "sulfitos"
+    ]
   },
   {
     "id": "26",
@@ -307,17 +335,25 @@ export const initialDishes: Dish[] = [
     "description": "",
     "category": "FRESQUITOS / CHILLED PLATES",
     "isAvailable": true,
-    "isVisible": true
+    "isVisible": true,
+    "allergens": [
+      "altramuces",
+      "lacteos"
+    ]
   },
   {
     "id": "27",
     "name": "Tomate Rosa con Melva Canutera / Pink Tomato with Canned Melva Tuna (Canutera)",
     "price": 0,
-    "pricePlatter": 7.95,
+    "pricePlatter": 11.95,
     "description": "",
     "category": "FRESQUITOS / CHILLED PLATES",
     "isAvailable": true,
-    "isVisible": true
+    "isVisible": true,
+    "allergens": [
+      "pescado",
+      "sulfitos"
+    ]
   },
   {
     "id": "28",
@@ -327,7 +363,7 @@ export const initialDishes: Dish[] = [
     "description": "",
     "category": "FRESQUITOS / CHILLED PLATES",
     "isAvailable": true,
-    "isVisible": true
+    "isVisible": false
   },
   {
     "id": "29",
@@ -337,7 +373,15 @@ export const initialDishes: Dish[] = [
     "description": "",
     "category": "FRESQUITOS / CHILLED PLATES",
     "isAvailable": true,
-    "isVisible": true
+    "isVisible": true,
+    "allergens": [
+      "crustaceos",
+      "lacteos",
+      "mostaza",
+      "pescado",
+      "moluscos",
+      "altramuces"
+    ]
   },
   {
     "id": "30",
@@ -347,7 +391,10 @@ export const initialDishes: Dish[] = [
     "description": "",
     "category": "FRESQUITOS / CHILLED PLATES",
     "isAvailable": true,
-    "isVisible": true
+    "isVisible": true,
+    "allergens": [
+      "pescado"
+    ]
   },
   {
     "id": "31",
@@ -357,47 +404,72 @@ export const initialDishes: Dish[] = [
     "description": "",
     "category": "FRESQUITOS / CHILLED PLATES",
     "isAvailable": true,
-    "isVisible": true
+    "isVisible": true,
+    "allergens": [
+      "gluten",
+      "altramuces",
+      "lacteos",
+      "pescado"
+    ]
   },
   {
     "id": "32",
     "name": "Chocos Fritos / Andalusian-recipe Fried Cuttlefish",
     "price": 3.95,
-    "pricePlatter": 10.8,
+    "pricePlatter": 11.95,
     "description": "",
     "category": "DE LA MAR / SEAFOOD",
     "isAvailable": true,
-    "isVisible": true
+    "isVisible": true,
+    "allergens": [
+      "gluten",
+      "pescado"
+    ]
   },
   {
     "id": "33",
     "name": "Pavías de Bacalao / Fried Salt Cod Fritters (Pavías)",
-    "price": 2,
+    "price": 3.95,
     "pricePlatter": 0,
-    "description": "",
+    "description": "/Piece of cod in a fried batter seasoned with garlic and parsley",
     "category": "DE LA MAR / SEAFOOD",
     "isAvailable": true,
-    "isVisible": true
+    "isVisible": true,
+    "allergens": [
+      "gluten",
+      "pescado",
+      "altramuces"
+    ]
   },
   {
     "id": "34",
     "name": "Adobo Andaluz / Andalusian Marinated Fried Fish",
-    "price": 3.95,
-    "pricePlatter": 10.8,
+    "price": 4.5,
+    "pricePlatter": 11.95,
     "description": "",
     "category": "DE LA MAR / SEAFOOD",
     "isAvailable": true,
-    "isVisible": true
+    "isVisible": true,
+    "allergens": [
+      "gluten",
+      "pescado",
+      "altramuces",
+      "mostaza",
+      "sesamo"
+    ]
   },
   {
     "id": "35",
     "name": "Puntillitas / Fried Baby Squid",
-    "price": 3.95,
-    "pricePlatter": 10.8,
+    "price": 4.5,
+    "pricePlatter": 11.95,
     "description": "",
     "category": "DE LA MAR / SEAFOOD",
     "isAvailable": true,
-    "isVisible": true
+    "isVisible": true,
+    "allergens": [
+      "gluten"
+    ]
   },
   {
     "id": "36",
@@ -407,7 +479,10 @@ export const initialDishes: Dish[] = [
     "description": "Salteadas con ajo y guindilla / Sautéed with garlic and chili",
     "category": "DE LA MAR / SEAFOOD",
     "isAvailable": true,
-    "isVisible": true
+    "isVisible": true,
+    "allergens": [
+      "crustaceos"
+    ]
   },
   {
     "id": "37",
@@ -417,7 +492,11 @@ export const initialDishes: Dish[] = [
     "description": "Con aceite y pimentón / Boiled octopus seasoned with olive oil, sea salt, and Spanish paprika (pimentón), typically served over sliced potatoes.",
     "category": "DE LA MAR / SEAFOOD",
     "isAvailable": true,
-    "isVisible": true
+    "isVisible": true,
+    "allergens": [
+      "pescado",
+      "crustaceos"
+    ]
   },
   {
     "id": "38",
@@ -427,27 +506,41 @@ export const initialDishes: Dish[] = [
     "description": "",
     "category": "DE LA MAR / SEAFOOD",
     "isAvailable": true,
-    "isVisible": true
+    "isVisible": true,
+    "allergens": [
+      "gluten",
+      "pescado",
+      "altramuces"
+    ]
   },
   {
     "id": "39",
     "name": "Mero frito al limón / Fried Lemon Grouper",
-    "price": 3.95,
-    "pricePlatter": 10.8,
+    "price": 4.5,
+    "pricePlatter": 11.95,
     "description": "",
     "category": "DE LA MAR / SEAFOOD",
     "isAvailable": true,
-    "isVisible": true
+    "isVisible": true,
+    "allergens": [
+      "gluten",
+      "pescado",
+      "altramuces"
+    ]
   },
   {
     "id": "40",
     "name": "Taquitos de Bacalao frito / Fried Cod APPETIZERS",
-    "price": 4.5,
+    "price": 4.95,
     "pricePlatter": 12.95,
     "description": "",
     "category": "DE LA MAR / SEAFOOD",
     "isAvailable": true,
-    "isVisible": true
+    "isVisible": true,
+    "allergens": [
+      "gluten",
+      "pescado"
+    ]
   },
   {
     "id": "41",
@@ -457,7 +550,10 @@ export const initialDishes: Dish[] = [
     "description": "",
     "category": "TABLA DE PANES / ARTISAN TOASTS",
     "isAvailable": true,
-    "isVisible": true
+    "isVisible": true,
+    "allergens": [
+      "gluten"
+    ]
   },
   {
     "id": "42",
@@ -467,7 +563,13 @@ export const initialDishes: Dish[] = [
     "description": "Solomillo, Jamón y Huevo de codorniz / Pork Tenderloin, Iberian Ham, and Quail Egg",
     "category": "TABLA DE PANES / ARTISAN TOASTS",
     "isAvailable": true,
-    "isVisible": true
+    "isVisible": true,
+    "allergens": [
+      "altramuces",
+      "gluten",
+      "huevos",
+      "pescado"
+    ]
   },
   {
     "id": "43",
@@ -477,7 +579,10 @@ export const initialDishes: Dish[] = [
     "description": "",
     "category": "TABLA DE PANES / ARTISAN TOASTS",
     "isAvailable": true,
-    "isVisible": true
+    "isVisible": true,
+    "allergens": [
+      "pescado"
+    ]
   },
   {
     "id": "44",
@@ -487,7 +592,13 @@ export const initialDishes: Dish[] = [
     "description": "",
     "category": "TABLA DE PANES / ARTISAN TOASTS",
     "isAvailable": true,
-    "isVisible": true
+    "isVisible": true,
+    "allergens": [
+      "gluten",
+      "altramuces",
+      "lacteos",
+      "sesamo"
+    ]
   },
   {
     "id": "45",
@@ -497,7 +608,13 @@ export const initialDishes: Dish[] = [
     "description": "",
     "category": "TABLA DE PANES / ARTISAN TOASTS",
     "isAvailable": true,
-    "isVisible": true
+    "isVisible": true,
+    "allergens": [
+      "pescado",
+      "sesamo",
+      "gluten",
+      "huevos"
+    ]
   },
   {
     "id": "46",
@@ -507,7 +624,11 @@ export const initialDishes: Dish[] = [
     "description": "",
     "category": "CARNÍVORO / MEAT LOVER'S",
     "isAvailable": true,
-    "isVisible": true
+    "isVisible": true,
+    "allergens": [
+      "huevos",
+      "lacteos"
+    ]
   },
   {
     "id": "47",
@@ -532,8 +653,8 @@ export const initialDishes: Dish[] = [
   {
     "id": "49",
     "name": "Lagartito Ibérico con Jamón / Iberian Pork Skirt Steak “Lagartito” with Iberian Ham",
-    "price": 4.8,
-    "pricePlatter": 10.95,
+    "price": 4.95,
+    "pricePlatter": 12.95,
     "description": "",
     "category": "CARNÍVORO / MEAT LOVER'S",
     "isAvailable": true,
@@ -543,11 +664,15 @@ export const initialDishes: Dish[] = [
     "id": "50",
     "name": "BIG Hamburguesa LA DEHESA / \"LA DEHESA\" BIG Burger",
     "price": 0,
-    "pricePlatter": 9.95,
+    "pricePlatter": 11.95,
     "description": "Completa y sabrosa / Full and tasty",
     "category": "CARNÍVORO / MEAT LOVER'S",
     "isAvailable": true,
-    "isVisible": true
+    "isVisible": true,
+    "allergens": [
+      "gluten",
+      "huevos"
+    ]
   },
   {
     "id": "51",
@@ -572,18 +697,22 @@ export const initialDishes: Dish[] = [
   {
     "id": "53",
     "name": "San Jacobo Ibérico / Iberian Pork \"San Jacobo\" (Cordon Bleu)",
-    "price": 5.95,
+    "price": 6.95,
     "pricePlatter": 0,
     "description": "",
     "category": "CARNÍVORO / MEAT LOVER'S",
     "isAvailable": true,
-    "isVisible": true
+    "isVisible": true,
+    "allergens": [
+      "gluten",
+      "lacteos"
+    ]
   },
   {
     "id": "54",
     "name": "Chuletitas de Cordero Lechal / Baby Lamb Chops",
     "price": 5.95,
-    "pricePlatter": 17.95,
+    "pricePlatter": 18.94,
     "description": "",
     "category": "CARNÍVORO / MEAT LOVER'S",
     "isAvailable": true,
@@ -592,7 +721,7 @@ export const initialDishes: Dish[] = [
   {
     "id": "55",
     "name": "Manitas de Cerdo (Como las hacía la Abuela) / Pork Trotters (Grandma's Style)",
-    "price": 4.5,
+    "price": 4.95,
     "pricePlatter": 0,
     "description": "Por unidad / Each",
     "category": "DE ZAMORA Y ASTURIAS / TASTE OF ZAMORA & ASTURIAS",
@@ -602,8 +731,8 @@ export const initialDishes: Dish[] = [
   {
     "id": "56",
     "name": "Callos de Ternera (Los mejores) / Zamora-Style Beef Tripe Stew (our specialty)",
-    "price": 3.95,
-    "pricePlatter": 9.95,
+    "price": 4.2,
+    "pricePlatter": 11.95,
     "description": "",
     "category": "DE ZAMORA Y ASTURIAS / TASTE OF ZAMORA & ASTURIAS",
     "isAvailable": true,
@@ -612,62 +741,83 @@ export const initialDishes: Dish[] = [
   {
     "id": "57",
     "name": "Matanza de Zamora con Huevo frito / Zamora-Style Pork Feast with Fried Egg",
-    "price": 3.95,
-    "pricePlatter": 9.95,
+    "price": 4.2,
+    "pricePlatter": 11.95,
     "description": "Sabor tradicional / Traditional flavor",
     "category": "DE ZAMORA Y ASTURIAS / TASTE OF ZAMORA & ASTURIAS",
     "isAvailable": true,
-    "isVisible": true
+    "isVisible": true,
+    "allergens": [
+      "huevos"
+    ]
   },
   {
     "id": "58",
     "name": "Mini Cachopo Asturiano / Mini Asturian Cachopo",
     "price": 0,
-    "pricePlatter": 9.95,
+    "pricePlatter": 11.95,
     "description": "Con ternera de Asturias / With Asturian beef",
     "category": "DE ZAMORA Y ASTURIAS / TASTE OF ZAMORA & ASTURIAS",
     "isAvailable": true,
-    "isVisible": true
+    "isVisible": true,
+    "allergens": [
+      "gluten"
+    ]
   },
   {
     "id": "59",
     "name": "Mini Cachopo de Cabrales / Mini Cabrales Cheese \"Cachopo\"",
     "price": 0,
-    "pricePlatter": 9.95,
+    "pricePlatter": 11.95,
     "description": "Con auténtico queso Cabrales DOP / With authentic Cabrales PDO cheese",
     "category": "DE ZAMORA Y ASTURIAS / TASTE OF ZAMORA & ASTURIAS",
     "isAvailable": true,
-    "isVisible": true
+    "isVisible": true,
+    "allergens": [
+      "gluten",
+      "lacteos",
+      "huevos"
+    ]
   },
   {
     "id": "60",
     "name": "Cachopo Asturiano (400 gr aprox.) / Asturian Cachopo (Approx. 400g)",
     "price": 0,
-    "pricePlatter": 18.95,
+    "pricePlatter": 22.95,
     "description": "Tamaño familiar / Sharing Platter",
     "category": "DE ZAMORA Y ASTURIAS / TASTE OF ZAMORA & ASTURIAS",
     "isAvailable": true,
-    "isVisible": true
+    "isVisible": true,
+    "allergens": [
+      "gluten",
+      "huevos"
+    ]
   },
   {
     "id": "61",
     "name": "Habitas Baby con Taquitos de Jamón / Baby Broad Beans with Diced Iberian Ham",
-    "price": 3.95,
+    "price": 4.2,
     "pricePlatter": 9.95,
     "description": "",
     "category": "DE ZAMORA Y ASTURIAS / TASTE OF ZAMORA & ASTURIAS",
     "isAvailable": true,
-    "isVisible": true
+    "isVisible": true,
+    "allergens": [
+      "sulfitos"
+    ]
   },
   {
     "id": "62",
     "name": "Alcachofas Italianas salteadas con Jamón y Oloroso / Sautéed Italian Artichokes with Iberian Ham and Oloroso Sherry",
-    "price": 5.95,
+    "price": 6.95,
     "pricePlatter": 11.95,
     "description": "",
     "category": "DE ZAMORA Y ASTURIAS / TASTE OF ZAMORA & ASTURIAS",
     "isAvailable": true,
-    "isVisible": true
+    "isVisible": true,
+    "allergens": [
+      "sulfitos"
+    ]
   },
   {
     "id": "100",
@@ -883,16 +1033,14 @@ export const initialDishes: Dish[] = [
     "id": "1769512310165",
     "name": "Arroz con Carrillada Ibérica / Creamy Iberian Pork Cheek Rice",
     "price": 0,
-    "pricePlatter": 9.95,
+    "pricePlatter": 6.95,
     "description": "Precio por persona / Price per person",
     "category": "FUERA DE CARTA / DAILY SPECIALS",
-    "isAvailable": true,
+    "isAvailable": false,
     "isVisible": true,
     "allergens": [
       "sulfitos",
-      "cacahuetes",
-      "lacteos",
-      "frutos_cascara"
+      "apio"
     ]
   },
   {
@@ -907,19 +1055,145 @@ export const initialDishes: Dish[] = [
     "allergens": []
   },
   {
-    "id": "1769775704390",
-    "name": "Leche frita / Spanish Fried Custard",
-    "price": 4.95,
+    "id": "1769947952325",
+    "name": "Patatas Chip / Potatos Fries Chip",
+    "price": 1.5,
     "pricePlatter": 0,
     "description": "",
-    "category": "POSTRES CASEROS / HOMEMADE DESSERTS",
+    "category": "DE PICOTEO / APPETIZERS",
+    "isAvailable": true,
+    "isVisible": true,
+    "allergens": []
+  },
+  {
+    "id": "1769948177044",
+    "name": "Queso cabrales DOP/ Cabrales cheese protected designation of origin",
+    "price": 4.5,
+    "pricePlatter": 11.95,
+    "description": "queso de la variedad azul/blue cheese",
+    "category": "DE PICOTEO / APPETIZERS",
+    "isAvailable": true,
+    "isVisible": true,
+    "allergens": [
+      "lacteos"
+    ]
+  },
+  {
+    "id": "1769948404828",
+    "name": "Queso en Aceite con Guindillas / Cheese in Oil with Chili Peppers",
+    "price": 3.95,
+    "pricePlatter": 8.95,
+    "description": "/very spicy cheese introduced into oil",
+    "category": "DE PICOTEO / APPETIZERS",
+    "isAvailable": true,
+    "isVisible": true,
+    "allergens": [
+      "lacteos"
+    ]
+  },
+  {
+    "id": "1769948524827",
+    "name": "Cecina de Leon DOP / Cecina de Leon protected designation of origin",
+    "price": 4.2,
+    "pricePlatter": 1.94,
+    "description": "/Smoked dried beef",
+    "category": "DE PICOTEO / APPETIZERS",
+    "isAvailable": true,
+    "isVisible": true,
+    "allergens": []
+  },
+  {
+    "id": "1769948727306",
+    "name": "Carne Mecha a Tiras / Baked meat tacos",
+    "price": 3.95,
+    "pricePlatter": 9.95,
+    "description": "",
+    "category": "DE PICOTEO / APPETIZERS",
+    "isAvailable": true,
+    "isVisible": true,
+    "allergens": []
+  },
+  {
+    "id": "1769949332353",
+    "name": "Patatas Bravas 3 salsa / Patatas bravas with three types of sauce",
+    "price": 0,
+    "pricePlatter": 0,
+    "description": "/Cube-shaped fried potatoes with mayonnaise, spicy sauce and a typical Spanish homemade sauce",
+    "category": "FRESQUITOS / CHILLED PLATES",
+    "isAvailable": true,
+    "isVisible": true,
+    "allergens": [
+      "lacteos",
+      "altramuces",
+      "mostaza"
+    ]
+  },
+  {
+    "id": "1769949475080",
+    "name": "Pimientos Asados Aliñados / Seasoned Roasted Peppers",
+    "price": 3.95,
+    "pricePlatter": 8.95,
+    "description": "/Peppers roasted in a wood-fired oven, seasoned with olive oil and vinegar.",
+    "category": "FRESQUITOS / CHILLED PLATES",
+    "isAvailable": true,
+    "isVisible": true,
+    "allergens": [
+      "sulfitos"
+    ]
+  },
+  {
+    "id": "1769949570576",
+    "name": "Papas aliñas con Melva / Potatoes dressed with tuna",
+    "price": 3.95,
+    "pricePlatter": 8.94,
+    "description": "/Boiled potato dressed with balsamic vinegar, olive oil and tuna",
+    "category": "FRESQUITOS / CHILLED PLATES",
+    "isAvailable": true,
+    "isVisible": true,
+    "allergens": [
+      "sulfitos"
+    ]
+  },
+  {
+    "id": "1769950049830",
+    "name": "Patas de calamar frito / Fried squid tentacles",
+    "price": 4.95,
+    "pricePlatter": 12.95,
+    "description": "",
+    "category": "DE LA MAR / SEAFOOD",
     "isAvailable": true,
     "isVisible": true,
     "allergens": [
       "gluten",
-      "huevos",
-      "lacteos",
-      "frutos_cascara"
+      "pescado"
+    ]
+  },
+  {
+    "id": "1769950112654",
+    "name": "Boquerones al Limon/ Anchovies with Lemon",
+    "price": 4.5,
+    "pricePlatter": 11.95,
+    "description": "",
+    "category": "DE LA MAR / SEAFOOD",
+    "isAvailable": true,
+    "isVisible": true,
+    "allergens": [
+      "gluten",
+      "pescado"
+    ]
+  },
+  {
+    "id": "1769950186198",
+    "name": "Merluza Taquitos / Fried diced hake",
+    "price": 4.5,
+    "pricePlatter": 11.95,
+    "description": "",
+    "category": "DE LA MAR / SEAFOOD",
+    "isAvailable": true,
+    "isVisible": true,
+    "allergens": [
+      "gluten",
+      "pescado"
     ]
   }
 ];
